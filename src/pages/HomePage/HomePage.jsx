@@ -1,4 +1,5 @@
 import "./HomePage.css";
+import NewsList from "../../components/NewsList/NewsList"
 
 function HomePage() {
   
