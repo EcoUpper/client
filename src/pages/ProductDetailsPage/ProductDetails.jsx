@@ -1,5 +1,5 @@
-import ProductInfo from "./../../components/Products/ProductInfo"
-import Proposals from "./../../components/Products/Proposals"
+import ProductInfo from "./../../components/ProductDetails/ProductInfo"
+import Proposals from "./../../components/ProductDetails/Proposals"
 
 function ProductDetails() {
     return (

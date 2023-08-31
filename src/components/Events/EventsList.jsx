@@ -21,21 +21,24 @@ function EventsList () {
         })
     }, [])
 
-
     if (!events) {
         return <p>Loading...</p>
     }
 
     return (
         <>
-        <div>
-            {events.map((eventElement) => {
-                return (
-                    <Link key={eventElement._id} to={`/events/${eventElement._id}`}></Link>
-                )
-            })}
-
-        </div>
+            <div>
+                {events.map((eventElement) => {
+                    return (
+                        <Link key={eventElement._id} to={`/events/${eventElement._id}`}>
+                            <h3>{eventElement.title}</h3>
+                            <p>{eventElement.created_by}</p>
+                            <p>{eventElement.content}</p>
+                            <img src={eventElement.image_url} alt="Event image" />
+                        </Link>
+                    )
+                })}
+            </div>
         </>
     )
 }
