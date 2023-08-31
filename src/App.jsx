@@ -15,6 +15,7 @@ import ProductPage from "./pages/ProductDetailsPage/ProductDetails";
 import Navbar from "./components/Navbar/Navbar";
 import IsPrivate from "./components/IsPrivate/IsPrivate";
 import IsAnon from "./components/IsAnon/IsAnon";
+import Footer from "./components/Footer/Footer"
 
 
 function App() {
@@ -59,6 +60,7 @@ function App() {
           }
         />
       </Routes>
+      <Footer />
     </div>
   );
 }
