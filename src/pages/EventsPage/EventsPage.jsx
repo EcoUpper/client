@@ -1,6 +1,8 @@
 function Events() {
-    return 
-    
+    return (
+        <>
+        </>
+    )
 }
 
 export default Events;
