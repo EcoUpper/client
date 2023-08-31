@@ -7,10 +7,10 @@ import SignupPage from "./pages/SignupPage/SignupPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import AboutPage from "./pages/AboutPage/About";
 import EventsPage from "./pages/EventsPage/EventsPage";
-import MarketPage from "./pages/MarketPage/Market";
+import MarketPage from "./pages/MarketPage/MarketPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import PostsPage from "./pages/PostsPage/Posts";
-import ProductPage from "./pages/ProductPage/Product.Details";
+import ProductPage from "./pages/ProductDetailsPage/ProductDetails";
  
 import Navbar from "./components/Navbar/Navbar";
 import IsPrivate from "./components/IsPrivate/IsPrivate";
