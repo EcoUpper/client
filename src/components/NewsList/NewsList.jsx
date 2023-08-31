@@ -23,9 +23,8 @@ function NewsList() {
         <h3>NEWS</h3>
         {
             news.map((news)=>{
-                return(
-                    <div className="news"></div>
-                )
+                return <NewsCard data = {news}/> 
+                
             })
         }
 
