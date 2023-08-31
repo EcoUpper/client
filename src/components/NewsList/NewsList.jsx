@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import NewsCard from "./NewsCard";
 
 function NewsList() {
   const [news, setNews] = useState([]);

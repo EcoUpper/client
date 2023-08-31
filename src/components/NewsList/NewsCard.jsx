@@ -4,10 +4,10 @@ function NewsCard(props) {
 
     return (
 
-        <Link to = {data.url}>
-            <div>
-             
-
+        <Link to={props.data.url}>
+            <div className="newsCard">
+                <h3>{props.data.title}</h3>
+                <h3>{props.data.url}</h3>
             </div>
         </Link>
 
