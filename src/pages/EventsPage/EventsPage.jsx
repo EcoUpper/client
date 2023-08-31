@@ -1,5 +1,5 @@
 import EventsList from "./../../components/Events/EventsList"
-import NewEvent from "./NewEvent"
+import NewEvent from "./../../components/Events/NewEvent"
 
 
 function EventsPage() {
