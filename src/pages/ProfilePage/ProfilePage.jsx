@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import "./ProfilePage.css";
 import { AuthContext } from "../../context/auth.context";
+import ItemCard from "../../components/Market/ItemCard";
 
 
 function ProfilePage() {
@@ -36,8 +37,14 @@ function ProfilePage() {
 
       <div className="user-products">
         <h2>{user.username}'s Listing</h2>
-          
+          {
+            items.map((item)=>{
+              <ItemCard data={item}/>
+            })
+          }
       </div>
+
+      
     </div>
   );
 }
