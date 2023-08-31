@@ -1,6 +1,7 @@
 function NewEvent () {
     return (
        <>
+       <p>working new event</p>
        </> 
     )
 }

@@ -10,7 +10,7 @@ function EventsList () {
     useEffect(() => {
         fetch(apiUrl)
         .then((res) => {
-            res.json()
+           return res.json()
         })
         .then((data) => {
             setEvents(data)
@@ -30,12 +30,13 @@ function EventsList () {
             <div>
                 {events.map((eventElement) => {
                     return (
-                        <Link key={eventElement._id} to={`/events/${eventElement._id}`}>
-                            <h3>{eventElement.title}</h3>
-                            <p>{eventElement.created_by}</p>
+                        <div>
+                            <Link key={eventElement._id} to={`/events/${eventElement._id}`}><h3>{eventElement.title}</h3></Link>
+                            <p>{eventElement.created_by.username}</p>
                             <p>{eventElement.content}</p>
                             <img src={eventElement.image_url} alt="Event image" />
-                        </Link>
+                        </div>
+                        
                     )
                 })}
             </div>

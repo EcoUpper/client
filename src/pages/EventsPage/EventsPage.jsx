@@ -6,6 +6,7 @@ function EventsPage() {
 
     return (
         <>
+            <p>Working eventspage</p>
             <NewEvent />
             <EventsList />
         </>
