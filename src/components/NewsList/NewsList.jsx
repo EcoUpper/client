@@ -1,21 +1,21 @@
 import { useState, useEffect } from "react";
 
 function NewsList() {
-    const [news, setNews] = useState([]);
+  const [news, setNews] = useState([]);
 
-    useEffect(() => {
-        const newsUrl = process.env.REACT_APP_SERVER_URL + "/api/news"
+  useEffect(() => {
+    const newsUrl = process.env.REACT_APP_SERVER_URL + "/api/news";
 
-        fetch(newsUrl)
-            .then((response) => {
-                return response.json()
-            })
-            .then((data) => {
-                console.log(data);
-                setNews(data);
-            })
-            .catch(err => console.log(err));
-    }, [])
+    fetch(newsUrl)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+        setNews(data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
     return (
         <>

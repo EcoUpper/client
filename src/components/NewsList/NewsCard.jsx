@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-function NewsCard() {
+function NewsCard(props) {
 
     return (
 
