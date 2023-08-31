@@ -5,7 +5,7 @@ import HomePage from "./pages/HomePage/HomePage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import SignupPage from "./pages/SignupPage/SignupPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
-// import AboutPage from "./pages/AboutPage/About";
+import AboutPage from "./pages/AboutPage/About";
 import EventsPage from "./pages/EventsPage/Events";
 import MarketPage from "./pages/MarketPage/Market";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
