@@ -7,11 +7,12 @@ function Navbar() {
   // Subscribe to the AuthContext to gain access to
   // the values from AuthContext.Provider's `value` prop
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
+  console.log(user);
 
   return (
     <nav>
       <Link to="/">
-        <button>Home</button>
+      <img src="./images/greta.png" style={{ width: 50, height: 50}} alt="Home" />
       </Link>
 
       <Link to="/market">
@@ -31,8 +32,8 @@ function Navbar() {
           <button onClick={logOutUser}>Logout</button>
 
           <Link to={`/profile/${user._id}`}>
-            <button>Profile</button>
-            {/* <img src="https://picsum.photos/id/402/200/300" style={{ width: 50, height: 50, borderRadius: 25}} alt="profile" /> */}
+            {/* <button>Profile</button> */}
+            <img src={user.image_url} style={{ width: 100, height: 100, borderRadius: 25}} alt="Profile" />
           </Link>
 
           <span>{user && user.name}</span>
