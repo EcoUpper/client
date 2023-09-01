@@ -7,12 +7,11 @@ import SignupPage from "./pages/SignupPage/SignupPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import AboutPage from "./pages/AboutPage/About";
 import EventsPage from "./pages/EventsPage/EventsPage";
-import NewEvent from "./components/Events/NewEvent";
 import EventDetailsPage from "./pages/EventsPage/EventDetailsPage";
 import MarketPage from "./pages/MarketPage/MarketPage";
 import ItemDetailsPage from "./pages/MarketPage/ItemDetailsPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
-import PostsPage from "./pages/PostsPage/Posts";
+import PostsPage from "./pages/PostsPage/PostsPage";
  
 import Navbar from "./components/Navbar/Navbar";
 import IsPrivate from "./components/IsPrivate/IsPrivate";
@@ -31,7 +30,6 @@ function App() {
         <Route path="/market/:itemId" element={<ItemDetailsPage/>} />
         <Route path="/about" element={<AboutPage/>} />
         <Route path="/events" element={<EventsPage/>} />
-        <Route path="/events/create/new" element={<NewEvent/>} />
         <Route path="/events/:eventId" element={<EventDetailsPage/>}/>
         <Route path="/posts" element={<PostsPage/>} />
         <Route path="*" element={<NotFoundPage/>} />

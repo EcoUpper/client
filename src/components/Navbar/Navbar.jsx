@@ -32,7 +32,6 @@ function Navbar() {
           <button onClick={logOutUser}>Logout</button>
 
           <Link to={`/profile/${user._id}`}>
-            {/* <button>Profile</button> */}
             <img src={user.image_url} style={{ width: 100, height: 100, borderRadius: 25}} alt="Profile" />
           </Link>
 

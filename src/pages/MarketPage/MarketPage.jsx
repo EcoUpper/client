@@ -6,7 +6,7 @@ function MarketPage() {
     
     return (
         <>
-            {/* <NewItem/> */}
+            <NewItem/>
             <ItemsList/>
         </>
     )

@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 
 export default function EventCard(props) {
+
+
   return (
     <div style={{ width: "400px" }}>
       <Link key={props.data._id} to={`/events/${props.data._id}`}>

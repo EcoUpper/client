@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react"
-import EventCard from "./EventCard"
+import PostCard from "../../components/Posts/PostCard"
+import NewPost from "../../components/Posts/NewPost"
 
+function PostsPage() {
 
-function EventsList() {
-
-    const [events, setEvents] = useState([])
-    const apiUrl = process.env.REACT_APP_SERVER_URL + "/db/events"
+    const [posts, setPosts] = useState([])
+    const apiUrl = process.env.REACT_APP_SERVER_URL + "/db/posts"
 
     useEffect(() => {
         fetch(apiUrl)
@@ -13,7 +13,7 @@ function EventsList() {
                 return res.json()
             })
             .then((data) => {
-                setEvents(data)
+                setPosts(data)
                 console.log(data)
             })
             .catch((err) => {
@@ -21,21 +21,22 @@ function EventsList() {
             })
     }, [])
 
-    if (!events) {
+    if (!posts) {
         return <p>Loading...</p>
     }
 
     return (
         <>
             <div>
-                {events.map((eventElement) => {
-                    const dateAndTime = eventElement.date
+                <NewPost/>
+                {posts.map((post) => {
+                    const dateAndTime = post.createdAt
                     const dateTime = new Date(dateAndTime)
-                
+
                     const date = dateTime.toLocaleDateString()
                     const time = dateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
                     return (
-                        <EventCard data={eventElement} date={date} time={time}/>
+                        <PostCard data={post} date={date} time={time}/>
                     )
                 })}
             </div>
@@ -43,4 +44,4 @@ function EventsList() {
     )
 }
 
-export default EventsList
+export default PostsPage
