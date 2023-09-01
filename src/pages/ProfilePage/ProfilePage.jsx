@@ -3,6 +3,7 @@ import "./ProfilePage.css";
 import { AuthContext } from "../../context/auth.context";
 import ItemCard from "../../components/Market/ItemCard";
 import Proposal from "../../components/Proposal/Proposal";
+import EventCard from "../../components/Events/EventCard";
 
 
 function ProfilePage() {
@@ -10,22 +11,21 @@ function ProfilePage() {
   const {user} = useContext(AuthContext)
   const [items, setItems] = useState([])
   const [allItems, setAllItems] = useState([])
+  const [events, setEvents] = useState([])
   
-  const [proposals, setProposals] = useState([])
-
 
   useEffect(()=>{
 
     const itemUrl = process.env.REACT_APP_SERVER_URL + "/db/items/owner/" + user._id
     const allItemUrl = process.env.REACT_APP_SERVER_URL + "/db/items"
-    const proposalUrl = process.env.REACT_APP_SERVER_URL + "/db/proposals/created/" + user._id
+    const eventUrl = process.env.REACT_APP_SERVER_URL + "/db/events/" + user._id
 
     fetch(itemUrl)
     .then((response)=>{
       return response.json()
     })
     .then((data)=>{
-      console.log(data);
+      console.log( "owner items", data);
       setItems(data)
     })
     .catch(err => console.log(err))
@@ -36,19 +36,20 @@ function ProfilePage() {
       return response.json()
     })
     .then((data)=>{
-      console.log(data);
+      console.log("all items", data);
       setAllItems(data)
     })
     .catch(err => console.log(err))
 
 
-    fetch(proposalUrl)
+    fetch(eventUrl)
     .then((response)=>{
       return response.json()
     })
     .then((data)=>{
-      console.log(data);
-      setProposals(data)
+      console.log("events", data);
+      console.log(user._id);
+      setEvents(data)
     })
     .catch(err => console.log(err))
 
@@ -74,12 +75,28 @@ function ProfilePage() {
       </div>
 
       <div className="proposals">
-        <h2>All propsals</h2>
+        <h2>Proposals you made</h2>
           {
-            proposals.map((proposal)=>{
-              return <Proposal data={proposal} user={user} key={proposal._id}/>
+            allItems.map((item)=>{
+              return <Proposal data={item} user={user} key={item._id}/>
             })
           }
+      </div>
+
+      <div className="events">
+        <h2>Events hosted by you</h2>
+          {
+            events?.map((eventElement) => {
+              const dateAndTime = eventElement.date
+              const dateTime = new Date(dateAndTime)
+          
+              const date = dateTime.toLocaleDateString()
+              const time = dateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+              return <EventCard data={eventElement} date={date} time={time}/>
+              
+          }
+        )}
+        {events?.length == 0 && <p>You have no events created</p>}
       </div>
 
       
