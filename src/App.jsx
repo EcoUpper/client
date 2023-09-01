@@ -11,7 +11,7 @@ import EventDetailsPage from "./pages/EventsPage/EventDetailsPage";
 import MarketPage from "./pages/MarketPage/MarketPage";
 import ItemDetailsPage from "./pages/MarketPage/ItemDetailsPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
-import PostsPage from "./pages/PostsPage/Posts";
+import PostsPage from "./pages/PostsPage/PostsPage";
  
 import Navbar from "./components/Navbar/Navbar";
 import IsPrivate from "./components/IsPrivate/IsPrivate";
