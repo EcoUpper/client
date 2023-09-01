@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { Link } from "react-router-dom"
+import EventCard from "./EventCard"
 
 
 function EventsList() {
@@ -35,15 +35,7 @@ function EventsList() {
                     const date = dateTime.toLocaleDateString()
                     const time = dateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
                     return (
-                        <div style={{width: "400px"}}>
-                            <Link key={eventElement._id} to={`/events/${eventElement._id}`}><h3>{eventElement.title}</h3></Link>
-                            <p>Hosted by: {eventElement.created_by.username}</p>
-                            <p>{date}</p>
-                            <p>{time}</p>
-                            <img style={{height: "300px"}} src={eventElement.image_url} alt="Event image" />
-                            <p>{eventElement.content}</p>
-                        </div>
-
+                        <EventCard data={eventElement} date={date} time={time}/>
                     )
                 })}
             </div>
