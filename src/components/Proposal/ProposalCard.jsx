@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export default function Proposal(props) {
+function ProposalCard(props) {
 
     console.log("props are", props.data);
 
@@ -14,3 +14,5 @@ export default function Proposal(props) {
                 })
     )
 }
+
+export default ProposalCard

@@ -46,8 +46,8 @@ function ItemDetailsPage() {
                 }
                 <p>{itemInfo.status}</p>
                 <p>{itemInfo.owner?.username}</p>
-            </div>
             <NewProposal/>
+            </div>
         </div>
         </>
     )
