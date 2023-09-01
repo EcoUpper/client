@@ -27,10 +27,10 @@ function ItemsList() {
         <>
             <div>
                 {items.map((item) => {
-                    const dateAndTimeEx = item.expiration_date
-                    const expirationDate = dateAndTimeEx.slice(0, 10)
+                     const dateAndTimePropEx = item.expiration_date
+                     const dateTimeEx = new Date(dateAndTimePropEx)
 
-
+                     const expirationDate = dateTimeEx.toLocaleDateString()
 
                     return (
                         <div style={{ width: "400px" }}>

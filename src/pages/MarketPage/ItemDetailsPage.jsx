@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom"
 import { useState, useEffect } from "react"
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"
+import NewProposal from "./../../components/Proposal/NewProposal"
 
 function ItemDetailsPage() {
 
@@ -46,6 +47,7 @@ function ItemDetailsPage() {
                 <p>{itemInfo.status}</p>
                 <p>{itemInfo.owner?.username}</p>
             </div>
+            <NewProposal/>
         </div>
         </>
     )
