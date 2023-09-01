@@ -10,11 +10,12 @@ function EventDetailsPage() {
     useEffect(() => {
         fetch(apiUrl)
             .then((res) => {
-               return res.json()
+                return res.json()
             })
             .then((data) => {
                 setEventInfo(data);
                 console.log(data);
+
             })
             .catch((err) => {
                 console.log(err);
@@ -27,13 +28,12 @@ function EventDetailsPage() {
 
     return (
         <>
-            <div key={eventInfo._id}>
-                <p>Hello</p>
-                <p>{eventInfo.title}</p>
-                <p>{eventInfo.created_by}</p>
-                <p>{eventInfo.content}</p>
-                <img src={eventInfo.image_url} alt="Event image" />
-            </div>
+                <div key={eventInfo._id}>
+                    <p>{eventInfo.title}</p>
+                    <p>{eventInfo.created_by?.username}</p>
+                    <p>{eventInfo.content}</p>
+                    <img src={eventInfo.image_url} alt="Event image" />
+                </div>
         </>
     )
 }
