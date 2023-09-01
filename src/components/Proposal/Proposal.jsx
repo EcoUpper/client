@@ -10,10 +10,7 @@ export default function Proposal(props) {
                             <p>Date: {proposal.date}</p>
                             <p>Status: {proposal.status}</p>                       
                             <Link to={`/market/${props.data._id}`}><p>{props.data.name}</p></Link>
-                        </div>
-                     
+                        </div>         
                 })
-            
-
     )
 }

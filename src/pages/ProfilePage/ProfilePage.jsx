@@ -4,6 +4,8 @@ import { AuthContext } from "../../context/auth.context";
 import ItemCard from "../../components/Market/ItemCard";
 import Proposal from "../../components/Proposal/Proposal";
 import EventCard from "../../components/Events/EventCard";
+import PostCard from "../../components/Posts/PostCard";
+import ReviewCard from "../../components/Reviews/Review";
 
 
 function ProfilePage() {
@@ -12,13 +14,17 @@ function ProfilePage() {
   const [items, setItems] = useState([])
   const [allItems, setAllItems] = useState([])
   const [events, setEvents] = useState([])
+  const [posts, setPosts] = useState([])
+  const [reviews, setReviews] = useState([])
   
 
   useEffect(()=>{
 
     const itemUrl = process.env.REACT_APP_SERVER_URL + "/db/items/owner/" + user._id
     const allItemUrl = process.env.REACT_APP_SERVER_URL + "/db/items"
-    const eventUrl = process.env.REACT_APP_SERVER_URL + "/db/events/" + user._id
+    const eventUrl = process.env.REACT_APP_SERVER_URL + "/db/events/created/" + user._id
+    const postUrl = process.env.REACT_APP_SERVER_URL + "/db/posts/" + user._id
+    const reviewUrl = process.env.REACT_APP_SERVER_URL + "/db/reviews/" + user._id
 
     fetch(itemUrl)
     .then((response)=>{
@@ -52,8 +58,29 @@ function ProfilePage() {
       setEvents(data)
     })
     .catch(err => console.log(err))
-
-},[])
+    
+    fetch(postUrl)
+    .then((response)=>{
+      return response.json()
+    })
+    .then((data)=>{
+      console.log("posts", data);
+      console.log(user._id);
+      setPosts(data)
+    })
+    .catch(err => console.log(err))
+   
+    fetch(reviewUrl)
+    .then((response)=>{
+      return response.json()
+    })
+    .then((data)=>{
+      console.log("reviews", data);
+      console.log(user._id);
+      setReviews(data)
+    })
+    .catch(err => console.log(err))
+  },[])
   
 
   return (
@@ -98,6 +125,28 @@ function ProfilePage() {
         )}
         {events?.length == 0 && <p>You have no events created</p>}
       </div>
+
+
+      <div className="posts">
+        <h2>Posts made by you</h2>     
+        {
+            posts.map((post)=>{
+              return <PostCard data={post} key={post._id} />
+            })        
+          }
+      </div>
+
+
+      <div className="reviews">
+        <h2>Reviews you have received</h2>     
+        {
+            reviews.map((review)=>{
+              return <ReviewCard data={review} key={review._id} />
+            })        
+          }
+      </div>
+
+
 
       
 
