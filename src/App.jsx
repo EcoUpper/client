@@ -10,9 +10,9 @@ import EventsPage from "./pages/EventsPage/EventsPage";
 import NewEvent from "./components/Events/NewEvent";
 import EventDetailsPage from "./pages/EventsPage/EventDetailsPage";
 import MarketPage from "./pages/MarketPage/MarketPage";
+import ItemDetailsPage from "./pages/MarketPage/ItemDetailsPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import PostsPage from "./pages/PostsPage/Posts";
-import ProductPage from "./pages/ProductDetailsPage/ProductDetails";
  
 import Navbar from "./components/Navbar/Navbar";
 import IsPrivate from "./components/IsPrivate/IsPrivate";
@@ -28,7 +28,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage/>} />
         <Route path="/market" element={<MarketPage/>} />
-        <Route path="/market/:productId" element={<ProductPage/>} />
+        <Route path="/market/:itemId" element={<ItemDetailsPage/>} />
         <Route path="/about" element={<AboutPage/>} />
         <Route path="/events" element={<EventsPage/>} />
         <Route path="/events/create/new" element={<NewEvent/>} />

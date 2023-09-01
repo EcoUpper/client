@@ -1,11 +1,15 @@
 import ItemsList from "./../../components/Market/ItemsList"
+import NewItem from "./../../components/Market/NewItem"
 
-function Market() {
+
+function MarketPage() {
+    
     return (
         <>
+            {/* <NewItem/> */}
             <ItemsList/>
         </>
     )
 }
 
-export default Market;
+export default MarketPage
