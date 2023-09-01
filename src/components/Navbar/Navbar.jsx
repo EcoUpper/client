@@ -14,6 +14,18 @@ function Navbar() {
         <button>Home</button>
       </Link>
 
+      <Link to="/market">
+        <button>Market</button>
+      </Link>
+
+      <Link to="/events">
+        <button>Events</button>
+      </Link>
+
+      <Link to="/posts">
+        <button>Posts</button>
+      </Link>
+
       {isLoggedIn && (
         <>
           <button onClick={logOutUser}>Logout</button>
