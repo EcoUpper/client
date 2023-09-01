@@ -12,7 +12,7 @@ function Navbar() {
   return (
     <nav>
       <Link to="/">
-      <img src="./images/greta.png" style={{ width: 50, height: 50}} alt="Home" />
+      <img src="./images/test logo.png" style={{ width: 400, height: 70}} alt="Home" />
       </Link>
 
       <Link to="/market">
