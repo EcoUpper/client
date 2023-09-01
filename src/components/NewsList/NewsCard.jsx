@@ -4,10 +4,9 @@ function NewsCard(props) {
 
     return (
 
-        <Link to={props.data.url}>
+        <Link to={props.data.url} target="_blank" >
             <div className="newsCard">
                 <h3>{props.data.title}</h3>
-                <h3>{props.data.url}</h3>
             </div>
         </Link>
 

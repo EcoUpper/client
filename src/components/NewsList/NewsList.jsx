@@ -23,8 +23,8 @@ function NewsList() {
 
         <h3>NEWS</h3>
         {
-            news.map((news)=>{
-                return <NewsCard data = {news}/> 
+            news.map((news, index)=>{
+                return <NewsCard key = {index} data = {news}/> 
                 
             })
         }
