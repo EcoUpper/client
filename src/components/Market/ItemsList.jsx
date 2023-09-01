@@ -5,8 +5,8 @@ function EventsList () {
 
     return (
         <>
-            <ItemCard/> 
             <NewItem/>
+            <ItemCard/> 
         </>
     )
 }

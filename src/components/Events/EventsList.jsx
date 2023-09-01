@@ -2,23 +2,23 @@ import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 
 
-function EventsList () {
+function EventsList() {
 
     const [events, setEvents] = useState([])
     const apiUrl = process.env.REACT_APP_SERVER_URL + "/db/events"
 
     useEffect(() => {
         fetch(apiUrl)
-        .then((res) => {
-           return res.json()
-        })
-        .then((data) => {
-            setEvents(data)
-            console.log(data)
-        })
-        .catch((err) => {
-            console.log(err)
-        })
+            .then((res) => {
+                return res.json()
+            })
+            .then((data) => {
+                setEvents(data)
+                console.log(data)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
     }, [])
 
     if (!events) {
@@ -29,14 +29,21 @@ function EventsList () {
         <>
             <div>
                 {events.map((eventElement) => {
+                    const dateAndTime = eventElement.date
+                    const dateTime = new Date(dateAndTime)
+                
+                    const date = dateTime.toLocaleDateString()
+                    const time = dateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
                     return (
-                        <div>
+                        <div style={{width: "400px"}}>
                             <Link key={eventElement._id} to={`/events/${eventElement._id}`}><h3>{eventElement.title}</h3></Link>
-                            <p>{eventElement.created_by.username}</p>
+                            <p>Hosted by: {eventElement.created_by.username}</p>
+                            <p>{date}</p>
+                            <p>{time}</p>
+                            <img style={{height: "300px"}} src={eventElement.image_url} alt="Event image" />
                             <p>{eventElement.content}</p>
-                            <img src={eventElement.image_url} alt="Event image" />
                         </div>
-                        
+
                     )
                 })}
             </div>
