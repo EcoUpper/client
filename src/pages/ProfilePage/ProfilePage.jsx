@@ -39,10 +39,12 @@ function ProfilePage() {
         <h2>{user.username}'s Listing</h2>
           {
             items.map((item)=>{
-              <ItemCard data={item}/>
+              return <ItemCard data={item}/>
             })
           }
       </div>
+
+      
 
       
     </div>
