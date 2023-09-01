@@ -23,12 +23,12 @@ function About (){
 
     <div class="team-member">
       <img src="" alt=""/>
-      <h3>Óscar mesejo</h3>
+      <h3>Óscar Mesejo</h3>
       <p>Position: Crack</p>
     </div>
 
     <div class="team-member">
-      <img src="" alt=""/>
+      <img src="" alt="Doorman photo"/>
       <h3>JuanDa</h3>
       <p>Position: Doorman</p>
     </div>
