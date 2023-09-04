@@ -2,13 +2,16 @@ import "./SignupPage.css";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import authService from "../../services/auth.service";
+import uploadImage from "../../services/file-upload.service";
+import Axios from "axios";
+
 
 function SignupPage() {
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
-  const [imageUrl, setImageUrl] = useState("");
+  const [imageSelected, setImageSelected] = useState("");
 
   const navigate = useNavigate();
 
@@ -16,42 +19,25 @@ function SignupPage() {
   const handlePassword = (e) => setPassword(e.target.value);
   const handleUsername = (e) => setUsername(e.target.value);
   
-  // const handleFileUpload = (e) => {
-  //   // console.log("The file to be uploaded is: ", e.target.files[0]);
- 
-  //   const uploadData = new FormData();
- 
-  //   // imageUrl => this name has to be the same as in the model since we pass
-  //   // req.body to .create() method when creating a new movie in '/api/movies' POST route
-  //   uploadData.append("image_url", e.target.files[0]);
- 
-  //   service
-  //     .uploadImage(uploadData)
-  //     .then(response => {
-  //       // console.log("response is: ", response);
-  //       // response carries "fileUrl" which we can use to update the state
-  //       setImageUrl(response.fileUrl);
-  //     })
-  //     .catch(err => console.log("Error while uploading the file: ", err));
-  // };
+  const handleFileUpload  = (e) => {
+    const formData = new FormData()
+    formData.append("image_url", e.target.files[0])
 
+    uploadImage(formData)
+    .then((res)=>{
+      console.log("upload res", res);
+      setImageSelected(res.image_url)
+    })
+    .catch(err => console.log(err))
+
+  }
 
 
   const handleSignupSubmit = (e) => {
     e.preventDefault();
-    const requestBody = { username, email, password, imageUrl };
+    const requestBody = { username, email, password, image_url: imageSelected};
 
-    // Send a request to the server using axios
-    /* 
-    const authToken = localStorage.getItem("authToken");
-    axios.post(
-      `${process.env.REACT_APP_SERVER_URL}/auth/signup`, 
-      requestBody, 
-      { headers: { Authorization: `Bearer ${authToken}` },
-    })
-    .then((response) => {})
-    */
-    console.log(requestBody);
+    console.log("request body", requestBody);
     // Or using a service
     authService
       .signup(requestBody)
@@ -68,7 +54,7 @@ function SignupPage() {
     <div className="SignupPage">
       <h1>Sign Up</h1>
 
-      <form onSubmit={handleSignupSubmit}>
+      <form onSubmit={handleSignupSubmit} enctype="multipart/form-data">
         <label>Username</label>
         <input type="text" name="username" value={username} onChange={handleUsername} />
         
@@ -83,7 +69,7 @@ function SignupPage() {
           onChange={handlePassword}
         />
 
-        {/* <input type="file" onChange={(e) => handleFileUpload(e)} /> */}
+        <input type="file" onChange={(e) => handleFileUpload (e)} />
 
         <button type="submit">Sign Up</button>
       </form>

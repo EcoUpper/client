@@ -1,19 +1,19 @@
 import EventCard from "./EventCard"
-import Rodal from "rodal"
-import "rodal/lib/rodal.css"
+// import Rodal from "rodal"
+// import "rodal/lib/rodal.css"
 
 function EventsList(props) {
 
     const { events } = props
 
-    const openRodal = (event) => {
-        setSelectedEvent(event)
-        setShowRodal(true)
-    }
-    const closeRodal = () => {
-        setSelectedEvent(null)
-        setShowRodal(false)
-    }
+//     const openRodal = (event) => {
+//         setSelectedEvent(event)
+//         setShowRodal(true)
+//     }
+//     const closeRodal = () => {
+//         setSelectedEvent(null)
+//         setShowRodal(false)
+//     }
 
     return (
         <>
@@ -30,6 +30,6 @@ function EventsList(props) {
             </div>
         </>
     )
-}
+ }
 
 export default EventsList

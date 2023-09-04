@@ -6,14 +6,14 @@ function ItemsList(props) {
     const {items} = props
 
 
-    const openRodal = (item) => {
-        setSelectedItem(item)
-        setShowRodal(true)
-    }
-    const closeRodal = () => {
-        setSelectedItem(null)
-        setShowRodal(false)
-    }
+    // const openRodal = (item) => {
+    //     setSelectedItem(item)
+    //     setShowRodal(true)
+    // }
+    // const closeRodal = () => {
+    //     setSelectedItem(null)
+    //     setShowRodal(false)
+    // }
 
     return (
         <>
@@ -29,7 +29,7 @@ function ItemsList(props) {
                     )
                 })}
             </div>
-            <Rodal
+            {/* <Rodal
                 visible={showRodal}
                 onClose={closeRodal}
                 animation="fade"
@@ -64,7 +64,7 @@ function ItemsList(props) {
                         })}
                     </>
                 )}
-            </Rodal>
+            </Rodal> */}
         </>
     )
 }
