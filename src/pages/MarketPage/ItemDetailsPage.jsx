@@ -72,7 +72,12 @@ function ItemDetailsPage() {
                     console.log("proposals", itemInfo.proposals);
                     return proposal.created_by == user._id
                 }).map((prop) =>{
-                    return <ProposalCard data={prop} user={user} key={prop._id} item={itemInfo} />
+                    const dateAndTimeProp = prop.date
+                    const dateTime = new Date(dateAndTimeProp)
+                    const date = dateTime.toLocaleDateString()
+                    const time = dateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+
+                    return <ProposalCard data={prop} user={user} key={prop._id} item={itemInfo} date={date} time={time} />
                 })
                 : null
                 }
