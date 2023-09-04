@@ -25,29 +25,29 @@ function ProfilePage() {
     const eventUrl = process.env.REACT_APP_SERVER_URL + "/db/events/created/" + user._id
     const postUrl = process.env.REACT_APP_SERVER_URL + "/db/posts/" + user._id
     const reviewUrl = process.env.REACT_APP_SERVER_URL + "/db/reviews/" + user._id
-
+    
     fetch(itemUrl)
-      .then((response) => {
-        return response.json()
-      })
-      .then((data) => {
-        console.log("owner items", data);
-        setItems(data)
-      })
-      .catch(err => console.log(err))
-
-
+    .then((response) => {
+      return response.json()
+    })
+    .then((data) => {
+      console.log("owner items", data);
+      setItems(data)
+    })
+    .catch(err => console.log(err))
+    
+    
     fetch(allItemUrl)
-      .then((response) => {
-        return response.json()
-      })
-      .then((data) => {
-        console.log("all items", data);
-        setAllItems(data)
-      })
-      .catch(err => console.log(err))
-
-
+    .then((response) => {
+      return response.json()
+    })
+    .then((data) => {
+      console.log("all items", data);
+      setAllItems(data)
+    })
+    .catch(err => console.log(err))
+    
+    
     fetch(eventUrl)
       .then((response) => {
         return response.json()
@@ -58,9 +58,9 @@ function ProfilePage() {
         setEvents(data)
       })
       .catch(err => console.log(err))
-
-
-    fetch(postUrl)
+      
+      
+      fetch(postUrl)
       .then((response) => {
         return response.json()
       })
@@ -70,9 +70,9 @@ function ProfilePage() {
         setPosts(data)
       })
       .catch(err => console.log(err))
-
-
-    fetch(reviewUrl)
+      
+      
+      fetch(reviewUrl)
       .then((response) => {
         return response.json()
       })
@@ -82,7 +82,30 @@ function ProfilePage() {
         setReviews(data)
       })
       .catch(err => console.log(err))
-  }, [])
+    }, [])
+    
+    function handleSubmit(e, eventId) {
+      e.preventDefault()
+      const deleteEventUrl = process.env.REACT_APP_SERVER_URL + "/db/events/delete/" + eventId
+      console.log(eventId)
+
+      fetch(deleteEventUrl, {
+        method: "DELETE"
+      })
+      .then((res) => {
+        res.json()
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+
+    const removedEventsArray = events.filter((eventToDelete) => {
+      return eventToDelete._id !== eventId
+    })
+
+    setEvents(removedEventsArray)
+
+  }
 
 
   return (
@@ -114,18 +137,21 @@ function ProfilePage() {
 
       <div className="events">
         <h2>Events hosted by you</h2>
-        {
-          events?.map((eventElement) => {
+        {events?.length == 0 && <p>You haven't created any events yet.</p>}
+        {events?.map((eventElement) => {
             const dateAndTime = eventElement.date
             const dateTime = new Date(dateAndTime)
 
             const date = dateTime.toLocaleDateString()
             const time = dateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-            return <EventCard data={eventElement} date={date} time={time} />
+            return (
+              <div>
+                <EventCard data={eventElement} date={date} time={time} />
+                <button onClick={(e) => handleSubmit(e, eventElement._id)}>Delete</button>
 
-          }
-          )}
-        {events?.length == 0 && <p>You have no events created</p>}
+              </div>
+            )
+          })}
       </div>
 
 
@@ -138,7 +164,7 @@ function ProfilePage() {
 
             const date = dateTime.toLocaleDateString()
             const time = dateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-            return <PostCard data={post} key={post._id} date={date} time={time}/>
+            return <PostCard data={post} key={post._id} date={date} time={time} />
           })
         }
       </div>
