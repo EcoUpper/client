@@ -65,7 +65,7 @@ function NewProposal() {
                             value={time}
                         />
                     </div>
-                    <button type="submit">Create event</button>
+                    <button type="submit">Submit proposal</button>
                 </form>
             </div>
         </>

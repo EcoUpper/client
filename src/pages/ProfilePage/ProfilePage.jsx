@@ -16,6 +16,7 @@ function ProfilePage() {
   const [events, setEvents] = useState([])
   const [posts, setPosts] = useState([])
   const [reviews, setReviews] = useState([])
+  const [proposals, setProposals] = useState([])
 
 
   useEffect(() => {
@@ -25,7 +26,8 @@ function ProfilePage() {
     const eventUrl = process.env.REACT_APP_SERVER_URL + "/db/events/created/" + user._id
     const postUrl = process.env.REACT_APP_SERVER_URL + "/db/posts/" + user._id
     const reviewUrl = process.env.REACT_APP_SERVER_URL + "/db/reviews/" + user._id
-    
+    const proposalUrl = process.env.REACT_APP_SERVER_URL + "/db/proposals/created/" + user._id
+
     fetch(itemUrl)
     .then((response) => {
       return response.json()
@@ -82,7 +84,17 @@ function ProfilePage() {
         setReviews(data)
       })
       .catch(err => console.log(err))
-    }, [])
+
+      fetch(proposalUrl)
+      .then((response) => {
+        return response.json()
+      })
+      .then((data) => {
+        console.log("props", data);
+        setProposals(data)
+      })
+      .catch(err => console.log(err))
+  }, [])
     
     function handleSubmit(e, eventId) {
       e.preventDefault()
@@ -108,6 +120,10 @@ function ProfilePage() {
   }
 
 
+    
+  
+
+
   return (
     <div className="profile-page">
       <h1>Profile page</h1>
@@ -129,10 +145,10 @@ function ProfilePage() {
       <div className="proposals">
         <h2>Proposals you made</h2>
         {
-          allItems.map((item) => {
-            return <ProposalCard data={item} user={user} key={item._id} />
-          })
-        }
+            proposals.map((proposal)=>{
+              return <ProposalCard data={proposal} user={user} key={proposal._id} item={proposal.item_id} />
+            })
+          }
       </div>
 
       <div className="events">

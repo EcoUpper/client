@@ -5,14 +5,15 @@ function ProposalCard(props) {
     console.log("props are", props.data);
 
     return (    
-                props.data.proposals?.map((proposal)=>{
-                return <div className="proposal-card">
-                            <p>Date: {proposal.date}</p>
-                            <p>Status: {proposal.status}</p>                       
-                            <Link to={`/market/${props.data._id}`}><p>{props.data.name}</p></Link>
-                        </div>         
-                })
+            <div className="proposal-card" key={props.data._id}>
+                <p>Date: {props.data.date}</p>
+                <p>Status: {props.data.status}</p>
+                {props.user._id === props.item.owner._id ? null 
+                :                    
+                <Link to={`/market/${props.item._id}`}><p>{props.item.name}</p></Link>
+                }
+            </div>     
     )
 }
 
-export default ProposalCard
+export default ProposalCard;

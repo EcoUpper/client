@@ -34,13 +34,13 @@ function ItemsList() {
 
                     return (
                         <div style={{ width: "400px" }}>
-                            <Link key={item._id} to={`/items/${item._id}`}><h3>{item.name}</h3></Link>
+                            <Link key={item._id} to={`/market/${item._id}`}><h3>{item.name}</h3></Link>
                             <h4><strong>{item.status}</strong></h4>
                             <img style={{ height: "300px" }} src={item.image_url} alt="Item image" />
                             <p>{item.description}</p>
                             {item.type === "food" && <p>{expirationDate}</p>}
                             <h4>Current Proposals</h4>
-                            {item.proposals?.map((proposal) => {
+                            {/* {item.proposals?.map((proposal) => {
                                 const dateAndTimeProp = proposal.date
                                 const dateTime = new Date(dateAndTimeProp)
 
@@ -53,7 +53,8 @@ function ItemsList() {
                                     </div>
                                 )
                             })
-                            }
+                            } */}
+                            <p>Number of proposals: {item.proposals.length}</p>
                             {/* <p>{item.owner?.username}</p> */}
                         </div>
 
