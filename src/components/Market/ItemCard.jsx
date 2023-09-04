@@ -1,12 +1,22 @@
-function ItemCard (props) {
+import { Link } from "react-router-dom"
+
+function ItemCard(props) {
+
+    const {item, expirationDate } = props
+
+    console.log("item is", item);
+
     return (
-        <div className="item-card">
-            <h3>{props.data.name}</h3>
-            <p>{props.data.description}</p>
-            <img src={props.data.image_url} alt="Item image" />
-            <p>{props.data.type}</p>
-            <p>{props.data.status}</p>
-            <p>Proposals: {props.data.proposals.length}</p>
+        <div style={{ width: "400px" }}>
+            <Link key={item._id} to={`/market/${item._id}`}><h3>{item.name}</h3></Link>
+            <h4 style={{ textTransform: "capitalize" }}><strong>{item.status}</strong></h4>
+            <img style={{ height: "300px" }} src={item.image_url} alt="Item image" />
+            <p>{item.description}</p>
+            {item.type === "food" && <p>{expirationDate}</p>}
+            <h4>Current Proposals</h4>
+            
+            <p>Number of proposals: {item.proposals.length}</p>
+            {/* <p>{item.owner?.username}</p> */}
         </div>
     )
 }

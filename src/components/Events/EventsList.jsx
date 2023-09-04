@@ -1,30 +1,10 @@
-import { useState, useEffect } from "react"
 import EventCard from "./EventCard"
 import Rodal from "rodal"
 import "rodal/lib/rodal.css"
 
-function EventsList() {
+function EventsList(props) {
 
-    const [events, setEvents] = useState([])
-    const [showRodal, setShowRodal] = useState(false)
-    const [selectedEvent, setSelectedEvent] = useState(null)
-    const apiUrl = process.env.REACT_APP_SERVER_URL + "/db/events"
-
-    useEffect(() => {
-        fetch(apiUrl)
-            .then((res) => res.json())
-            .then((data) => {
-                setEvents(data)
-                console.log(data)
-            })
-            .catch((err) => {
-                console.log(err)
-            })
-    }, [])
-
-    if (!events) {
-        return <p>Loading...</p>
-    }
+    const { events } = props
 
     const openRodal = (event) => {
         setSelectedEvent(event)

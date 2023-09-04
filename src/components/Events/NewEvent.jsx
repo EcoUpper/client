@@ -2,7 +2,9 @@ import { useState, useContext } from "react"
 import { useNavigate } from "react-router-dom"
 import { AuthContext } from "../../context/auth.context"
 
-function NewEvent () {
+function NewEvent (props) {
+    
+    const {fetchEvents} = props
 
     const {user} = useContext(AuthContext)
     const [title, setTitle] = useState("")
@@ -37,8 +39,8 @@ function NewEvent () {
         .then((res) => {
             res.json()
         })
-        .then((newEvent) => {
-            console.log(newEvent)
+        .then((data) => {
+            console.log(data)
             setTitle("")
             setContent("")
             setImage("")
@@ -46,6 +48,7 @@ function NewEvent () {
             setTime("")
             setLocation("")
 
+            fetchEvents()
             navigate("/events")
         })
         .catch((err) => {
