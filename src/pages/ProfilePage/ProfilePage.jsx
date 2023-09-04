@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import "./ProfilePage.css";
 import { AuthContext } from "../../context/auth.context";
 import ItemCard from "../../components/Market/ItemCard";
-import Proposal from "../../components/Proposal/Proposal";
+import ProposalCard from "../../components/Proposal/ProposalCard";
 import EventCard from "../../components/Events/EventCard";
 import PostCard from "../../components/Posts/PostCard";
 import ReviewCard from "../../components/Reviews/Review";
@@ -107,7 +107,7 @@ function ProfilePage() {
         <h2>Proposals you made</h2>
         {
           allItems.map((item) => {
-            return <Proposal data={item} user={user} key={item._id} />
+            return <ProposalCard data={item} user={user} key={item._id} />
           })
         }
       </div>
