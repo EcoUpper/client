@@ -55,8 +55,13 @@ function ItemDetailsPage() {
                     {
                     itemInfo.proposals?.length !== 0 ?
 
-                    itemInfo.proposals.map((prop)=>{
-                        return <ProposalCard data={prop} user={user} key={prop._id} item={itemInfo} />
+                    itemInfo.proposals?.map((prop)=>{
+                        const dateAndTimeProp = prop.date
+                        const dateTime = new Date(dateAndTimeProp)
+                        const date = dateTime.toLocaleDateString()
+                        const time = dateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+                        
+                        return <ProposalCard data={prop} user={user} key={prop._id} item={itemInfo} date={date} time={time} />
                     })
                     : <p>There are no proposals on this item</p>
                     }
