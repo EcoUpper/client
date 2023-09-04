@@ -119,10 +119,10 @@ function ProfilePage() {
 
   }
 
-  function handleProposalSubmit(e, propId, itemId) {
+  function handleProposalSubmit(e, propId) {
     e.preventDefault()
-    const deleteProposalUrl = process.env.REACT_APP_SERVER_URL + "/db/proposals/" + itemId + propId
-    console.log(propId)
+
+    const deleteProposalUrl = process.env.REACT_APP_SERVER_URL + "/db/proposals/" + propId
 
     fetch(deleteProposalUrl, {
       method: "DELETE"
@@ -138,13 +138,12 @@ function ProfilePage() {
       return propToDelete._id !== propId
     })
 
-    setEvents(removedProposalsArray)
-
+    setProposals(removedProposalsArray)
   }
+
 
   return (
     <div className="profile-page">
-      <h1>Profile page</h1>
 
       <div className="profile-details">
         <h3>{user.username}</h3>
@@ -171,8 +170,9 @@ function ProfilePage() {
           proposals.map((proposal) => {
             return (
               <div>
-             {   <ProposalCard data={proposal} user={user} key={proposal._id} item={proposal.item_id} link={proposal.item_id._id} />}
-                <button onClick={(e) => handleProposalSubmit(e, proposal._id, proposal.item_id)}>Delete</button>
+                <ProposalCard data={proposal} user={user} key={proposal._id} item={proposal.item_id} link={proposal.item_id._id} />
+                
+                <button onClick={(e) => handleProposalSubmit(e, proposal._id)}>Delete</button>
               </div>
             )
           })
