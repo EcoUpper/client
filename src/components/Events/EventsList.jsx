@@ -1,26 +1,10 @@
-import { useState, useEffect } from "react"
 import EventCard from "./EventCard"
 
 
-function EventsList() {
+function EventsList(props) {
 
-    const [events, setEvents] = useState([])
-    const apiUrl = process.env.REACT_APP_SERVER_URL + "/db/events"
-
-    useEffect(() => {
-        fetch(apiUrl)
-            .then((res) => {
-                return res.json()
-            })
-            .then((data) => {
-                setEvents(data)
-                console.log(data)
-            })
-            .catch((err) => {
-                console.log(err)
-            })
-    }, [])
-
+    const {events} = props
+ 
     if (!events) {
         return <p>Loading...</p>
     }
