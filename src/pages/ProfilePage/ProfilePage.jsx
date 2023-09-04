@@ -151,7 +151,7 @@ function ProfilePage() {
         <h2>Proposals you made</h2>
         {
             proposals.map((proposal)=>{
-              return <ProposalCard data={proposal} user={user} key={proposal._id} item={proposal.item_id} />
+              return <ProposalCard data={proposal} user={user} key={proposal._id} item={proposal.item_id} link={proposal.item_id._id} />
             })
           }
       </div>

@@ -13,8 +13,8 @@ function ProposalCard(props) {
                 <p>Date: {date} at {time}</p>
                 <p>Status: {props.data.status}</p>
                 {props.user._id === props.item.owner._id ? null 
-                :                    
-                <Link to={`/market/${props.item._id}`}><p>{props.item.name}</p></Link>
+                :                   
+                props.link?<Link to={`/market/${props.link}`}><p>{props.item.name}</p></Link> : null
                 }
             </div>     
     )
