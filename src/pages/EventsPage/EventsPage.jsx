@@ -14,13 +14,22 @@ function EventsPage() {
             return res.json()
         })
         .then((data) => {
-            setEvents(data)
-            console.log(data)
+            const sortedEvents = data.sort((a, b) => {
+                if (a.date < b.date) {
+                    return -1;
+                } else if (a.date > b.date) {
+                    return 1;
+                } else {
+                    return 0;
+                }                    
+            });
+            setEvents(sortedEvents);
         })
         .catch((err) => {
             console.log(err)
         })
     }
+
 
     useEffect(() => {
         fetchEvents()

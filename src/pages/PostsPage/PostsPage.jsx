@@ -7,18 +7,36 @@ function PostsPage() {
     const [posts, setPosts] = useState([])
     const apiUrl = process.env.REACT_APP_SERVER_URL + "/db/posts"
 
-    useEffect(() => {
+
+    function fetchPosts() {
         fetch(apiUrl)
-            .then((res) => {
-                return res.json()
-            })
-            .then((data) => {
-                setPosts(data)
-                console.log(data)
-            })
-            .catch((err) => {
-                console.log(err)
-            })
+        .then((res) => {
+            return res.json()
+        })
+        .then((data) => {
+            const datedPosts = data.map((post) => ({
+                ...post,
+                createdAt: new Date(post.createdAt)
+            }));
+
+            const sortedPosts = datedPosts.sort((a, b) => {
+                if (a.createdAt < b.createdAt) {
+                    return 1;
+                } else if (a.createdAt > b.createdAt) {
+                    return -1;
+                } else {
+                    return 0;
+                }                    
+            });
+            setPosts(sortedPosts);
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+    }
+
+    useEffect(() => {
+        fetchPosts()
     }, [])
 
     if (!posts) {
@@ -28,7 +46,7 @@ function PostsPage() {
     return (
         <>
             <div>
-                <NewPost/>
+                <NewPost fetchPosts={fetchPosts} />
                 {posts.map((post) => {
                     const dateAndTime = post.createdAt
                     const dateTime = new Date(dateAndTime)
@@ -36,7 +54,7 @@ function PostsPage() {
                     const date = dateTime.toLocaleDateString()
                     const time = dateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
                     return (
-                        <PostCard data={post} date={date} time={time}/>
+                        <PostCard data={post} date={date} time={time} />
                     )
                 })}
             </div>

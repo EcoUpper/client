@@ -2,7 +2,9 @@ import { useState, useContext } from "react"
 import { useNavigate } from "react-router-dom"
 import { AuthContext } from "../../context/auth.context"
 
-function NewItem() {
+function NewItem(props) {
+
+    const {fetchPosts} = props
 
     const { user } = useContext(AuthContext)
     const [content, setContent] = useState("")
@@ -33,6 +35,7 @@ function NewItem() {
                 setContent("")
                 setImage("")
                 
+                fetchPosts()
                 navigate("/posts")
             })
             .catch((err) => {

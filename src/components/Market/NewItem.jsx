@@ -2,7 +2,9 @@ import { useState, useContext } from "react"
 import { useNavigate } from "react-router-dom"
 import { AuthContext } from "../../context/auth.context"
 
-function NewItem() {
+function NewItem(props) {
+
+    const {fetchItems} = props
 
     const { user } = useContext(AuthContext)
     const [name, setName] = useState("")
@@ -48,6 +50,7 @@ function NewItem() {
                 setStatus("available")
                 setLocation("")
 
+                fetchItems()
                 navigate("/market")
             })
             .catch((err) => {

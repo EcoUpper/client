@@ -61,10 +61,7 @@ function ItemDetailsPage() {
                     : <p>There are no proposals on this item</p>
                     }
                 </div>
-                
                 :  
-             
-                
                 itemInfo.proposals.length !== 0?
                 [...itemInfo.proposals].filter((proposal)=>{
                     console.log("proposals", itemInfo.proposals);

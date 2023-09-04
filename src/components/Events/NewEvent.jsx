@@ -39,8 +39,8 @@ function NewEvent (props) {
         .then((res) => {
             res.json()
         })
-        .then((newEvent) => {
-            console.log(newEvent)
+        .then((data) => {
+            console.log(data)
             setTitle("")
             setContent("")
             setImage("")
