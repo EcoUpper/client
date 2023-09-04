@@ -29,27 +29,27 @@ function ProfilePage() {
     const proposalUrl = process.env.REACT_APP_SERVER_URL + "/db/proposals/created/" + user._id
 
     fetch(itemUrl)
-    .then((response) => {
-      return response.json()
-    })
-    .then((data) => {
-      console.log("owner items", data);
-      setItems(data)
-    })
-    .catch(err => console.log(err))
-    
-    
+      .then((response) => {
+        return response.json()
+      })
+      .then((data) => {
+        console.log("owner items", data);
+        setItems(data)
+      })
+      .catch(err => console.log(err))
+
+
     fetch(allItemUrl)
-    .then((response) => {
-      return response.json()
-    })
-    .then((data) => {
-      console.log("all items", data);
-      setAllItems(data)
-    })
-    .catch(err => console.log(err))
-    
-    
+      .then((response) => {
+        return response.json()
+      })
+      .then((data) => {
+        console.log("all items", data);
+        setAllItems(data)
+      })
+      .catch(err => console.log(err))
+
+
     fetch(eventUrl)
       .then((response) => {
         return response.json()
@@ -60,9 +60,9 @@ function ProfilePage() {
         setEvents(data)
       })
       .catch(err => console.log(err))
-      
-      
-      fetch(postUrl)
+
+
+    fetch(postUrl)
       .then((response) => {
         return response.json()
       })
@@ -72,9 +72,9 @@ function ProfilePage() {
         setPosts(data)
       })
       .catch(err => console.log(err))
-      
-      
-      fetch(reviewUrl)
+
+
+    fetch(reviewUrl)
       .then((response) => {
         return response.json()
       })
@@ -85,7 +85,7 @@ function ProfilePage() {
       })
       .catch(err => console.log(err))
 
-      fetch(proposalUrl)
+    fetch(proposalUrl)
       .then((response) => {
         return response.json()
       })
@@ -95,15 +95,15 @@ function ProfilePage() {
       })
       .catch(err => console.log(err))
   }, [])
-    
-    function handleSubmit(e, eventId) {
-      e.preventDefault()
-      const deleteEventUrl = process.env.REACT_APP_SERVER_URL + "/db/events/delete/" + eventId
-      console.log(eventId)
 
-      fetch(deleteEventUrl, {
-        method: "DELETE"
-      })
+  function handleEventSubmit(e, eventId) {
+    e.preventDefault()
+    const deleteEventUrl = process.env.REACT_APP_SERVER_URL + "/db/events/delete/" + eventId
+    console.log(eventId)
+
+    fetch(deleteEventUrl, {
+      method: "DELETE"
+    })
       .then((res) => {
         res.json()
       })
@@ -119,10 +119,28 @@ function ProfilePage() {
 
   }
 
+  function handleProposalSubmit(e, propId, itemId) {
+    e.preventDefault()
+    const deleteProposalUrl = process.env.REACT_APP_SERVER_URL + "/db/proposals/" + itemId + propId
+    console.log(propId)
 
-    
-  
+    fetch(deleteProposalUrl, {
+      method: "DELETE"
+    })
+      .then((res) => {
+        res.json()
+      })
+      .catch((err) => {
+        console.log(err)
+      })
 
+    const removedProposalsArray = proposals.filter((propToDelete) => {
+      return propToDelete._id !== propId
+    })
+
+    setEvents(removedProposalsArray)
+
+  }
 
   return (
     <div className="profile-page">
@@ -133,7 +151,7 @@ function ProfilePage() {
         <p><strong>Email:</strong> {user.email}</p>
       </div>
 
-      <div className="user-products">
+      <div className="user-items">
         <h2>{user.username}'s Listing</h2>
         {
           items.map((item) => {
@@ -142,41 +160,46 @@ function ProfilePage() {
 
             const expirationDate = dateTimeEx.toLocaleDateString()
 
-            return <ItemCard item={item} expirationDate={expirationDate}/>
+            return <ItemCard item={item} expirationDate={expirationDate} />
           })
         }
       </div>
 
-      <div className="proposals">
+      <div className="user-proposals">
         <h2>Proposals you made</h2>
         {
-            proposals.map((proposal)=>{
-              return <ProposalCard data={proposal} user={user} key={proposal._id} item={proposal.item_id} link={proposal.item_id._id} />
-            })
-          }
+          proposals.map((proposal) => {
+            return (
+              <div>
+             {   <ProposalCard data={proposal} user={user} key={proposal._id} item={proposal.item_id} link={proposal.item_id._id} />}
+                <button onClick={(e) => handleProposalSubmit(e, proposal._id, proposal.item_id)}>Delete</button>
+              </div>
+            )
+          })
+        }
       </div>
 
-      <div className="events">
+      <div className="user-events">
         <h2>Events hosted by you</h2>
         {events?.length == 0 && <p>You haven't created any events yet.</p>}
         {events?.map((eventElement) => {
-            const dateAndTime = eventElement.date
-            const dateTime = new Date(dateAndTime)
+          const dateAndTime = eventElement.date
+          const dateTime = new Date(dateAndTime)
 
-            const date = dateTime.toLocaleDateString()
-            const time = dateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-            return (
-              <div>
-                <EventCard data={eventElement} date={date} time={time} />
-                <button onClick={(e) => handleSubmit(e, eventElement._id)}>Delete</button>
+          const date = dateTime.toLocaleDateString()
+          const time = dateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+          return (
+            <div>
+              <EventCard data={eventElement} date={date} time={time} />
+              <button onClick={(e) => handleEventSubmit(e, eventElement._id)}>Delete</button>
 
-              </div>
-            )
-          })}
+            </div>
+          )
+        })}
       </div>
 
 
-      <div className="posts">
+      <div className="user-posts">
         <h2>Posts made by you</h2>
         {
           posts.map((post) => {
@@ -191,7 +214,7 @@ function ProfilePage() {
       </div>
 
 
-      <div className="reviews">
+      <div className="user-reviews">
         <h2>Reviews you have received</h2>
         {
           reviews.map((review) => {
@@ -199,10 +222,6 @@ function ProfilePage() {
           })
         }
       </div>
-
-
-
-
 
 
     </div>
