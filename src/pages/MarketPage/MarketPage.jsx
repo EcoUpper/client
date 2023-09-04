@@ -3,11 +3,13 @@ import NewItem from "./../../components/Market/NewItem"
 
 
 function MarketPage() {
-    
+
     return (
+
         <>
-            <NewItem/>
-            <ItemsList/>
+            <NewItem />
+            <ItemsList />
+        
         </>
     )
 }
