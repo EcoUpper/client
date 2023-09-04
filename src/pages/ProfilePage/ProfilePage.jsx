@@ -137,7 +137,12 @@ function ProfilePage() {
         <h2>{user.username}'s Listing</h2>
         {
           items.map((item) => {
-            return <ItemCard data={item} />
+            const dateAndTimePropEx = item.expiration_date
+            const dateTimeEx = new Date(dateAndTimePropEx)
+
+            const expirationDate = dateTimeEx.toLocaleDateString()
+
+            return <ItemCard item={item} expirationDate={expirationDate}/>
           })
         }
       </div>

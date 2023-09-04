@@ -4,6 +4,8 @@ function ItemCard(props) {
 
     const {item, expirationDate } = props
 
+    console.log("item is", item);
+
     return (
         <div style={{ width: "400px" }}>
             <Link key={item._id} to={`/market/${item._id}`}><h3>{item.name}</h3></Link>
