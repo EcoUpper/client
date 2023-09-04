@@ -26,6 +26,7 @@ function ItemCard(props) {
                 )
             })
             }
+             <p>Number of proposals: {item.proposals.length}</p>
             {/* <p>{item.owner?.username}</p> */}
         </div>
     )
