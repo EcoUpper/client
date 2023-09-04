@@ -6,7 +6,6 @@ import "rodal/lib/rodal.css"
 function ItemsList() {
     const [items, setItems] = useState([])
     const [showRodal, setShowRodal] = useState(false)
-
     const [selectedItem, setSelectedItem] = useState(null)
     const apiUrl = process.env.REACT_APP_SERVER_URL + "/db/items"
 
@@ -43,7 +42,6 @@ function ItemsList() {
                 {items.map((item) => {
                     const dateAndTimePropEx = item.expiration_date
                     const dateTimeEx = new Date(dateAndTimePropEx)
-
                     const expirationDate = dateTimeEx.toLocaleDateString()
 
                     return (
