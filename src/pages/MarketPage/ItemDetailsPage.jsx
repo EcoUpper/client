@@ -11,6 +11,10 @@ function ItemDetailsPage() {
     const [itemInfo, setItemInfo] = useState("");
     const { user } = useContext(AuthContext)
 
+    const dateAndTimePropEx = itemInfo.expiration_date
+    const dateTimeEx = new Date(dateAndTimePropEx)
+    const expirationDate = dateTimeEx.toLocaleDateString()
+
     const apiUrl = process.env.REACT_APP_SERVER_URL + "/db/items/" + itemId
 
     useEffect(() => {
@@ -28,62 +32,88 @@ function ItemDetailsPage() {
             });
     }, []);
 
+
+    // function handleProposalChange(e, propId, newStatus) {
+    //     e.preventDefault()
+
+    //     const modifyProposalUrl = process.env.REACT_APP_SERVER_URL + "/db/proposals/" + propId
+
+    //     fetch(modifyProposalUrl, {
+    //         method: "PUT",
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //         },
+    //         body: JSON.stringify({ status: newStatus }),
+    //     })
+    //         .then((res) => res.json())
+            
+    //         .catch((err) => {
+    //             console.log(err);
+    //         });
+    // }
+
     if (!itemInfo) {
         return <p>Loading...</p>
     }
 
     return (
         <>
-        <div>
-            <Link to={"/market"}><p>Market</p></Link>
-            <div key={itemInfo._id}>
-                <p>{itemInfo.name}</p>
-                <p>{itemInfo.description}</p>
-                <img style={{height: "300px"}} src={itemInfo.image_url} alt="Item image" />
-                <p>{itemInfo.type}</p>
-                {itemInfo.type === "food" && <p>{itemInfo.expiration_date}</p>}
-                <p>{itemInfo.status}</p>
-                <p>{itemInfo.owner?.username}</p>
-                
-                <h2>Make a new proposal</h2>
-                <NewProposal/>
+            <div>
+                <Link to={"/market"}><p>Market</p></Link>
+                <div key={itemInfo._id}>
+                    <p>{itemInfo.name}</p>
+                    <p>{itemInfo.description}</p>
+                    <img style={{ height: "300px" }} src={itemInfo.image_url} alt="Item image" />
+                    <p>{itemInfo.type}</p>
+                    {itemInfo.type === "food" && <p>{expirationDate}</p>}
+                    <p>{itemInfo.status}</p>
+                    <p>{itemInfo.owner?.username}</p>
 
-                {user._id === itemInfo.owner._id?
-                
-                <div className="proposals">
-                    <h2>Proposals on the item</h2>
-                    {
-                    itemInfo.proposals?.length !== 0 ?
+                    <h2>Make a new proposal</h2>
+                    <NewProposal />
 
-                    itemInfo.proposals?.map((prop)=>{
-                        const dateAndTimeProp = prop.date
-                        const dateTime = new Date(dateAndTimeProp)
-                        const date = dateTime.toLocaleDateString()
-                        const time = dateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-                        
-                        return <ProposalCard data={prop} user={user} key={prop._id} item={itemInfo} date={date} time={time} />
-                    })
-                    : <p>There are no proposals on this item</p>
+                    {user._id === itemInfo.owner._id ?
+
+                        <div className="proposals">
+                            <h2>Proposals on the item</h2>
+                            {
+                                itemInfo.proposals?.length !== 0 ?
+
+                                    itemInfo.proposals?.map((prop) => {
+                                        const dateAndTimeProp = prop.date
+                                        const dateTime = new Date(dateAndTimeProp)
+                                        const date = dateTime.toLocaleDateString()
+                                        const time = dateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+
+                                        return (
+                                            <div>
+                                                <ProposalCard data={prop} user={user} key={prop._id} item={itemInfo} date={date} time={time} />
+                                                {/* <button onClick={(e) => handleProposalChange(e, prop._id)}></button> */}
+                                            </div>
+                                        )
+
+                                    })
+                                    : <p>There are no proposals on this item</p>
+                            }
+                        </div>
+                        :
+                        itemInfo.proposals.length !== 0 ?
+                            [...itemInfo.proposals].filter((proposal) => {
+                                console.log("proposals", itemInfo.proposals);
+                                return proposal.created_by == user._id
+                            }).map((prop) => {
+                                const dateAndTimeProp = prop.date
+                                const dateTime = new Date(dateAndTimeProp)
+                                const date = dateTime.toLocaleDateString()
+                                const time = dateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+
+                                return <ProposalCard data={prop} user={user} key={prop._id} item={itemInfo} date={date} time={time} />
+                            })
+                            : null
                     }
+
                 </div>
-                :  
-                itemInfo.proposals.length !== 0?
-                [...itemInfo.proposals].filter((proposal)=>{
-                    console.log("proposals", itemInfo.proposals);
-                    return proposal.created_by == user._id
-                }).map((prop) =>{
-                    const dateAndTimeProp = prop.date
-                    const dateTime = new Date(dateAndTimeProp)
-                    const date = dateTime.toLocaleDateString()
-                    const time = dateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-
-                    return <ProposalCard data={prop} user={user} key={prop._id} item={itemInfo} date={date} time={time} />
-                })
-                : null
-                }
-
             </div>
-        </div>
         </>
     )
 }
