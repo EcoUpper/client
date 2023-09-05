@@ -1,21 +1,16 @@
-import { Link } from "react-router-dom";
-import "./News.css"
+import { Link } from "react-router-dom"
 
 
 function NewsCard(props) {
 
     return (
-        <div className="containerCard">
-        <Link to={props.data.url} className="newsCard" target="_blank" >
-            <div>
-                <img src={props.data.image_url} alt="" height="100px"/>
-                <h3>{props.data.title}</h3>
-                <p>source: {props.data.source}</p>
-            </div>
-        </Link>
-        </div>
-
-
+            <Link to={props.data.url} className="containerCard" target="_blank" >
+                <img src={props.data.image_url} alt="News image" />
+                <div className="newsTextCard">
+                    <h3>{props.data.title}</h3>
+                    <p>Source: {props.data.source}</p>
+                </div>
+            </Link>
     )
 
 }
