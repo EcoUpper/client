@@ -8,8 +8,8 @@ import ProposalCard from "../../components/Proposal/ProposalCard"
 function ItemDetailsPage() {
 
     const { itemId } = useParams();
-    const [itemInfo, setItemInfo] = useState("");
     const { user } = useContext(AuthContext)
+    const [itemInfo, setItemInfo] = useState("");
 
     const dateAndTimePropEx = itemInfo.expiration_date
     const dateTimeEx = new Date(dateAndTimePropEx)
@@ -33,24 +33,38 @@ function ItemDetailsPage() {
     }, []);
 
 
-    // function handleProposalChange(e, propId, newStatus) {
-    //     e.preventDefault()
 
-    //     const modifyProposalUrl = process.env.REACT_APP_SERVER_URL + "/db/proposals/" + propId
+    function handleProposalChange(e, propId, newStatus) {
+        console.log("PROPID", propId);
+        e.preventDefault();
+    
+        const modifyProposalUrl =
+          process.env.REACT_APP_SERVER_URL + "/db/proposals/" + propId;
+    
+        fetch(modifyProposalUrl, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ status: newStatus }),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            const updatedItemInfo = { ...itemInfo };
+            const updatedProposals = updatedItemInfo.proposals.map((prop) => {
+              if (prop._id === propId) {
+                prop.status = newStatus;
+              }
+              return prop;
+            });
+            updatedItemInfo.proposals = updatedProposals;
+            setItemInfo(updatedItemInfo);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
 
-    //     fetch(modifyProposalUrl, {
-    //         method: "PUT",
-    //         headers: {
-    //             "Content-Type": "application/json",
-    //         },
-    //         body: JSON.stringify({ status: newStatus }),
-    //     })
-    //         .then((res) => res.json())
-            
-    //         .catch((err) => {
-    //             console.log(err);
-    //         });
-    // }
 
     if (!itemInfo) {
         return <p>Loading...</p>
@@ -88,7 +102,8 @@ function ItemDetailsPage() {
                                         return (
                                             <div>
                                                 <ProposalCard data={prop} user={user} key={prop._id} item={itemInfo} date={date} time={time} />
-                                                {/* <button onClick={(e) => handleProposalChange(e, prop._id)}></button> */}
+                                                <button onClick={(e) => handleProposalChange(e, prop._id, "Accepted")}>Accepted</button>
+                                                <button onClick={(e) => handleProposalChange(e, prop._id, "Rejected")}>Rejected</button>
                                             </div>
                                         )
 
