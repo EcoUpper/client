@@ -11,8 +11,6 @@ function ItemCard(props) {
             <img style={{ height: "300px" }} src={item.image_url} alt="Item image" />
             <p>{item.description}</p>
             {item.type === "food" && <p>Expires on {expirationDate}</p>}
-            <h4>Current Proposals</h4>
-            
             <p>Number of proposals: {item.proposals.length}</p>
         </div>
     )
