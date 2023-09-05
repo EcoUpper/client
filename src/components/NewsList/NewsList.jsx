@@ -20,11 +20,11 @@ function NewsList() {
 
   return (
     <>
-      <div className="newsContainer">
-        <div className="newsInnerContainer">
-          <h3>NEWS</h3>
+    <div className="newsPage">
+        <div>
+          <h3>News EDIT TITLE</h3>
         </div>
-        <div className="newsInnerContainer newsCard">
+        <div className="newsInnerContainer">
           {
             news.map((news, index) => {
               return <NewsCard key={index} data={news} />
@@ -32,7 +32,7 @@ function NewsList() {
             })
           }
         </div>
-      </div>
+    </div>
     </>
   )
 }

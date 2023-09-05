@@ -5,8 +5,7 @@ import { AuthContext } from "../../context/auth.context";
 import notifImage from "../../images/notif.png"
 
 function Navbar() {
-  // Subscribe to the AuthContext to gain access to
-  // the values from AuthContext.Provider's `value` prop
+  
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
   const [items, setItems] = useState("")
   const [hasNotif, setHasNotif] = useState(false)
@@ -64,20 +63,15 @@ function Navbar() {
   return (
     <nav>
       <Link to="/" onClick={settingEvent}>
-      <img src="./images/test logo.png" style={{ width: 400, height: 70}} alt="Home" />
+      <img className="bigLogo" src="./images/test logo.png" alt="Home" />
+      <img className="smallLogo" src="./images/cutlogo.jpg" alt="Home" />
       </Link>
 
-      <Link to="/market" onClick={settingEvent}>
-        <button>Market</button>
-      </Link>
+      <Link to="/market" onClick={settingEvent}>Market</Link>
 
-      <Link to="/events" onClick={settingEvent}>
-        <button>Events</button>
-      </Link>
+      <Link to="/events" onClick={settingEvent}>Events</Link>
 
-      <Link to="/posts" onClick={settingEvent}>
-        <button>Posts</button>
-      </Link>
+      <Link to="/posts" onClick={settingEvent}>Posts</Link>
 
       {isLoggedIn && (
         <>
@@ -93,14 +87,8 @@ function Navbar() {
 
       {!isLoggedIn && (
         <>
-          <Link to="/signup">
-            {" "}
-            <button>Sign Up</button>{" "}
-          </Link>
-          <Link to="/login">
-            {" "}
-            <button>Login</button>{" "}
-          </Link>
+          <Link to="/signup">Signup</Link>
+          <Link to="/login">Login</Link>
         </>
       )}
     </nav>

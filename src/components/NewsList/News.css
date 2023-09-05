@@ -1,32 +1,95 @@
-/* .containerCard {
-    width: 50%;
-    height: 180px;
-    border: 1px solid rgb(211, 192, 192);
+.containerCard {
+    height: 300px;
+    width: 80vw;
+    border: 1px solid rgba(225, 235, 228, 0.733);
     border-radius: 10px;
-    box-shadow: 0px 4px 4px 1px rgb(211, 192, 192);
+    box-shadow: 0 0 10px 2px rgba(225, 235, 228, 0.733);
+    padding: 20px 20px 0 20px;
+    margin: 20px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding: 10px;
+    text-decoration: none;
+    transition: 300ms;
+    color: rgb(1, 45, 8);
+    background-color: rgba(244, 249, 244, 0.943);
 }
- */
 
- .newsContainer {
-    margin: 20px;
+.newsInnerContainer {
     display: flex;
-    flex-direction: row;
- }
-
- .newsInnerContainer {
-    background-color: aquamarine;
-    width: 40%;
-    
- }
-
- .newsCard {
-    text-decoration: none;  
-    background-color: brown;
-    width: 60%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
+.newsTextCard {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 20px;
+    height: 100%;
+    justify-content: center;
+}
+
+.containerCard img {
+    max-width: 80%;
+}
+
+.containerCard:visited {
+    color: rgb(104, 146, 111);
+}
+
+.containerCard h3 {
+    margin: 0;
+}
+
+.containerCard p {
+    text-transform: capitalize;
+}
+
+@media screen and (min-width: 568px) {
+
+    .containerCard {
+        height: 170px;
+        width: 800px;
+    
+        padding: 10px 20px;
+        margin: 20px 0;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+      
+    }
+
+    .containerCard:hover {
+        background-color: rgba(201, 219, 199, 0.553);
+        box-shadow: 0 0 20px 2px rgba(194, 199, 196, 0.906);
+    }
+
+    .containerCard img {
+        max-width: 250px;
+    }
+
+    .newsTextCard {
+        gap: 40px;
+    }
+
+    .newsContainer {
+        margin: 20px;
+    }
+
+    .newsPage {
+        margin: 10px;
+    }
+
+    .newsInnerContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
