@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react"
 import EventsList from "./../../components/Events/EventsList"
 import NewEvent from "./../../components/Events/NewEvent"
+import Rodal from "rodal"
+import "rodal/lib/rodal.css"
 
 
 
 function EventsPage() {
 
     const [events, setEvents] = useState([])
+    const [showRodal, setShowRodal] = useState(false)
     const apiUrl = process.env.REACT_APP_SERVER_URL + "/db/events"
 
     function fetchEvents() {
@@ -39,7 +42,11 @@ function EventsPage() {
 
     return (
         <>
+        <button onClick={()=>setShowRodal(true)}>Create event</button>
+            <Rodal visible={showRodal} animation= "fade" width={600} height={440} onClose={()=>setShowRodal(false)}>
             <NewEvent fetchEvents={fetchEvents} />
+
+            </Rodal>
             <EventsList events={events}/>
         </>
     )
