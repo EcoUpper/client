@@ -1,12 +1,16 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import EventsList from "./../../components/Events/EventsList"
 import NewEvent from "./../../components/Events/NewEvent"
 import Rodal from "rodal"
 import "rodal/lib/rodal.css"
+import IsPrivate from "../../components/IsPrivate/IsPrivate"
+import { AuthContext } from "../../context/auth.context"
+
 
 
 
 function EventsPage() {
+    const {user} = useContext(AuthContext)
 
     const [events, setEvents] = useState([])
     const [allEvents, setAllEvents] = useState([])
@@ -58,9 +62,11 @@ function EventsPage() {
 
     return (
         <>
-            <button onClick={() => setShowRodal(true)}>Create event</button>
-            <Rodal visible={showRodal} animation="fade" width={600} height={440} onClose={() => setShowRodal(false)}>
-                <NewEvent fetchEvents={fetchEvents} />
+        {user? <button onClick={()=>setShowRodal(true)}>Create event</button>: null}
+            <Rodal visible={showRodal} animation= "fade" width={600} height={440} onClose={()=>setShowRodal(false)}>
+            <NewEvent fetchEvents={fetchEvents} />
+            
+
             </Rodal>
 
             <select onChange={(e) => filterEvents(e.target.value)} id="">

@@ -1,9 +1,11 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import PostCard from "../../components/Posts/PostCard"
 import NewPost from "../../components/Posts/NewPost"
+import { AuthContext } from "../../context/auth.context"
 
 function PostsPage() {
 
+    const {user} = useContext(AuthContext)
     const [posts, setPosts] = useState([])
     const apiUrl = process.env.REACT_APP_SERVER_URL + "/db/posts"
 
@@ -46,7 +48,7 @@ function PostsPage() {
     return (
         <>
             <div>
-                <NewPost fetchPosts={fetchPosts} />
+                {user? <NewPost fetchPosts={fetchPosts} /> : null}
                 {posts.map((post) => {
                     const dateAndTime = post.createdAt
                     const dateTime = new Date(dateAndTime)
