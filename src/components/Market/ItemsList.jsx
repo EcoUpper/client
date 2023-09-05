@@ -1,6 +1,7 @@
 import ItemCard from "./ItemCard"
 
 
+
 function ItemsList(props) {
 
     const {items} = props
@@ -17,7 +18,7 @@ function ItemsList(props) {
 
     return (
         <>
-            <div>
+            <div className="itemsContainer">
                 {items.map((item) => {
                     const dateAndTimePropEx = item.expiration_date
                     const dateTimeEx = new Date(dateAndTimePropEx)

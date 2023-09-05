@@ -3,6 +3,8 @@ import NewItem from "./../../components/Market/NewItem"
 import { useState, useEffect } from "react"
 import Rodal from "rodal"
 import "rodal/lib/rodal.css"
+import "./MarketPage.css"
+
 
 
 function MarketPage() {
@@ -77,7 +79,10 @@ function MarketPage() {
                 <option >Clothing</option>
                 <option >Other</option>
             </select>
-            <ItemsList items={items} />
+           
+            <ItemsList  items={items} />
+          
+        
         </>
     )
 }
