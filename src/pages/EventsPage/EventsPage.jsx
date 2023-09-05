@@ -5,16 +5,20 @@ import Rodal from "rodal"
 import "rodal/lib/rodal.css"
 import IsPrivate from "../../components/IsPrivate/IsPrivate"
 import { AuthContext } from "../../context/auth.context"
+import SearchBar from "./../../components/Events/SearchBarEvents"
+// import jsonData from "./../data.json";
 
 
 
 
 function EventsPage() {
-    const {user} = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
 
     const [events, setEvents] = useState([])
     const [allEvents, setAllEvents] = useState([])
     const [showRodal, setShowRodal] = useState(false)
+    // const [event, setEvent] = useState(jsonData);
+    // const [eventFound, setEventFound] = useState(jsonData)
     const apiUrl = process.env.REACT_APP_SERVER_URL + "/db/events"
 
     function fetchEvents() {
@@ -52,20 +56,44 @@ function EventsPage() {
         const newArray = allEvents.filter((event) => {
             const eventDate = new Date(event.date)
             console.log(event);
-            return date == eventDate.getMonth() +1;
+            return date == eventDate.getMonth() + 1;
         })
         console.log(newArray);
 
         setEvents(newArray)
     }
 
+    // function searchForEvent(str) {
+
+    //     let searchedEvent;
+    
+    //     if (str === "") {
+    //       searchedEvent = eventFound;
+    //     } else {
+    //       searchedEvent = eventFound.filter((event) => {
+    //         return event.name.match(str)
+    //       });
+    //     }
+    
+    //     setEvent(searchedEvent)
+    //   }
+
+
+    // return (
+    //     <div>
+    //         <h1>IronStore</h1>
+    //         <SearchBar searchForEvent={searchForEvent}/>
+    //         {/* <ProductTable products={products}/> */}
+    //     </div>
+    // );
+
 
     return (
         <>
-        {user? <button onClick={()=>setShowRodal(true)}>Create event</button>: null}
-            <Rodal visible={showRodal} animation= "fade" width={600} height={440} onClose={()=>setShowRodal(false)}>
-            <NewEvent fetchEvents={fetchEvents} />
-            
+            {user ? <button onClick={() => setShowRodal(true)}>Create event</button> : null}
+            <Rodal visible={showRodal} animation="fade" width={600} height={440} onClose={() => setShowRodal(false)}>
+                <NewEvent fetchEvents={fetchEvents} />
+
 
             </Rodal>
 
@@ -85,6 +113,7 @@ function EventsPage() {
                 <option value="11">December</option>
 
             </select>
+            <SearchBar />
             <EventsList events={events} />
         </>
     )
