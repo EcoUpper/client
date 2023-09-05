@@ -129,7 +129,7 @@ function NewEvent (props) {
                     </div>
                     <button type="submit">Create</button>
                 </form>
-            </div>
+        </div>
        </> 
     )
 }

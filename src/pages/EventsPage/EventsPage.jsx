@@ -8,6 +8,7 @@ import { AuthContext } from "../../context/auth.context"
 
 
 
+
 function EventsPage() {
     const {user} = useContext(AuthContext)
 
@@ -45,9 +46,9 @@ function EventsPage() {
 
     return (
         <>
-        <button onClick={()=>setShowRodal(true)}>Create event</button>
+        {user? <button onClick={()=>setShowRodal(true)}>Create event</button>: null}
             <Rodal visible={showRodal} animation= "fade" width={600} height={440} onClose={()=>setShowRodal(false)}>
-            {user.username ? <IsPrivate><NewEvent fetchEvents={fetchEvents} /></IsPrivate>: null}
+            <NewEvent fetchEvents={fetchEvents} />
             
 
             </Rodal>
