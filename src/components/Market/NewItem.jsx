@@ -1,6 +1,8 @@
 import { useState, useContext } from "react"
 import { useNavigate } from "react-router-dom"
 import { AuthContext } from "../../context/auth.context"
+import uploadImage from "../../services/file-upload.service"
+
 
 function NewItem(props) {
 
@@ -17,6 +19,19 @@ function NewItem(props) {
 
     const navigate = useNavigate()
     const apiUrl = "http://localhost:5005/db/items/create/new"
+
+    const handleFileUpload  = (e) => {
+        const formData = new FormData()
+        formData.append("image_url", e.target.files[0])
+    
+        uploadImage(formData)
+        .then((res)=>{
+          console.log("upload res", res);
+          setImage(res.image_url)
+        })
+        .catch(err => console.log(err))
+    
+      }
 
     function handleSubmit(e) {
         e.preventDefault()
@@ -83,12 +98,7 @@ function NewItem(props) {
                     </div>
                     <div>
                         <label>Image</label>
-                        <input
-                            type="text"
-                            name="image"
-                            onChange={(e) => setImage(e.target.value)}
-                            value={image}
-                        />
+                        <input type="file" onChange={(e) => handleFileUpload (e)} />
                     </div>
                     <div>
                     <label>Type</label>
