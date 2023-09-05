@@ -1,14 +1,17 @@
 import ItemsList from "./../../components/Market/ItemsList"
 import NewItem from "./../../components/Market/NewItem"
 import { useState, useEffect } from "react"
+import Rodal from "rodal"
+import "rodal/lib/rodal.css"
 
 
 function MarketPage() {
-    
+
     const [items, setItems] = useState([])
     const [allItems, setAllItems] = useState([])
+    const [showRodal, setShowRodal] = useState(false)
     const apiUrl = process.env.REACT_APP_SERVER_URL + "/db/items"
-    
+
     function fetchItems() {
         fetch(apiUrl)
             .then((res) => {
@@ -36,18 +39,18 @@ function MarketPage() {
                 console.log(err);
             });
     }
-    
+
     useEffect(() => {
         fetchItems()
     }, [])
 
     // CREAR funcion filterItems(type) que se activa en el onchange del select
     // esta funcion debe incluir un nuevo array con los items filtrados const newArray = items.filter((item)= return item.type === type)
-    
+
     function filterItems(type) {
         console.log(type);
-        if (type === "All"){
-            return setItems (allItems)
+        if (type === "All") {
+            return setItems(allItems)
         }
         const newArray = allItems.filter((item) => {
             console.log(item);
@@ -65,14 +68,18 @@ function MarketPage() {
     return (
 
         <>
-            <NewItem fetchItems={fetchItems}/>
-            <select onChange={(e)=>filterItems(e.target.value)} id="">
-                    <option >All</option>
-                    <option >Food</option>
-                    <option >Clothing</option>
-                    <option >Other</option>
-                </select>
-            <ItemsList items={items}/>
+            <button onClick={() => setShowRodal(true)}>Create Item</button>
+            <Rodal visible={showRodal} animation="fade" width={600} height={440} onClose={() => setShowRodal(false)}>
+                <NewItem fetchItems={fetchItems} />
+            </Rodal>
+
+            <select onChange={(e) => filterItems(e.target.value)} id="">
+                <option >All</option>
+                <option >Food</option>
+                <option >Clothing</option>
+                <option >Other</option>
+            </select>
+            <ItemsList items={items} />
         </>
     )
 }
