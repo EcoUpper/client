@@ -127,7 +127,7 @@ function NewEvent (props) {
                             value={location}
                         />
                     </div>
-                    <button type="submit">Create event</button>
+                    <button type="submit">Create</button>
                 </form>
             </div>
        </> 
