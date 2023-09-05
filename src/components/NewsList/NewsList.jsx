@@ -18,19 +18,23 @@ function NewsList() {
       .catch((err) => console.log(err));
   }, []);
 
-    return (
-        <>
+  return (
+    <>
+      <div className="newsContainer">
+        <div className="newsInnerContainer">
+          <h3>NEWS</h3>
+        </div>
+        <div className="newsInnerContainer newsCard">
+          {
+            news.map((news, index) => {
+              return <NewsCard key={index} data={news} />
 
-        <h3>NEWS</h3>
-        {
-            news.map((news, index)=>{
-                return <NewsCard key = {index} data = {news}/> 
-                
             })
-        }
-
-        </>
-    )
+          }
+        </div>
+      </div>
+    </>
+  )
 }
 
 export default NewsList;
