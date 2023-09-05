@@ -35,7 +35,7 @@ export default function EventCard(props) {
         onClose={closeRodal}
         animation="fade"
         width={600}
-        height={440}
+        height={550}
       >
         {selectedEvent && (
           <>
