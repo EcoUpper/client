@@ -44,9 +44,7 @@ function MarketPage() {
         fetchItems()
     }, [])
 
-    // CREAR funcion filterItems(type) que se activa en el onchange del select
-    // esta funcion debe incluir un nuevo array con los items filtrados const newArray = items.filter((item)= return item.type === type)
-
+    
     function filterItems(type) {
         console.log(type);
         if (type === "All") {
