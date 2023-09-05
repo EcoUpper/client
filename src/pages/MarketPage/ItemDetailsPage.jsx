@@ -1,9 +1,12 @@
 import { useParams, useNavigate } from "react-router-dom"
 import { useState, useEffect, useContext } from "react"
-import { AuthContext } from "../../context/auth.context";
+import { AuthContext } from "../../context/auth.context"
 import { Link } from "react-router-dom"
 import NewProposal from "./../../components/Proposal/NewProposal"
 import ProposalCard from "../../components/Proposal/ProposalCard"
+import ModifyItem from "../../components/Market/ModifyItem"
+import Rodal from "rodal"
+import "rodal/lib/rodal.css"
 
 function ItemDetailsPage() {
 
@@ -12,6 +15,7 @@ function ItemDetailsPage() {
     const [itemInfo, setItemInfo] = useState("")
     const [itemProposals, setItemProposals] = useState("")
     const navigate = useNavigate()
+    const [showRodal, setShowRodal] = useState(false)
 
     const dateAndTimePropEx = itemInfo.expiration_date
     const dateTimeEx = new Date(dateAndTimePropEx)
@@ -19,8 +23,15 @@ function ItemDetailsPage() {
 
     const apiUrl = process.env.REACT_APP_SERVER_URL + "/db/items/" + itemId
     const proposalUrl = process.env.REACT_APP_SERVER_URL + "/db/proposals/" + itemId
+    const itemLocation = "https://maps.google.com/?q=" + itemInfo.location
 
     useEffect(() => {
+
+        fetchItemInfo()
+        fetchProposals()
+    }, []);
+
+    function fetchItemInfo() {
         fetch(apiUrl)
             .then((res) => {
                 return res.json()
@@ -33,9 +44,7 @@ function ItemDetailsPage() {
             .catch((err) => {
                 console.log(err);
             });
-
-        fetchProposals()
-    }, []);
+    }
 
     function fetchProposals() {
         fetch(proposalUrl)
@@ -70,8 +79,7 @@ function ItemDetailsPage() {
         console.log("PROPID", propId);
         e.preventDefault();
 
-        const modifyProposalUrl =
-            process.env.REACT_APP_SERVER_URL + "/db/proposals/" + propId;
+        const modifyProposalUrl = process.env.REACT_APP_SERVER_URL + "/db/proposals/" + propId;
 
         fetch(modifyProposalUrl, {
             method: "PUT",
@@ -134,11 +142,16 @@ function ItemDetailsPage() {
                     <p>{itemInfo.description}</p>
                     <p>{itemInfo.type}</p>
                     {itemInfo.type === "food" && <p>{expirationDate}</p>}
+                    <p>Pick up at <a target="_blank" href={itemLocation}>{itemInfo.location}</a></p>
                     <p>{itemInfo.owner?.username}</p>
 
                     {/* IF THE USER IS THE OWNER OF THE ITEM */}
                     {user._id === itemInfo.owner._id ? (
                         <div className="userIsOwner">
+                            <button onClick={() => setShowRodal(true)}>Edit</button>
+                            <Rodal visible={showRodal} animation="fade" width={600} height={440} onClose={() => setShowRodal(false)}>
+                                <ModifyItem item={itemInfo} key={itemInfo._id} fetchItemInfo={fetchItemInfo} />
+                            </Rodal>
                             <button onClick={(e) => handleItemSubmit(e, itemInfo._id)}>Delete</button>
                             <div className="proposals">
                                 {itemInfo.proposals?.length !== 0 ? (
@@ -164,27 +177,26 @@ function ItemDetailsPage() {
                     ) : (
                         // IF THE USER IS NOT THE OWNER
                         <div className="userIsNotOwner">
-                            {itemProposals.length !== 0 ? (
+                            
                                 <div className="proposals">
-                                    <NewProposal fetchProposals={fetchProposals} />
+                                    {itemProposals.length === 0 && <p>There are no proposals for this item yet, now's your chance!</p>}
                                     <h3>Make a proposal</h3>
+                                    <NewProposal fetchProposals={fetchProposals} />
                                     {itemProposals.map((prop) => {
                                         console.log("PARROP", prop);
                                         const dateAndTimeProp = prop.date;
                                         const dateTime = new Date(dateAndTimeProp);
                                         const date = dateTime.toLocaleDateString();
                                         const time = dateTime.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
-
+                                        
                                         return (
                                             <div key={prop._id}>
                                                 <ProposalCard data={prop} user={user} item={itemInfo} date={date} time={time} />
                                             </div>
-                                        );
+                                        )
                                     })}
                                 </div>
-                            ) : (
-                                <p>There are no proposals for this item yet, now's your chance!</p>
-                            )}
+                                
                         </div>
                     )}
                 </div>
