@@ -9,13 +9,15 @@ function ItemDetailsPage() {
 
     const { itemId } = useParams();
     const { user } = useContext(AuthContext)
-    const [itemInfo, setItemInfo] = useState("");
+    const [itemInfo, setItemInfo] = useState("")
+    const [itemProposals, setItemProposals] = useState("")
 
     const dateAndTimePropEx = itemInfo.expiration_date
     const dateTimeEx = new Date(dateAndTimePropEx)
     const expirationDate = dateTimeEx.toLocaleDateString()
 
     const apiUrl = process.env.REACT_APP_SERVER_URL + "/db/items/" + itemId
+    const proposalUrl = process.env.REACT_APP_SERVER_URL + "/db/proposals/" + itemId
 
     useEffect(() => {
         fetch(apiUrl)
@@ -30,40 +32,69 @@ function ItemDetailsPage() {
             .catch((err) => {
                 console.log(err);
             });
+
+        fetchProposals()
     }, []);
 
+    function fetchProposals() {
+        fetch(proposalUrl)
+            .then((res) => {
+                return res.json()
+            })
+            .then((data) => {
+                const datedProposals = data.map((prop) => ({
+                    ...prop,
+                    createdAt: new Date(prop.createdAt)
+                }));
+
+                const sortedProposals = datedProposals.sort((a, b) => {
+                    if (a.createdAt < b.createdAt) {
+                        return 1;
+                    } else if (a.createdAt > b.createdAt) {
+                        return -1;
+                    } else {
+                        return 0;
+                    }
+                })
+                setItemProposals(sortedProposals);
+                console.log("HERE", sortedProposals)
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
 
 
     function handleProposalChange(e, propId, newStatus) {
         console.log("PROPID", propId);
         e.preventDefault();
-    
+
         const modifyProposalUrl =
-          process.env.REACT_APP_SERVER_URL + "/db/proposals/" + propId;
-    
+            process.env.REACT_APP_SERVER_URL + "/db/proposals/" + propId;
+
         fetch(modifyProposalUrl, {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ status: newStatus }),
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ status: newStatus }),
         })
-          .then((res) => res.json())
-          .then((data) => {
-            const updatedItemInfo = { ...itemInfo };
-            const updatedProposals = updatedItemInfo.proposals.map((prop) => {
-              if (prop._id === propId) {
-                prop.status = newStatus;
-              }
-              return prop;
+            .then((res) => res.json())
+            .then(() => {
+                const updatedItemInfo = { ...itemInfo };
+                const updatedProposals = updatedItemInfo.proposals.map((prop) => {
+                    if (prop._id === propId) {
+                        prop.status = newStatus;
+                    }
+                    return prop;
+                });
+                updatedItemInfo.proposals = updatedProposals;
+                setItemInfo(updatedItemInfo)
+            })
+            .catch((err) => {
+                console.log(err);
             });
-            updatedItemInfo.proposals = updatedProposals;
-            setItemInfo(updatedItemInfo);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      }
+    }
 
 
     if (!itemInfo) {
@@ -73,64 +104,80 @@ function ItemDetailsPage() {
     return (
         <>
             <div>
-                <Link to={"/market"}><p>Market</p></Link>
+                <Link to={"/market"}>
+                    <p>Go back to market</p>
+                </Link>
                 <div key={itemInfo._id}>
-                    <p>{itemInfo.name}</p>
+                    <p>
+                        <strong>{itemInfo.name}</strong>
+                    </p>
+                    <p>{itemInfo.status}</p>
+                    <img
+                        style={{ height: "300px" }}
+                        src={itemInfo.image_url}
+                        alt="Item image"
+                    />
                     <p>{itemInfo.description}</p>
-                    <img style={{ height: "300px" }} src={itemInfo.image_url} alt="Item image" />
                     <p>{itemInfo.type}</p>
                     {itemInfo.type === "food" && <p>{expirationDate}</p>}
-                    <p>{itemInfo.status}</p>
                     <p>{itemInfo.owner?.username}</p>
 
-                    <h2>Make a new proposal</h2>
-                    <NewProposal />
+                    <h3>Make a proposal</h3>
+                    <NewProposal fetchProposals={fetchProposals} />
 
-                    {user._id === itemInfo.owner._id ?
-
+                    {user._id === itemInfo.owner._id ? (
                         <div className="proposals">
-                            <h2>Proposals on the item</h2>
-                            {
-                                itemInfo.proposals?.length !== 0 ?
+                            {itemInfo.proposals?.length !== 0 ? (
+                                itemInfo.proposals?.map((prop) => {
+                                    const dateAndTimeProp = prop.date;
+                                    const dateTime = new Date(dateAndTimeProp);
+                                    const date = dateTime.toLocaleDateString();
+                                    const time = dateTime.toLocaleTimeString([], {
+                                        hour: "2-digit",
+                                        minute: "2-digit",
+                                    });
 
-                                    itemInfo.proposals?.map((prop) => {
-                                        const dateAndTimeProp = prop.date
-                                        const dateTime = new Date(dateAndTimeProp)
-                                        const date = dateTime.toLocaleDateString()
-                                        const time = dateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-
-                                        return (
-                                            <div>
-                                                <ProposalCard data={prop} user={user} key={prop._id} item={itemInfo} date={date} time={time} />
-                                                <button onClick={(e) => handleProposalChange(e, prop._id, "Accepted")}>Accepted</button>
-                                                <button onClick={(e) => handleProposalChange(e, prop._id, "Rejected")}>Rejected</button>
-                                            </div>
-                                        )
-
-                                    })
-                                    : <p>There are no proposals on this item</p>
-                            }
+                                    return (
+                                        <div key={prop._id}>
+                                            <ProposalCard data={prop} user={user} item={itemInfo} date={date} time={time}/>
+                                            <button onClick={(e) => handleProposalChange(e, prop._id, "Accepted")}>Accepted</button>
+                                            <button onClick={(e) => handleProposalChange(e, prop._id, "Rejected")}>Rejected</button>
+                                        </div>
+                                    );
+                                })
+                            ) : (
+                                <p>
+                                    There are no proposals for this item yet,
+                                    now's your chance!
+                                </p>
+                            )}
                         </div>
-                        :
-                        itemInfo.proposals.length !== 0 ?
-                            [...itemInfo.proposals].filter((proposal) => {
-                                console.log("proposals", itemInfo.proposals);
-                                return proposal.created_by == user._id
-                            }).map((prop) => {
-                                const dateAndTimeProp = prop.date
-                                const dateTime = new Date(dateAndTimeProp)
-                                const date = dateTime.toLocaleDateString()
-                                const time = dateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+                    ) : itemProposals.length !== 0 ? (
+                        <div className="proposals">
+                            {itemProposals.map((prop) => {
+                                console.log("PARROP", prop);
+                                const dateAndTimeProp = prop.date;
+                                const dateTime = new Date(dateAndTimeProp);
+                                const date = dateTime.toLocaleDateString();
+                                const time = dateTime.toLocaleTimeString([], {
+                                    hour: "2-digit",
+                                    minute: "2-digit",
+                                });
 
-                                return <ProposalCard data={prop} user={user} key={prop._id} item={itemInfo} date={date} time={time} />
-                            })
-                            : null
-                    }
-
+                                return (
+                                     <div key={prop._id}>
+                                       <ProposalCard data={prop} user={user} item={itemInfo} date={date} time={time}/>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    ) : (
+                        <p>There are no proposals for this item yet, now's your chance!</p>
+                    )}
                 </div>
             </div>
         </>
-    )
+    );
 }
 
 export default ItemDetailsPage
