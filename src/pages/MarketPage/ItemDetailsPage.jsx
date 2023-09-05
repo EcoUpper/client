@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom"
+import { useParams, Navigate } from "react-router-dom"
 import { useState, useEffect, useContext } from "react"
 import { AuthContext } from "../../context/auth.context";
 import { Link } from "react-router-dom"
@@ -96,6 +96,25 @@ function ItemDetailsPage() {
             });
     }
 
+    function handleItemSubmit(e, itemId) {
+        e.preventDefault()
+
+        const deleteItemUrl = process.env.REACT_APP_SERVER_URL + "/db/items/" + itemId
+
+        fetch(deleteItemUrl, {
+            method: "DELETE"
+        })
+            .then((res) => {
+                res.json()
+
+                Navigate("/market")
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+
+    }
+
 
     if (!itemInfo) {
         return <p>Loading...</p>
@@ -108,71 +127,64 @@ function ItemDetailsPage() {
                     <p>Go back to market</p>
                 </Link>
                 <div key={itemInfo._id}>
-                    <p>
-                        <strong>{itemInfo.name}</strong>
-                    </p>
+                    <p><strong>{itemInfo.name}</strong></p>
                     <p>{itemInfo.status}</p>
-                    <img
-                        style={{ height: "300px" }}
-                        src={itemInfo.image_url}
-                        alt="Item image"
-                    />
+                    <img style={{ height: "300px" }} src={itemInfo.image_url} alt="Item image" />
                     <p>{itemInfo.description}</p>
                     <p>{itemInfo.type}</p>
                     {itemInfo.type === "food" && <p>{expirationDate}</p>}
                     <p>{itemInfo.owner?.username}</p>
 
-                    <h3>Make a proposal</h3>
-                    <NewProposal fetchProposals={fetchProposals} />
-
+                    {/* IF THE USER IS THE OWNER OF THE ITEM */}
                     {user._id === itemInfo.owner._id ? (
-                        <div className="proposals">
-                            {itemInfo.proposals?.length !== 0 ? (
-                                itemInfo.proposals?.map((prop) => {
-                                    const dateAndTimeProp = prop.date;
-                                    const dateTime = new Date(dateAndTimeProp);
-                                    const date = dateTime.toLocaleDateString();
-                                    const time = dateTime.toLocaleTimeString([], {
-                                        hour: "2-digit",
-                                        minute: "2-digit",
-                                    });
+                        <div className="userIsOwner">
+                            <button onClick={(e) => handleItemSubmit(e, itemInfo._id)}>Delete</button>
+                            <div className="proposals">
+                                {itemInfo.proposals?.length !== 0 ? (
+                                    itemInfo.proposals?.map((prop) => {
+                                        const dateAndTimeProp = prop.date;
+                                        const dateTime = new Date(dateAndTimeProp);
+                                        const date = dateTime.toLocaleDateString();
+                                        const time = dateTime.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
 
-                                    return (
-                                        <div key={prop._id}>
-                                            <ProposalCard data={prop} user={user} item={itemInfo} date={date} time={time}/>
-                                            <button onClick={(e) => handleProposalChange(e, prop._id, "Accepted")}>Accepted</button>
-                                            <button onClick={(e) => handleProposalChange(e, prop._id, "Rejected")}>Rejected</button>
-                                        </div>
-                                    );
-                                })
-                            ) : (
-                                <p>
-                                    There are no proposals for this item yet,
-                                    now's your chance!
-                                </p>
-                            )}
-                        </div>
-                    ) : itemProposals.length !== 0 ? (
-                        <div className="proposals">
-                            {itemProposals.map((prop) => {
-                                console.log("PARROP", prop);
-                                const dateAndTimeProp = prop.date;
-                                const dateTime = new Date(dateAndTimeProp);
-                                const date = dateTime.toLocaleDateString();
-                                const time = dateTime.toLocaleTimeString([], {
-                                    hour: "2-digit",
-                                    minute: "2-digit",
-                                });
-
-                                return (
-                                     <div key={prop._id}>
-                                       <ProposalCard data={prop} user={user} item={itemInfo} date={date} time={time}/>
-                                    </div>
-                                );
-                            })}
+                                        return (
+                                            <div key={prop._id}>
+                                                <ProposalCard data={prop} user={user} item={itemInfo} date={date} time={time} />
+                                                <button onClick={(e) => handleProposalChange(e, prop._id, "Accepted")}>Accepted</button>
+                                                <button onClick={(e) => handleProposalChange(e, prop._id, "Rejected")}>Rejected</button>
+                                            </div>
+                                        )
+                                    })
+                                ) : (
+                                    <p>There are no proposals for your item yet. Why don't you <Link to="posts">post</Link> it to get more views?</p>
+                                )}
+                            </div>
                         </div>
                     ) : (
-                        <p>There are no proposals for this item yet, now's your chance!</p>
+                        // IF THE USER IS NOT THE OWNER
+                        <div className="userIsNotOwner">
+                            {itemProposals.length !== 0 ? (
+                                <div className="proposals">
+                                    <NewProposal fetchProposals={fetchProposals} />
+                                    <h3>Make a proposal</h3>
+                                    {itemProposals.map((prop) => {
+                                        console.log("PARROP", prop);
+                                        const dateAndTimeProp = prop.date;
+                                        const dateTime = new Date(dateAndTimeProp);
+                                        const date = dateTime.toLocaleDateString();
+                                        const time = dateTime.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
+
+                                        return (
+                                            <div key={prop._id}>
+                                                <ProposalCard data={prop} user={user} item={itemInfo} date={date} time={time} />
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                            ) : (
+                                <p>There are no proposals for this item yet, now's your chance!</p>
+                            )}
+                        </div>
                     )}
                 </div>
             </div>
