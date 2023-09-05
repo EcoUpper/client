@@ -1,3 +1,4 @@
+import "./ModifyItem.css"
 import { useState, useContext } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { AuthContext } from "../../context/auth.context"
@@ -71,9 +72,9 @@ function ModifyItem (props) {
 
     return (
         <>
-            <div>
-                <form onSubmit={handleSubmit} >
-                    <div>
+            <div className="modifyForm">
+                <form className="formContainer" onSubmit={handleSubmit} >
+                    <div className="innerForm">
                         <label>Name</label>
                         <input
                             type="text"
@@ -82,7 +83,7 @@ function ModifyItem (props) {
                             value={name}
                         />
                     </div>
-                    <div>
+                    <div className="innerForm">
                         <label>Description</label>
                         <textarea
                             type="text"
@@ -91,24 +92,20 @@ function ModifyItem (props) {
                             value={description}
                         />
                     </div>
-                    <div>
+                    <div className="innerForm">
                         <label>Image</label>
-                        <input type="file" onChange={(e) => handleFileUpload (e)} />
+                        <input className="imgInput" type="file" onChange={(e) => handleFileUpload (e)} />
                     </div>
-                    <div>
+                    <div className="innerForm">
                     <label>Type</label>
-                        <select
-                            name="type"
-                            onChange={(e) => setType(e.target.value)}
-                            value={type}
-                        >
+                        <select name="type" onChange={(e) => setType(e.target.value)} value={type}>
                             <option value="other">Other</option>
                             <option value="food">Food</option>
                             <option value="clothing">Clothing</option>
                         </select>
                     </div>
                     {type === "food" && 
-                    <div>
+                    <div className="innerForm">
                         <label>Expiration Date</label>
                         <input
                             type="date"
@@ -118,7 +115,7 @@ function ModifyItem (props) {
                         />
                     </div>
                     }
-                    <div>
+                    <div className="innerForm">
                         <label>Location</label>
                         <input
                             type="text"
@@ -127,13 +124,9 @@ function ModifyItem (props) {
                             value={location}
                         />
                     </div>
-                    <div>
+                    <div className="innerForm">
                         <label>Status</label>
-                        <select
-                            name="status"
-                            onChange={(e) => setStatus(e.target.value)}
-                            value={status}
-                        >
+                        <select name="status" onChange={(e) => setStatus(e.target.value)} value={status}>
                             <option value="available">Available</option>
                             <option value="reserved">Reserved</option>
                             <option value="gifted">Gifted</option>

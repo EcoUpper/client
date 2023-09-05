@@ -177,27 +177,26 @@ function ItemDetailsPage() {
                     ) : (
                         // IF THE USER IS NOT THE OWNER
                         <div className="userIsNotOwner">
-                            {itemProposals.length !== 0 ? (
+                            
                                 <div className="proposals">
-                                    <NewProposal fetchProposals={fetchProposals} />
+                                    {itemProposals.length === 0 && <p>There are no proposals for this item yet, now's your chance!</p>}
                                     <h3>Make a proposal</h3>
+                                    <NewProposal fetchProposals={fetchProposals} />
                                     {itemProposals.map((prop) => {
                                         console.log("PARROP", prop);
                                         const dateAndTimeProp = prop.date;
                                         const dateTime = new Date(dateAndTimeProp);
                                         const date = dateTime.toLocaleDateString();
                                         const time = dateTime.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
-
+                                        
                                         return (
                                             <div key={prop._id}>
                                                 <ProposalCard data={prop} user={user} item={itemInfo} date={date} time={time} />
                                             </div>
-                                        );
+                                        )
                                     })}
                                 </div>
-                            ) : (
-                                <p>There are no proposals for this item yet, now's your chance!</p>
-                            )}
+                                
                         </div>
                     )}
                 </div>
