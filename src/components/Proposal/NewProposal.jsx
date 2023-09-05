@@ -14,7 +14,7 @@ function NewProposal(props) {
     const dateTime = new Date(date + 'T' + time);
 
     const navigate = useNavigate()
-    const apiUrl = `http://localhost:5005/db/proposals/${itemId}/new`
+    const apiUrl = process.env.REACT_APP_SERVER_URL + "/db/proposals/" + itemId + "/new"
 
     function handleSubmit(e) {
         e.preventDefault()

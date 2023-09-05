@@ -1,4 +1,4 @@
-import { useParams, Navigate } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 import { useState, useEffect, useContext } from "react"
 import { AuthContext } from "../../context/auth.context";
 import { Link } from "react-router-dom"
@@ -11,6 +11,7 @@ function ItemDetailsPage() {
     const { user } = useContext(AuthContext)
     const [itemInfo, setItemInfo] = useState("")
     const [itemProposals, setItemProposals] = useState("")
+    const navigate = useNavigate()
 
     const dateAndTimePropEx = itemInfo.expiration_date
     const dateTimeEx = new Date(dateAndTimePropEx)
@@ -107,7 +108,7 @@ function ItemDetailsPage() {
             .then((res) => {
                 res.json()
 
-                Navigate("/market")
+                navigate("/market")
             })
             .catch((err) => {
                 console.log(err)

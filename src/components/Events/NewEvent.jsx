@@ -18,7 +18,7 @@ function NewEvent (props) {
     const dateTime = new Date(date + 'T' + time);
 
     const navigate = useNavigate()
-    const apiUrl = "http://localhost:5005/db/events/create/new"
+    const apiUrl = process.env.REACT_APP_SERVER_URL + "/db/events/create/new"
 
     const handleFileUpload  = (e) => {
         const formData = new FormData()
