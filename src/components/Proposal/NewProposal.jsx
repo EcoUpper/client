@@ -2,7 +2,9 @@ import { useState, useContext } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { AuthContext } from "../../context/auth.context"
 
-function NewProposal() {
+function NewProposal(props) {
+
+    const {fetchProposals} = props
 
     const { user } = useContext(AuthContext)
     const { itemId } = useParams();
@@ -35,6 +37,7 @@ function NewProposal() {
                 setDate("")
                 setTime("")
                 
+                fetchProposals()
                 navigate(`/market/${itemId}`)
             })
             .catch((err) => {
