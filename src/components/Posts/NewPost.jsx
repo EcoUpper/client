@@ -12,8 +12,7 @@ function NewItem(props) {
     const [image, setImage] = useState("")
 
     const navigate = useNavigate()
-    const apiUrl = "http://localhost:5005/db/posts/create/new"
-
+    const apiUrl = process.env.REACT_APP_SERVER_URL + "/db/posts/create/new"
     const handleFileUpload  = (e) => {
         const formData = new FormData()
         formData.append("image_url", e.target.files[0])
