@@ -3,10 +3,8 @@ import { useNavigate } from "react-router-dom"
 import { AuthContext } from "../../context/auth.context"
 import uploadImage from "../../services/file-upload.service"
 
-
-function NewItem(props) {
-
-    const {fetchItems} = props
+function ModifyItem () {
+    // const {fetchItems} = props
 
     const { user } = useContext(AuthContext)
     const [name, setName] = useState("")
@@ -18,7 +16,7 @@ function NewItem(props) {
     const [location, setLocation] = useState("")
 
     const navigate = useNavigate()
-    const apiUrl = process.env.REACT_APP_SERVER_URL + "/db/items/create/new"
+    const apiUrl = process.env.REACT_APP_SERVER_URL + "/db/items/" + itemId
 
     const handleFileUpload  = (e) => {
         const formData = new FormData()
@@ -151,4 +149,4 @@ function NewItem(props) {
     )
 }
 
-export default NewItem
+export default ModifyItem
