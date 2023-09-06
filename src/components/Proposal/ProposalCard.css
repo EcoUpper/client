@@ -1,0 +1,17 @@
+.proposal-info{
+    display: flex;
+    flex-direction: row;
+    font-size: smaller;
+    gap: 10px;
+    align-items: center;
+}
+
+.available {
+    background: rgb(104,196,104);
+    background: linear-gradient(0deg, rgba(104,196,104,1) 0%, rgba(255,255,255,1) 20%);
+}
+
+.rejected {
+    background: rgb(202,138,103);
+    background: linear-gradient(0deg, rgba(202,138,103,1) 0%, rgba(255,255,255,1) 22%);
+}

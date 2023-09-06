@@ -19,13 +19,9 @@ function ItemsList(props) {
                     item.name.toLowerCase().includes(search) || item.description.toLowerCase().includes(search) || item.location.toLowerCase().includes(search)
                 })               
                 .map((item) => {
-                    const dateAndTimePropEx = item.expiration_date
-                    const dateTimeEx = new Date(dateAndTimePropEx)
-
-                    const expirationDate = dateTimeEx.toLocaleDateString()
 
                     return (
-                        <ItemCard item={item} expirationDate={expirationDate}/>
+                        <ItemCard item={item}/>
                     )
                 })}
             </div>

@@ -35,6 +35,7 @@
 
 .containerCard img {
     max-width: 80%;
+    border-radius: 10px;
 }
 
 .containerCard:visited {

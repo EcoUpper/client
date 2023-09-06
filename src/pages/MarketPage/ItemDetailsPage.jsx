@@ -7,6 +7,7 @@ import ProposalCard from "../../components/Proposal/ProposalCard"
 import ModifyItem from "../../components/Market/ModifyItem"
 import Rodal from "rodal"
 import "rodal/lib/rodal.css"
+import ProfilePage from "../ProfilePage/ProfilePage"
 
 function ItemDetailsPage() {
 
@@ -143,7 +144,7 @@ function ItemDetailsPage() {
                     <p>{itemInfo.type}</p>
                     {itemInfo.type === "food" && <p>{expirationDate}</p>}
                     <p>Pick up at <a target="_blank" href={itemLocation}>{itemInfo.location}</a></p>
-                    <p>{itemInfo.owner?.username}</p>
+                    <Link to={`/profile/${itemInfo.owner._id}`}><p>{itemInfo.owner?.username}</p></Link>
 
                     {/* IF THE USER IS THE OWNER OF THE ITEM */}
                     {user._id === itemInfo.owner._id ? (

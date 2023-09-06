@@ -36,7 +36,7 @@ function Navbar() {
   
   useEffect(()=>{
     const newArr = [... items].filter((item)=>{
-      return item.owner._id === user?._id
+      return item.owner?._id === user?._id
     })
 
     console.log("NEWARR",newArr);
