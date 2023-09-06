@@ -1,11 +1,44 @@
-
-  
- .itemsContainer{
-    width: 100vw;
+.market-page{
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background-color: rgb(243, 243, 243);
+    padding-bottom: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.219);
+}
+
+.filter-cont {
+    display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-   
+    margin: .8rem 1rem;
+}
+
+.filters {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    gap: 10px;
+}
+
+.search-bar-cont {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+}
+
+.items-list{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
