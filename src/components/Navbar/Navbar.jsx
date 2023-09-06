@@ -58,17 +58,17 @@ function Navbar() {
           <img className="bigLogo" src={logo} alt="Home" />
           {/* <img className="smallLogo" src={logo} alt="Home" /> */}
         </Link>
-        <NavLink className={({isActive, isPending}) => isPending ? "pending" : isActive ? "active" : ""} to="/market" onClick={settingEvent}>Market</NavLink>
-        <NavLink className={({isActive, isPending}) => isPending ? "pending" : isActive ? "active" : ""} to="/events" onClick={settingEvent}>Events</NavLink>
-        <NavLink className={({isActive, isPending}) => isPending ? "pending" : isActive ? "active" : ""} to="/posts" onClick={settingEvent}>Posts</NavLink>
+        <NavLink className={({isActive, isPending}) => isPending ? "pending navLink" : isActive ? "active navLink" : "navLink"} to="/market" onClick={settingEvent}>Market</NavLink>
+        <NavLink className={({isActive, isPending}) => isPending ? "pending navLink" : isActive ? "active navLink" : "navLink"} to="/events" onClick={settingEvent}>Events</NavLink>
+        <NavLink className={({isActive, isPending}) => isPending ? "pending navLink" : isActive ? "active navLink" : "navLink"} to="/posts" onClick={settingEvent}>Posts</NavLink>
       </div>
 
       <div className="navDiv navUser">
         {isLoggedIn && (
           <>
 
-            <Link to={`/profile/${user?._id}`} onClick={settingEvent}>
-              <img id="profileImg" src={user?.image_url} alt="Profile picture" />
+            <Link id="profileImg" to={`/profile/${user?._id}`} onClick={settingEvent}>
+              <img  src={user?.image_url} alt="Profile picture" />
             </Link>
             <button className="navLink" onClick={logOutUser}>Logout</button>
             {hasNotif ? <img src={notifImage} alt="" height="30px" /> : null}
@@ -78,8 +78,8 @@ function Navbar() {
 
         {!isLoggedIn && (
           <>
-            <NavLink className={({isActive, isPending}) => isPending ? "pending" : isActive ? "active" : ""} to="/signup">Signup</NavLink>
-            <NavLink className={({isActive, isPending}) => isPending ? "pending" : isActive ? "active" : ""} to="/login">Login</NavLink>
+            <NavLink className={({isActive, isPending}) => isPending ? "pending navLink" : isActive ? "active navLink" : "navLink"} to="/signup">Signup</NavLink>
+            <NavLink className={({isActive, isPending}) => isPending ? "pending navLink" : isActive ? "active navLink" : "navLink"} to="/login">Login</NavLink>
           </>
         )}
       </div>
