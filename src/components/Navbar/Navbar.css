@@ -23,6 +23,13 @@ nav a {
     display: none;
 }
 
+.navLink {
+    border: none;
+    background-color: transparent;
+    font: inherit;
+    color: rgb(23, 106, 37);
+}
+
 /* button {
     background-color: #b3e6b2;
     border: 1px solid #68c468;
@@ -42,10 +49,5 @@ nav a {
         width: 200px;
     }
 
-    .navLink {
-        border: none;
-        background-color: transparent;
-        font: inherit;
-        color: rgb(23, 106, 37);
-    }
+   
 }
