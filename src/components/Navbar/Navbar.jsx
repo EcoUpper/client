@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/auth.context";
 import notifImage from "../../images/notif.png"
+import logo from "../../images/test-logo.png"
 
 function Navbar() {
   
@@ -14,7 +15,6 @@ function Navbar() {
   function settingEvent () {
     setEvent(!event)
   }
-  
   
   useEffect(()=>{
 
@@ -36,7 +36,7 @@ function Navbar() {
   
   useEffect(()=>{
     const newArr = [... items].filter((item)=>{
-      return item.owner._id === user._id
+      return item.owner._id === user?._id
     })
 
     console.log("NEWARR",newArr);
@@ -63,8 +63,8 @@ function Navbar() {
   return (
     <nav>
       <Link to="/" onClick={settingEvent}>
-      <img className="bigLogo" src="./images/test logo.png" alt="Home" />
-      <img className="smallLogo" src="./images/cutlogo.jpg" alt="Home" />
+      <img className="bigLogo" src={logo} alt="Home" />
+      {/* <img className="smallLogo" src={logo} alt="Home" /> */}
       </Link>
 
       <Link to="/market" onClick={settingEvent}>Market</Link>
@@ -77,11 +77,11 @@ function Navbar() {
         <>
           <button onClick={logOutUser}>Logout</button>
 
-          <Link to={`/profile/${user._id}`} onClick={settingEvent}>
-            <img src={user.image_url} style={{ width: 100, height: 100, borderRadius: 25}} alt="Profile" />
+          <Link to={`/profile/${user?._id}`} onClick={settingEvent}>
+            <img src={user?.image_url} style={{ width: 100, height: 100, borderRadius: 25}} alt="Profile" />
           </Link>
           {hasNotif ? <img src={notifImage} alt="" height="30px"/> : null}
-          <span>{user && user.name}</span>
+          <span>{user && user?.name}</span>
         </>
       )}
 

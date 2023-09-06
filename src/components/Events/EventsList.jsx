@@ -6,19 +6,15 @@ function EventsList(props) {
 
     const { events } = props
 
-//     const openRodal = (event) => {
-//         setSelectedEvent(event)
-//         setShowRodal(true)
-//     }
-//     const closeRodal = () => {
-//         setSelectedEvent(null)
-//         setShowRodal(false)
-//     }
-
     return (
         <>
             <div>
-                {events.map((event) => {
+                {events.filter((event)=>{
+                    return props.search.toLowerCase() === "" ?
+                    event :
+                    event.title.toLowerCase().includes(props.search) || event.content.toLowerCase().includes(props.search) || event.location.toLowerCase().includes(props.search)
+                })
+               .map((event) => {
                     const dateAndTime = event.date
                     const dateTime = new Date(dateAndTime)    
                     const date = dateTime.toLocaleDateString()

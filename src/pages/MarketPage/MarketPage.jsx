@@ -1,13 +1,16 @@
 import ItemsList from "./../../components/Market/ItemsList"
 import NewItem from "./../../components/Market/NewItem"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import Rodal from "rodal"
 import "rodal/lib/rodal.css"
 import "./MarketPage.css"
+import { AuthContext } from "../../context/auth.context"
 
 
 
 function MarketPage() {
+
+    const {isLoggedIn} = useContext(AuthContext)
 
     const [items, setItems] = useState([])
     const [allItems, setAllItems] = useState([])
@@ -68,7 +71,7 @@ function MarketPage() {
     return (
 
         <>
-            <button onClick={() => setShowRodal(true)}>Create Item</button>
+            {isLoggedIn? <button onClick={() => setShowRodal(true)}>Create Item</button> : null}
             <Rodal visible={showRodal} animation="fade" width={600} height={440} onClose={() => setShowRodal(false)}>
                 <NewItem fetchItems={fetchItems} />
             </Rodal>

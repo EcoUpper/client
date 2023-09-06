@@ -49,6 +49,7 @@ function PostsPage() {
         <>
             <div>
                 {user? <NewPost fetchPosts={fetchPosts} /> : null}
+                
                 {posts.map((post) => {
                     const dateAndTime = post.createdAt
                     const dateTime = new Date(dateAndTime)

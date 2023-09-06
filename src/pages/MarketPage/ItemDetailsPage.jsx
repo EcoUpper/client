@@ -13,7 +13,7 @@ function ItemDetailsPage() {
     const { itemId } = useParams();
     const { user } = useContext(AuthContext)
     const [itemInfo, setItemInfo] = useState("")
-    const [itemProposals, setItemProposals] = useState("")
+    const [itemProposals, setItemProposals] = useState([])
     const navigate = useNavigate()
     const [showRodal, setShowRodal] = useState(false)
 

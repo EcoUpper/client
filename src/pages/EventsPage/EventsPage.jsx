@@ -6,7 +6,7 @@ import "rodal/lib/rodal.css"
 import IsPrivate from "../../components/IsPrivate/IsPrivate"
 import { AuthContext } from "../../context/auth.context"
 import SearchBar from "./../../components/Events/SearchBarEvents"
-// import jsonData from "./../data.json";
+
 
 
 
@@ -17,6 +17,7 @@ function EventsPage() {
     const [events, setEvents] = useState([])
     const [allEvents, setAllEvents] = useState([])
     const [showRodal, setShowRodal] = useState(false)
+    const [search, setSearch] = useState("")
     // const [event, setEvent] = useState(jsonData);
     // const [eventFound, setEventFound] = useState(jsonData)
     const apiUrl = process.env.REACT_APP_SERVER_URL + "/db/events"
@@ -63,31 +64,6 @@ function EventsPage() {
         setEvents(newArray)
     }
 
-    // function searchForEvent(str) {
-
-    //     let searchedEvent;
-    
-    //     if (str === "") {
-    //       searchedEvent = eventFound;
-    //     } else {
-    //       searchedEvent = eventFound.filter((event) => {
-    //         return event.name.match(str)
-    //       });
-    //     }
-    
-    //     setEvent(searchedEvent)
-    //   }
-
-
-    // return (
-    //     <div>
-    //         <h1>IronStore</h1>
-    //         <SearchBar searchForEvent={searchForEvent}/>
-    //         {/* <ProductTable products={products}/> */}
-    //     </div>
-    // );
-
-
     return (
         <>
             {user ? <button onClick={() => setShowRodal(true)}>Create event</button> : null}
@@ -113,8 +89,8 @@ function EventsPage() {
                 <option value="11">December</option>
 
             </select>
-            <SearchBar />
-            <EventsList events={events} />
+            <input type="text" name="search" placeholder="Search" value={search} onChange={(e)=>setSearch(e.target.value)}/>
+            <EventsList events={events} search={search} />
         </>
     )
 }
