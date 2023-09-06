@@ -49,7 +49,7 @@ export default function PostCard(props) {
             <p>{props.data.content}</p>
             <p>{props.data.created_by.username}</p>
             <p>{props.date} at {props.time}</p>
-            <p>{likes?.length} {likes.find(like => user?._id)? "❤️" : <button onClick={makeLike}>❤️</button>}</p>
+            <p>{likes?.length} {likes?.find(like => like == user?._id)? "❤️" : <button onClick={makeLike}>❤️</button>}</p>
         </div>
     )
 }
