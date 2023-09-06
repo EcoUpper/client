@@ -4,16 +4,14 @@
     align-items: center;
 }
 
-.section{
+.market-section{
     width: 80%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    background-color: rgb(243, 243, 243);
     padding-bottom: 20px;
     margin-top: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.219);
 }
 
 .filter-cont {
@@ -41,4 +39,68 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.create-btn button {
+    border: none;
+    border-radius: 17px;
+    padding: 10px;
+    color: rgb(16, 98, 27);
+    background-color:rgb(240, 255, 242)
+}
+
+.create-btn button:hover {
+    cursor: pointer;
+    background-color: rgb(16, 98, 27);
+    color:rgb(240, 255, 242);
+    border: none;
+    border-radius: 17px;
+    padding: 10px;
+}
+
+.filters button {
+    border:none;
+    border-bottom: 3px solid transparent;
+    padding: 10px;
+    color: rgb(16, 98, 27);
+    background-color: transparent;
+    transition: 300ms;
+}
+
+.filters button:hover {
+    cursor: pointer;
+    border-bottom: 3px solid rgb(16, 98, 27);
+}
+
+
+
+.filters button.active {
+    cursor: pointer;
+    border-bottom: 3px solid rgb(16, 98, 27);
+    padding: 10px;
+}
+
+.back-top-btn{
+    width: 10rem;
+    border: none;
+    border-radius: 17px;
+    padding: 10px;
+    color: rgb(16, 98, 27);
+    background-color:rgb(240, 255, 242)
+}
+.back-top-btn:hover{
+    width: 10rem;
+    cursor: pointer;
+    background-color: rgb(16, 98, 27);
+    color:rgb(240, 255, 242);
+    border: none;
+    border-radius: 17px;
+    padding: 10px;
+}
+
+.flex-row-center{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
