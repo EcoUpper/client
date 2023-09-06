@@ -7,7 +7,10 @@ function PostsPage() {
 
     const {user} = useContext(AuthContext)
     const [posts, setPosts] = useState([])
+    const [newPost, setNewPost] = useState(false)
     const apiUrl = process.env.REACT_APP_SERVER_URL + "/db/posts"
+
+    console.log("NEWWWWWWW POOOOOOOST", newPost);
 
 
     function fetchPosts() {
@@ -31,6 +34,7 @@ function PostsPage() {
                 }                    
             });
             setPosts(sortedPosts);
+            console.log("NEW FETCH");
         })
         .catch((err) => {
             console.log(err);
@@ -39,7 +43,7 @@ function PostsPage() {
 
     useEffect(() => {
         fetchPosts()
-    }, [])
+    }, [newPost])
 
     if (!posts) {
         return <p>Loading...</p>
@@ -48,7 +52,7 @@ function PostsPage() {
     return (
         <>
             <div>
-                {user? <NewPost fetchPosts={fetchPosts} /> : null}
+                {user? <NewPost fetchPosts={fetchPosts} newPost={newPost} setNewPost={setNewPost}/> : null}
                 
                 {posts.map((post) => {
                     const dateAndTime = post.createdAt
@@ -57,7 +61,7 @@ function PostsPage() {
                     const date = dateTime.toLocaleDateString()
                     const time = dateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
                     return (
-                        <PostCard data={post} date={date} time={time} />
+                        <PostCard data={post} date={date} time={time} likes={post.likes}/>
                     )
                 })}
             </div>
