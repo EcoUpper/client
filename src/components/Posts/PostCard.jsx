@@ -4,10 +4,12 @@ import { useNavigate } from "react-router-dom"
 
 export default function PostCard(props) {
 
+
     const navigate = useNavigate()
     const {user} = useContext(AuthContext)
 
-    const [likes, setLikes] = useState(props.data?.likes)
+    const [likes, setLikes] = useState(props.likes)
+    
 
     function makeLike () {
         const likeApi = process.env.REACT_APP_SERVER_URL + "/db/posts/" + props.data._id
@@ -32,6 +34,7 @@ export default function PostCard(props) {
             
             setLikes(likes => [...likes, result.likes.slice(-1)])
             console.log("LIKES",  likes);
+            
             navigate("/posts")
         })
         .catch((err) => {
@@ -46,7 +49,7 @@ export default function PostCard(props) {
             <p>{props.data.content}</p>
             <p>{props.data.created_by.username}</p>
             <p>{props.date} at {props.time}</p>
-            <p>{likes?.length} {likes?.find(like => (like._id == user?._id))? "❤️" : <button onClick={makeLike}>❤️</button>}</p>
+            <p>{likes?.length} {likes.find(like => user?._id)? "❤️" : <button onClick={makeLike}>❤️</button>}</p>
         </div>
     )
 }
