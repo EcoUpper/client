@@ -1,18 +1,15 @@
 import { useState } from "react"
 import ItemCard from "./ItemCard"
+import "./ItemCard.css"
 
 
 function ItemsList(props) {
 
-    const {items} = props
-
-    const [search, setSearch] = useState("")
+    const {items, search} = props
 
     return (
-        <>
-            <div className="itemsContainer">
-            <input type="text" name="search" placeholder="Search" value={search} onChange={(e)=>setSearch(e.target.value)}/>
-
+        <> 
+            
                 {items.filter((item)=>{
                     return search.toLowerCase() === "" ?
                     item :
@@ -24,7 +21,7 @@ function ItemsList(props) {
                         <ItemCard item={item}/>
                     )
                 })}
-            </div>
+            
         </>
     )
 }
