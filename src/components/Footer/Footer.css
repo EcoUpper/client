@@ -1,0 +1,28 @@
+.footer{
+    background-color: #B0F2C2; opacity: 0.5;
+    margin-top: 70px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+
+.footerContainer{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.socialFooter{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 7px;
+    padding-left: 10px;
+   justify-content: center;
+   align-items: center;
+   width: 280px;
+   
+}
+
