@@ -1,19 +1,35 @@
-import { useState, useContext } from "react"
-import { useNavigate, useParams } from "react-router-dom"
+import { useState, useContext, useEffect } from "react"
+import { useNavigate } from "react-router-dom"
 import { AuthContext } from "../../context/auth.context"
 import uploadImage from "../../services/file-upload.service"
 
 function ModifyUser(props) {
 
     const { user } = useContext(AuthContext)
-    const { userId } = useParams();
+    const { setShowModifyRodal, setUsername, setImage, username, image } = props
 
-    const [userInfo, setUserInfo] = useState(user)
-    const [username, setUsername] = useState(user.username)
-    const [image, setImage] = useState(user.image_url)
-
+    
+    const userId = user._id
     const navigate = useNavigate()
 
+    const apiUrl = process.env.REACT_APP_SERVER_URL + "/db/users/" + userId;
+
+    function fetchUserInfo() {
+        fetch(apiUrl)
+            .then((response) => {
+                return response.json()
+            })
+            .then((data) => {
+                console.log("HERE", data)
+                setUsername(data.username)
+                setImage(data.image_url)
+            })
+            .catch(err => console.log(err))
+    }
+
+    useEffect(() => {
+        fetchUserInfo()
+    }, [user])
 
     function handleFileUpload(e) {
         const formData = new FormData()
@@ -27,9 +43,9 @@ function ModifyUser(props) {
     }
 
 
-    function handleUserChange(e, userId) {
+    function handleUserChange(e) {
         e.preventDefault();
-
+        console.log(userId)
         const modifyUserUrl = process.env.REACT_APP_SERVER_URL + "/db/users/" + userId;
 
         const body = {
@@ -46,8 +62,10 @@ function ModifyUser(props) {
         })
             .then((res) => res.json())
             .then((updatedUser) => {
-                console.log(updatedUser)
+                console.log("UPDATED USER", updatedUser)
 
+                fetchUserInfo()
+                setShowModifyRodal(false)
                 navigate(`/profile/${userId}`)
             })
             .catch((err) => {
@@ -55,7 +73,7 @@ function ModifyUser(props) {
             });
     }
 
-   
+
 
     return (
         <>
@@ -78,6 +96,7 @@ function ModifyUser(props) {
 
                     <button type="submit">Modify item</button>
                 </form>
+                <button onClick={(e) => setShowModifyRodal(false)}>Cancel</button>
             </div>
         </>
     )

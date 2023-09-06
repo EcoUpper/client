@@ -25,6 +25,11 @@ function ProfilePage() {
 
   const { userId } = useParams()
 
+
+  function scrollToTop() {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+  }
+
   useEffect(() => {
     const userByIdUrl = process.env.REACT_APP_SERVER_URL + "/db/users/" + userId
 
@@ -156,35 +161,35 @@ function ProfilePage() {
     <div className="profile-page">
       <div className="details-prop-container">
 
-      <UserCard user={user} userParam={userParam}/>
+        <UserCard user={user} userParam={userParam} />
 
-    {user._id == userParam._id? 
-    <div className="user-proposals">
-      <h2>Proposals you made</h2>
-      {
-        proposals.map((proposal) => {
-          const dateAndTime = proposal.date
-          const dateTime = new Date(dateAndTime)
+        {user._id == userParam._id ?
+          <div className="user-proposals">
+            <h2>Proposals you made</h2>
+            {
+              proposals.map((proposal) => {
+                const dateAndTime = proposal.date
+                const dateTime = new Date(dateAndTime)
 
-          const date = dateTime.toLocaleDateString()
-          const time = dateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-          return (
-            <div className="proposal-card">
-              <ProposalCard data={proposal} user={userParam} key={proposal._id} 
-              item={proposal.item_id} link={proposal.item_id._id} date={date} time={time}/>
-              
-              <button className="delete-btn" onClick={(e) => handleProposalSubmit(e, proposal._id)}>Delete</button>
-            </div>
-          )
-        })
-      }
-    </div>
-      : null
-      }
-    </div>
+                const date = dateTime.toLocaleDateString()
+                const time = dateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+                return (
+                  <div className="proposal-card">
+                    <ProposalCard data={proposal} user={userParam} key={proposal._id}
+                      item={proposal.item_id} link={proposal.item_id._id} date={date} time={time} />
+
+                    <button className="delete-btn" onClick={(e) => handleProposalSubmit(e, proposal._id)}>Delete</button>
+                  </div>
+                )
+              })
+            }
+          </div>
+          : null
+        }
+      </div>
 
       <div className="user-items">
-      {user._id == userParam._id ? <h2>My Items</h2> : <h2>{userParam.username}'s Items</h2>}
+        {user._id == userParam._id ? <h2>My Items</h2> : <h2>{userParam.username}'s Items</h2>}
         <div className="listing-container">
           {items.length > 0 ?
             items.map((item) => {
@@ -245,7 +250,7 @@ function ProfilePage() {
           })
         }
       </div>
-
+      <button onClick={scrollToTop}>Back to top</button>
 
     </div>
   );
