@@ -7,13 +7,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    margin: .8rem;
+    justify-content: start;
+    margin: .8rem
 }
 
 .itemImg{
     width: 100%;
-    height: 150px;
+    height: 60%;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
