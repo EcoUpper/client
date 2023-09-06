@@ -4,7 +4,7 @@ import "./ItemCard.css"
 
 function ItemCard(props) {
 
-    const {item, expirationDate } = props
+    const {item} = props
 
     return (
         <div className="cardContainer" style={{ width: "400px" }}>
