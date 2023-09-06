@@ -167,7 +167,7 @@ function ProfilePage() {
       <UserCard user={user} userParam={userParam}/>
 
     {user._id == userParam._id? 
-    <div className="user-proposals">
+    <div className="user-proposals ">
       <h2>Proposals you made</h2>
       {
         proposals.map((proposal) => {
@@ -191,7 +191,7 @@ function ProfilePage() {
       }
     </div>
 
-      <div className="user-items">
+      <div className="user-items section">
       {user._id == userParam._id ? <h2>My Items</h2> : <h2>{userParam.username}'s Items</h2>}
         <div className="listing-container">
           {items.length > 0 ?
@@ -210,8 +210,8 @@ function ProfilePage() {
       </div>
 
 
-      <div className="user-events">
-        {user._id == userParam._id ? <h2>Events hosted by me</h2> : <h2>Events hosted by {userParam.username} </h2>}
+      <div className="user-events section">
+        {user._id == userParam._id ? <h2>My Events</h2> : <h2>Events hosted by {userParam.username} </h2>}
         {events?.length == 0 && <p>You haven't created any events yet.</p>}
         {events?.map((eventElement) => {
           const dateAndTime = eventElement.date
@@ -230,7 +230,7 @@ function ProfilePage() {
       </div>
 
 
-      <div className="user-posts">
+      <div className="user-posts section">
         {user._id == userParam._id ? <h2>My Posts</h2> : <h2>{userParam.username}'s Posts</h2>}
         {
           posts.map((post) => {
@@ -245,7 +245,7 @@ function ProfilePage() {
       </div>
 
 
-      <div className="user-reviews">
+      <div className="user-reviews section">
         {user._id == userParam._id ? <h2>Reviews</h2> : <h2>{userParam.username}'s Reviews </h2>}
         {
           reviews.map((review) => {

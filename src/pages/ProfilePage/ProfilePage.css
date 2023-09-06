@@ -6,10 +6,15 @@
 }
 
 .details-prop-container {
-    width: 100%;
+    width: 80%;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    background-color: white;
+    padding-bottom: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.219);
 }
 
 .post-card {
@@ -37,7 +42,7 @@
 }
 
 .profile-details {
-    margin: 1rem;
+    margin: 1rem;;
 }
 
 .proposal-card {
@@ -67,5 +72,15 @@
     background: linear-gradient(0deg, rgba(202,138,103,1) 0%, rgba(255,255,255,1) 22%);
 }
 
-
+.section{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background-color: white;
+    padding-bottom: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.219);
+}
 
