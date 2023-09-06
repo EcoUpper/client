@@ -166,15 +166,36 @@ function ProfilePage() {
 
   return (
     <div className="profile-page">
+      <div className="details-prop-container">
 
       {user._id == userParam._id? 
       <div className="profile-details">
+        <h2>Profile information</h2>
         <img src={userParam.image_url} alt={userParam.username} className="profile-img" />
         <h3>{userParam.username}</h3>
         <p><strong>Email:</strong> {userParam.email}</p>
       </div>
       : null
+    }
+
+    {user._id == userParam._id? 
+    <div className="user-proposals">
+      <h2>Proposals you made</h2>
+      {
+        proposals.map((proposal) => {
+          return (
+            <div>
+              <ProposalCard data={proposal} user={userParam} key={proposal._id} item={proposal.item_id} link={proposal.item_id._id} />
+              
+              <button onClick={(e) => handleProposalSubmit(e, proposal._id)}>Delete</button>
+            </div>
+          )
+        })
       }
+    </div>
+      : null
+      }
+    </div>
 
       <div className="user-items">
         <h2>{userParam.username}'s Listing</h2>
@@ -194,23 +215,6 @@ function ProfilePage() {
         </div>
       </div>
 
-      {user._id == userParam._id? 
-      <div className="user-proposals">
-        <h2>Proposals you made</h2>
-        {
-          proposals.map((proposal) => {
-            return (
-              <div>
-                <ProposalCard data={proposal} user={userParam} key={proposal._id} item={proposal.item_id} link={proposal.item_id._id} />
-                
-                <button onClick={(e) => handleProposalSubmit(e, proposal._id)}>Delete</button>
-              </div>
-            )
-          })
-        }
-      </div>
-        : null
-        }
 
       <div className="user-events">
         {user._id == userParam._id? <h2>Events hosted by you </h2> : <h2>Events hosted by {userParam.username} </h2>}
