@@ -8,9 +8,6 @@ import { AuthContext } from "../../context/auth.context"
 import SearchBar from "./../../components/Events/SearchBarEvents"
 
 
-
-
-
 function EventsPage() {
     const { user } = useContext(AuthContext)
 

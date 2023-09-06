@@ -28,6 +28,7 @@ function NewEvent (props) {
         .then((res)=>{
           console.log("upload res", res);
           setImage(res.image_url)
+          console.log("IMAGE", image);
         })
         .catch(err => console.log(err))
     
