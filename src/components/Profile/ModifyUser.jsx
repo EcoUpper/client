@@ -3,11 +3,12 @@ import { useNavigate, useParams } from "react-router-dom"
 import { AuthContext } from "../../context/auth.context"
 import uploadImage from "../../services/file-upload.service"
 
-function ModifyUser() {
+function ModifyUser(props) {
 
     const { user } = useContext(AuthContext)
     const { userId } = useParams();
 
+    const [userInfo, setUserInfo] = useState(user)
     const [username, setUsername] = useState(user.username)
     const [image, setImage] = useState(user.image_url)
 
@@ -25,36 +26,41 @@ function ModifyUser() {
             .catch(err => console.log(err))
     }
 
-    function handleSubmit(e) {
-        e.preventDefault()
 
-        // const modifyItemUrl = process.env.REACT_APP_SERVER_URL + "/db/items/" + itemId
+    function handleUserChange(e, userId) {
+        e.preventDefault();
 
-        fetch(modifyItemUrl, {
+        const modifyUserUrl = process.env.REACT_APP_SERVER_URL + "/db/users/" + userId;
+
+        const body = {
+            username: username,
+            image_url: image
+        }
+
+        fetch(modifyUserUrl, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({ image_url: image }),
+            body: JSON.stringify(body),
         })
             .then((res) => res.json())
-
             .then((updatedUser) => {
                 console.log(updatedUser)
 
-                fetchItemInfo()
                 navigate(`/profile/${userId}`)
             })
             .catch((err) => {
-                console.log(err)
-            })
+                console.log(err);
+            });
     }
 
+   
 
     return (
         <>
             <div className="modifyForm">
-                <form className="formContainer" onSubmit={handleSubmit} >
+                <form className="formContainer" onSubmit={handleUserChange} >
 
                     <div className="innerForm">
                         <label>Username</label>

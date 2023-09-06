@@ -52,7 +52,7 @@ export default function PostCard(props) {
             {props.data.image_url ?
                 <img src={props.data.image_url} alt="" /> : null}
             <p>{props.data.content}</p>
-            <Link to={`/profile/${props.data.created_by._id}`}><p>{props.data.created_by.username}</p></Link>
+            <Link to={`/profile/${props.data.created_by?._id}`}><p>{props.data.created_by?.username}</p></Link>
             <p>{props.date} at {props.time}</p>
             <p>  {likes?.length}{" "}
                 {userHasLiked ? (

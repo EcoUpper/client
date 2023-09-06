@@ -34,7 +34,6 @@ function ProfilePage() {
       })
       .then((data) => {
         setUserParam(data)
-        console.log("user is", data)
       })
       .catch(err => console.log(err))
 
@@ -49,14 +48,11 @@ function ProfilePage() {
     const reviewUrl = process.env.REACT_APP_SERVER_URL + "/db/reviews/" + userParam._id
     const proposalUrl = process.env.REACT_APP_SERVER_URL + "/db/proposals/created/" + userParam._id
 
-
-
     fetch(itemUrl)
       .then((response) => {
         return response.json()
       })
       .then((data) => {
-        console.log("owner items", data);
         setItems(data)
       })
       .catch(err => console.log(err))
@@ -67,7 +63,6 @@ function ProfilePage() {
         return response.json()
       })
       .then((data) => {
-        console.log("all items", data);
         setAllItems(data)
       })
       .catch(err => console.log(err))
@@ -78,8 +73,6 @@ function ProfilePage() {
         return response.json()
       })
       .then((data) => {
-        console.log("events", data);
-        console.log(userParam._id);
         setEvents(data)
       })
       .catch(err => console.log(err))
@@ -90,8 +83,6 @@ function ProfilePage() {
         return response.json()
       })
       .then((data) => {
-        console.log("posts", data);
-        console.log("param is", userParam._id);
         setPosts(data)
       })
       .catch(err => console.log(err))
@@ -102,8 +93,6 @@ function ProfilePage() {
         return response.json()
       })
       .then((data) => {
-        console.log("reviews", data);
-        console.log(userParam._id);
         setReviews(data)
       })
       .catch(err => console.log(err))
@@ -113,7 +102,6 @@ function ProfilePage() {
         return response.json()
       })
       .then((data) => {
-        console.log("props", data);
         setProposals(data)
       })
       .catch(err => console.log(err))
@@ -122,7 +110,6 @@ function ProfilePage() {
   function handleEventSubmit(e, eventId) {
     e.preventDefault()
     const deleteEventUrl = process.env.REACT_APP_SERVER_URL + "/db/events/delete/" + eventId
-    console.log(eventId)
 
     fetch(deleteEventUrl, {
       method: "DELETE"
@@ -169,7 +156,7 @@ function ProfilePage() {
     <div className="profile-page">
       <div className="details-prop-container">
 
-      {/* <UserCard user={user} userParam={userParam}/> */}
+      <UserCard user={user} userParam={userParam}/>
 
     {user._id == userParam._id? 
     <div className="user-proposals">

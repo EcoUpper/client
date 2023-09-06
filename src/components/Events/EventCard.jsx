@@ -17,6 +17,7 @@ export default function EventCard(props) {
     setSelectedEvent(null)
     setShowRodal(false)
   }
+  
   return (
     <>
       <div style={{ width: "400px" }}>
@@ -29,17 +30,11 @@ export default function EventCard(props) {
           alt="Event image"
         />
       </div>
-      <Rodal
-        visible={showRodal}
-        onClose={closeRodal}
-        animation="fade"
-        width={600}
-        height={550}
-      >
+      <Rodal visible={showRodal} onClose={closeRodal} animation="fade" width={600} height={550}>
         {selectedEvent && (
           <>
             <h3>{selectedEvent.title}</h3>
-            <p>Hosted by <Link to={`/profile/${props.data.created_by._id}`}>{props.data.created_by.username}</Link></p>
+            <p>Hosted by <Link to={`/profile/${props.data.created_by?._id}`}>{props.data.created_by?.username}</Link></p>
             <p>{props.date}</p>
             <p>{props.time}</p>
             <img
