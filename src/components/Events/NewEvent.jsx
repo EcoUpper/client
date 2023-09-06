@@ -5,7 +5,7 @@ import uploadImage from "../../services/file-upload.service"
 
 function NewEvent (props) {
     
-    const {fetchEvents} = props
+    const {fetchEvents, setShowRodal} = props
 
     const {user} = useContext(AuthContext)
     const [title, setTitle] = useState("")
@@ -128,7 +128,7 @@ function NewEvent (props) {
                             value={location}
                         />
                     </div>
-                    <button type="submit">Create</button>
+                    <button type="submit" onClick={() => setShowRodal(false)}>Create</button>
                 </form>
         </div>
        </> 
