@@ -183,11 +183,17 @@ function ProfilePage() {
       <h2>Proposals you made</h2>
       {
         proposals.map((proposal) => {
+          const dateAndTime = proposal.date
+          const dateTime = new Date(dateAndTime)
+
+          const date = dateTime.toLocaleDateString()
+          const time = dateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
           return (
-            <div>
-              <ProposalCard data={proposal} user={userParam} key={proposal._id} item={proposal.item_id} link={proposal.item_id._id} />
+            <div className="proposal-card">
+              <ProposalCard data={proposal} user={userParam} key={proposal._id} 
+              item={proposal.item_id} link={proposal.item_id._id} date={date} time={time}/>
               
-              <button onClick={(e) => handleProposalSubmit(e, proposal._id)}>Delete</button>
+              <button className="delete-btn" onClick={(e) => handleProposalSubmit(e, proposal._id)}>Delete</button>
             </div>
           )
         })
