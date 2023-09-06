@@ -13,10 +13,16 @@ function MarketPage() {
   const [allItems, setAllItems] = useState([]);
   const [showRodal, setShowRodal] = useState(false);
   const [search, setSearch] = useState("");
+  const [active, setActive] = useState("")
+
   const apiUrl = process.env.REACT_APP_SERVER_URL + "/db/items";
 
   function scrollToTop() {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }
+
+  function handleBtnClick (e) {
+    setActive(e.target.id)
   }
 
   function fetchItems() {
@@ -71,26 +77,28 @@ function MarketPage() {
 
   return (
     <div className="market-page">
-      <div className="section">
+      <div className="market-section">
         <div  className="filter-cont">
           <div className="filters">
-            <button onClick={(e) => filterItems(e.target.value)} value="All">
+            <button className={active === "1"? "active" : undefined} onClick={(e) => {filterItems(e.target.value); handleBtnClick(e)}} value="All" id={"1"}>
               All items
             </button>
-            <button onClick={(e) => filterItems(e.target.value)} value="Food">
+            <button className={active === "2"? "active" : undefined} onClick={(e) => {filterItems(e.target.value); handleBtnClick(e)}} value="Food" id={"2"}>
               Food
             </button>
             <button
-              onClick={(e) => filterItems(e.target.value)}
+            className={active === "3"? "active" : undefined}
+            onClick={(e) => {filterItems(e.target.value); handleBtnClick(e)}}
               value="Clothing"
+              id={"3"}
             >
               Clothing
             </button>
-            <button onClick={(e) => filterItems(e.target.value)} value="Other">
+            <button className={active === "4"? "active" : undefined} onClick={(e) => {filterItems(e.target.value); handleBtnClick(e)}} value="Other" id={"4"}>
               Other
             </button>
           </div>
-          <div>
+          <div className="create-btn">
             {isLoggedIn ? (
               <button onClick={() => setShowRodal(true)}>Create Item</button>
             ) : null}
@@ -114,8 +122,9 @@ function MarketPage() {
             <ItemsList items={items} search={search} />
           )}
         </div>
-
-        <button onClick={scrollToTop}>Back to top</button>
+        <div>
+        <button className="back-top-btn" onClick={scrollToTop}>Back to top</button>
+        </div>
       </div>
     </div>
   );
