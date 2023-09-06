@@ -6,7 +6,7 @@ import uploadImage from "../../services/file-upload.service"
 
 function NewItem(props) {
 
-    const { fetchItems } = props
+    const { fetchItems, setShowRodal } = props
 
     const { user } = useContext(AuthContext)
     const [name, setName] = useState("")
@@ -144,7 +144,7 @@ function NewItem(props) {
                             <option value="gifted">Gifted</option>
                         </select>
                     </div> */}
-                    <button type="submit">Create item</button>
+                    <button type="submit" onClick={() => setShowRodal(false)}>Create item</button>
                 </form>
             </div>
         </>

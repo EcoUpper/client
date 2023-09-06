@@ -72,8 +72,8 @@ function MarketPage() {
 
         <>
             {isLoggedIn? <button onClick={() => setShowRodal(true)}>Create Item</button> : null}
-            <Rodal visible={showRodal} animation="fade" width={600} height={440} onClose={() => setShowRodal(false)}>
-                <NewItem fetchItems={fetchItems} />
+            <Rodal visible={showRodal} animation="fade" width={600} height={440}>
+                <NewItem fetchItems={fetchItems} setShowRodal={setShowRodal}/>
             </Rodal>
 
             <select onChange={(e) => filterItems(e.target.value)} id="">

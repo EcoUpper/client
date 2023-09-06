@@ -64,7 +64,7 @@ function EventsPage() {
         <>
             {isLoggedIn ? <button onClick={() => setShowRodal(true)}>Create event</button> : null}
             <Rodal visible={showRodal} animation="fade" width={600} height={440} onClose={() => setShowRodal(false)}>
-                <NewEvent fetchEvents={fetchEvents} />
+                <NewEvent fetchEvents={fetchEvents} setShowRodal={setShowRodal}/>
             </Rodal>
 
             <select onChange={(e) => filterEvents(e.target.value)} id="">
