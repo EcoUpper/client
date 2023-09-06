@@ -169,6 +169,7 @@ function ProfilePage() {
 
       {user._id == userParam._id? 
       <div className="profile-details">
+        <img src={userParam.image_url} alt="" />
         <h3>{userParam.username}</h3>
         <p><strong>Email:</strong> {userParam.email}</p>
       </div>
