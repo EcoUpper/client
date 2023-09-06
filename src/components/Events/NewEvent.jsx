@@ -3,37 +3,37 @@ import { useNavigate } from "react-router-dom"
 import { AuthContext } from "../../context/auth.context"
 import uploadImage from "../../services/file-upload.service"
 
-function NewEvent (props) {
-    
-    const {fetchEvents} = props
+function NewEvent(props) {
 
-    const {user} = useContext(AuthContext)
+    const { fetchEvents } = props
+
+    const { user } = useContext(AuthContext)
     const [title, setTitle] = useState("")
     const [content, setContent] = useState("")
     const [image, setImage] = useState("")
     const [date, setDate] = useState("") // including time
     const [time, setTime] = useState("")
     const [location, setLocation] = useState("")
-    
+
     const dateTime = new Date(date + 'T' + time);
 
     const navigate = useNavigate()
     const apiUrl = process.env.REACT_APP_SERVER_URL + "/db/events/create/new"
 
-    const handleFileUpload  = (e) => {
+    const handleFileUpload = (e) => {
         const formData = new FormData()
         formData.append("image_url", e.target.files[0])
-    
-        uploadImage(formData)
-        .then((res)=>{
-          console.log("upload res", res);
-          setImage(res.image_url)
-        })
-        .catch(err => console.log(err))
-    
-      }
 
-    function handleSubmit (e) {
+        uploadImage(formData)
+            .then((res) => {
+                console.log("upload res", res);
+                setImage(res.image_url)
+            })
+            .catch(err => console.log(err))
+
+    }
+
+    function handleSubmit(e) {
         e.preventDefault()
 
         const body = {
@@ -50,31 +50,31 @@ function NewEvent (props) {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(body)
         })
-        .then((res) => {
-            res.json()
-        })
-        .then((data) => {
-            console.log(data)
-            setTitle("")
-            setContent("")
-            setImage("")
-            setDate("")
-            setTime("")
-            setLocation("")
+            .then((res) => {
+                res.json()
+            })
+            .then((data) => {
+                console.log(data)
+                setTitle("")
+                setContent("")
+                setImage("")
+                setDate("")
+                setTime("")
+                setLocation("")
 
-            fetchEvents()
-            navigate("/events")
-        })
-        .catch((err) => {
-            console.log(err)
-        })
+                fetchEvents()
+                navigate("/events")
+            })
+            .catch((err) => {
+                console.log(err)
+            })
     }
 
 
 
     return (
-       <>
-       <div>
+        <>
+            <div>
                 <form onSubmit={handleSubmit} >
                     <div>
                         <label>Title</label>
@@ -97,7 +97,7 @@ function NewEvent (props) {
                     </div>
                     <div>
                         <label>Image</label>
-                        <input type="file" onChange={(e) => handleFileUpload (e)} />
+                        <input type="file" onChange={(e) => handleFileUpload(e)} />
 
                     </div>
                     <div>
@@ -127,10 +127,10 @@ function NewEvent (props) {
                             value={location}
                         />
                     </div>
-                    <button type="submit">Create</button>
+                    <button type="submit">Create event</button>
                 </form>
-        </div>
-       </> 
+            </div>
+        </>
     )
 }
 

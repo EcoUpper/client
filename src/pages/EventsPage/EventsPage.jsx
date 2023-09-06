@@ -5,14 +5,13 @@ import Rodal from "rodal"
 import "rodal/lib/rodal.css"
 import IsPrivate from "../../components/IsPrivate/IsPrivate"
 import { AuthContext } from "../../context/auth.context"
-import SearchBar from "./../../components/Events/SearchBarEvents"
 
 
 
 
 
 function EventsPage() {
-    const { user } = useContext(AuthContext)
+    const { isLoggedIn } = useContext(AuthContext)
 
     const [events, setEvents] = useState([])
     const [allEvents, setAllEvents] = useState([])
@@ -66,11 +65,9 @@ function EventsPage() {
 
     return (
         <>
-            {user ? <button onClick={() => setShowRodal(true)}>Create event</button> : null}
+            {isLoggedIn ? <button onClick={() => setShowRodal(true)}>Create event</button> : null}
             <Rodal visible={showRodal} animation="fade" width={600} height={440} onClose={() => setShowRodal(false)}>
                 <NewEvent fetchEvents={fetchEvents} />
-
-
             </Rodal>
 
             <select onChange={(e) => filterEvents(e.target.value)} id="">
