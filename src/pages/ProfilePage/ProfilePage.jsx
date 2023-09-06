@@ -172,7 +172,7 @@ function ProfilePage() {
 
         {user._id == userParam._id ?
           <div className="user-proposals">
-            <h2>Proposals you made</h2>
+            <h2>My Proposals</h2>
             {
               proposals.map((proposal) => {
                 const dateAndTime = proposal.date
@@ -195,7 +195,7 @@ function ProfilePage() {
         }
       </div>
 
-      <div className="user-items">
+      <div className="user-items section">
         {user._id == userParam._id ? <h2>My Items</h2> : <h2>{userParam.username}'s Items</h2>}
         <div className="listing-container">
           {items.length > 0 ?
@@ -208,7 +208,9 @@ function ProfilePage() {
               return <ItemCard item={item} expirationDate={expirationDate} />
             })
             :
-            <p>You do not have any listing at the moment</p>
+            <div className="center-div">
+              <p>You do not have any listing at the moment</p>
+            </div>
           }
         </div>
       </div>
@@ -248,15 +250,6 @@ function ProfilePage() {
         }
       </div>
 
-
-      <div className="user-reviews section">
-        {user._id == userParam._id ? <h2>Reviews</h2> : <h2>{userParam.username}'s Reviews </h2>}
-        {
-          reviews.map((review) => {
-            return <ReviewCard data={review} key={review._id} />
-          })
-        }
-      </div>
       <button onClick={scrollToTop}>Back to top</button>
 
     </div>

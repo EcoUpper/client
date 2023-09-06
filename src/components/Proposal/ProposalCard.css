@@ -6,7 +6,20 @@
     align-items: center;
 }
 
-.available {
+.proposal-info {
+        background-color: white;
+        display: flex;
+        flex-direction: row;
+        gap:10px;
+        margin: 10px;
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.219);
+        align-items: center;
+        height: 30px;
+}
+
+.accepted {
     background: rgb(104,196,104);
     background: linear-gradient(0deg, rgba(104,196,104,1) 0%, rgba(255,255,255,1) 20%);
 }
@@ -15,3 +28,12 @@
     background: rgb(202,138,103);
     background: linear-gradient(0deg, rgba(202,138,103,1) 0%, rgba(255,255,255,1) 22%);
 }
+ #submit-prop{
+    width: 8rem;
+ }
+
+ .proposal-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+ }

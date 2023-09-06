@@ -97,6 +97,8 @@ function MarketPage() {
             <button className={active === "4"? "active" : undefined} onClick={(e) => {filterItems(e.target.value); handleBtnClick(e)}} value="Other" id={"4"}>
               Other
             </button>
+            <input type="text" name="search" placeholder="Search" value={search} onChange={(e)=>setSearch(e.target.value)}/>
+
           </div>
           <div className="create-btn">
             {isLoggedIn ? (
@@ -112,7 +114,7 @@ function MarketPage() {
               <NewItem fetchItems={fetchItems} setShowRodal={setShowRodal} />
             </Rodal>
           </div>
-            <input type="text" name="search" placeholder="Search" value={search} onChange={(e)=>setSearch(e.target.value)}/>
+            
         </div>
 
         <div className="items-list">

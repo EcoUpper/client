@@ -1,4 +1,5 @@
 import EventCard from "./EventCard"
+
 // import Rodal from "rodal"
 // import "rodal/lib/rodal.css"
 
@@ -8,7 +9,7 @@ function EventsList(props) {
 
     return (
         <>
-            <div>
+            <div className="event-list">
                 {events.filter((event)=>{
                     return props.search.toLowerCase() === "" ?
                     event :

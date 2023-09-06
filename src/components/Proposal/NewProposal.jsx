@@ -1,6 +1,7 @@
 import { useState, useContext } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { AuthContext } from "../../context/auth.context"
+import "./ProposalCard.css"
 
 function NewProposal(props) {
 
@@ -68,7 +69,7 @@ function NewProposal(props) {
                             value={time}
                         />
                     </div>
-                    <button type="submit">Submit proposal</button>
+                    <button id="submit-prop" type="submit">Submit proposal</button>
                 </form>
             </div>
         </>

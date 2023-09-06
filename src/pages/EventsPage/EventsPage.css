@@ -1,0 +1,45 @@
+.event-cont {
+    display: flex;
+    flex-direction: column;
+}
+
+.event-filter-cont{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 2rem;
+}
+
+.event-filter{
+    display: flex;
+    flex-direction: row;
+    gap:10px;
+    width: 50%;
+}
+
+.event-filter select{
+    border: solid 1px rgb(16, 98, 27);
+    border-radius: 10px;
+}
+
+.event-cont button {
+    border: none;
+    border-radius: 17px;
+    padding: 10px;
+    color: white;
+    background-color:rgb(16,124,44);
+    width: 8rem
+}
+
+.event-cont button:hover {
+    cursor: pointer;
+    background-color: rgb(16, 98, 27);
+    color:rgb(240, 255, 242);
+    border: none;
+    border-radius: 17px;
+    padding: 10px;
+}
+
+.back-to-top{
+    margin-top: 2rem;
+}

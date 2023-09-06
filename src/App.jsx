@@ -23,7 +23,7 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-
+      <div className="content">
       <Routes>
         <Route path="/" element={<HomePage/>} />
         <Route path="/market" element={<MarketPage/>} />
@@ -62,6 +62,7 @@ function App() {
           }
         />
       </Routes>
+      </div>
       <Footer />
     </div>
   );

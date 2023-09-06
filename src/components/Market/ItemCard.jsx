@@ -15,11 +15,13 @@ function ItemCard(props) {
     }
 
     return (
-        <div className={`cardContainer ${statusCheck()}`}>
-            <img className="itemImg" src={item.image_url} alt="Item image" />
-            <Link key={item._id} to={`/market/${item._id}`}><h3>{item.name}</h3></Link>
-            <h4 style={{ textTransform: "capitalize" }}><strong>{item.status}</strong></h4>
-        </div>
+        <Link key={item._id} to={`/market/${item._id}`}>
+            <div className={`cardContainer ${statusCheck()}`}>
+                <img className="itemImg" src={item.image_url} alt="Item image" />
+                <h3>{item.name}</h3>
+                <h5 style={{ textTransform: "capitalize" }}>{item.status}</h5>
+            </div>
+        </Link>
     )
 }
 

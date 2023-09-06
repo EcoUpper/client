@@ -59,7 +59,7 @@ function UserCard (props) {
             </Rodal>
 
 
-            <button onClick={() => setShowDeleteRodal(true)}>Delete profile</button>
+            <button className="delete-btn" onClick={() => setShowDeleteRodal(true)}>Delete profile</button>
             <Rodal visible={showDeleteRodal} animation="fade" width={400} height={230}>
                 <p>If you delete your user, all your data will also be deleted and you won't have access to premium features.</p>
                 <p>Are you sure you want to delete your user profile?</p>

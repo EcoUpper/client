@@ -1,4 +1,3 @@
-import { useState } from "react"
 import ItemCard from "./ItemCard"
 import "./ItemCard.css"
 
@@ -8,12 +7,12 @@ function ItemsList(props) {
     const {items, search} = props
 
     return (
-        <> 
-            
+        <>      
                 {items.filter((item)=>{
                     return search.toLowerCase() === "" ?
                     item :
-                    item.name.toLowerCase().includes(search) || item.description.toLowerCase().includes(search) || item.location.toLowerCase().includes(search)
+                    item.name.toLowerCase().includes(search.toLowerCase()) || item.description.toLowerCase().includes(search.toLowerCase()) 
+                    || item.location.toLowerCase().includes(search.toLowerCase())
                 })               
                 .map((item) => {
 
@@ -21,7 +20,6 @@ function ItemsList(props) {
                         <ItemCard item={item}/>
                     )
                 })}
-            
         </>
     )
 }

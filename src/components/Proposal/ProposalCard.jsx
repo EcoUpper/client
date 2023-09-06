@@ -8,7 +8,9 @@ function ProposalCard(props) {
     return (    
             <div className="proposal-info" key={props.data._id}>
                 <p>Date: {date} {time}</p>
-                <p>Status: {props.data.status === "Accepted"? "✅" : "❌"}</p>
+                <p>Status: {props.data.status === "Accepted"&& "✅"} 
+                {props.data.status === "Rejected"&& "❌"} 
+                {props.data.status === "pending"&& "🕒"}</p>
                 {props.user._id === props.item.owner._id ? null 
                 :                   
                 props.link?<Link to={`/market/${props.link}`}><p>{props.item.name}</p></Link> : null

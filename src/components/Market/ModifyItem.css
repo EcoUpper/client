@@ -15,7 +15,7 @@
     justify-content: center;
 }
 
-.formContainer button {
+/* .formContainer button {
     width: 30%;
     margin-left: 35%;
     border: none;
@@ -34,7 +34,7 @@
     border: none;
     border-radius: 17px;
     padding: 10px;
-}
+} */
 
 .innerForm {
     display: flex;

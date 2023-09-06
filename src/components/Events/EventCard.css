@@ -1,0 +1,66 @@
+.event-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.event-card {
+    background-color: white;
+    width: 600px;
+    border-radius: 10px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: start;
+    margin: .5rem;
+    cursor: pointer;
+}
+
+.event-card:hover {
+    background-color: rgba(201, 219, 199, 0.9);
+    box-shadow: 0 0 20px 2px rgba(194, 199, 196, 0.906);
+}
+
+.event-card h1, h2, h3, h4, h5, p {
+    margin: .8rem;
+    padding: 0;
+}
+
+.event-card img{
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.event-card a{
+    color: rgb(29, 216, 79);
+}
+
+.event-info {
+    overflow: hidden;
+    height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.rodal-cont {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: start;
+}
+
+.rodal-cont a {
+    color: rgb(29, 216, 79);
+}
+
+.rodal-main {
+    display: flex;
+    flex-direction: column;
+}
+
+.description{
+    margin: 1rem;
+}
+

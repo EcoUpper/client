@@ -1,6 +1,7 @@
 body {
   margin: 0;
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+  padding: 0;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
 }
 
 #root {
@@ -8,6 +9,10 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  min-height: 100vh;
   padding-top: 100px;
+  min-height: 92.15vh
+}
+
+.content {
+  min-height: 70vh;
 }
