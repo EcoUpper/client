@@ -7,7 +7,6 @@ import ProposalCard from "../../components/Proposal/ProposalCard"
 import ModifyItem from "../../components/Market/ModifyItem"
 import Rodal from "rodal"
 import "rodal/lib/rodal.css"
-import ProfilePage from "../ProfilePage/ProfilePage"
 
 function ItemDetailsPage() {
 
