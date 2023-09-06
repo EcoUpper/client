@@ -17,6 +17,10 @@ function MarketPage() {
     const [showRodal, setShowRodal] = useState(false)
     const apiUrl = process.env.REACT_APP_SERVER_URL + "/db/items"
 
+    function scrollToTop () {
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+      }
+
     function fetchItems() {
         fetch(apiUrl)
             .then((res) => {
@@ -84,7 +88,7 @@ function MarketPage() {
             </select>
            
             <ItemsList  items={items} />
-          
+            <button onClick={scrollToTop}>Back to top</button>
         
         </>
     )
