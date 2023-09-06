@@ -4,7 +4,7 @@ import "./ItemCard.css"
 
 function ItemCard(props) {
 
-    const {item, expirationDate } = props
+    const {item} = props
 
     function statusCheck () {
         if (item.status === "available") {
