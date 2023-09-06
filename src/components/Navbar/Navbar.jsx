@@ -67,15 +67,15 @@ function Navbar() {
       {/* <img className="smallLogo" src={logo} alt="Home" /> */}
       </Link>
 
-      <Link to="/market" onClick={settingEvent}>Market</Link>
+      <Link className="navLink" to="/market" onClick={settingEvent}>Market</Link>
 
-      <Link to="/events" onClick={settingEvent}>Events</Link>
+      <Link className="navLink" to="/events" onClick={settingEvent}>Events</Link>
 
-      <Link to="/posts" onClick={settingEvent}>Posts</Link>
+      <Link className="navLink" to="/posts" onClick={settingEvent}>Posts</Link>
 
       {isLoggedIn && (
         <>
-          <button onClick={logOutUser}>Logout</button>
+          <button className="navLink" onClick={logOutUser}>Logout</button>
 
           <Link to={`/profile/${user?._id}`} onClick={settingEvent}>
             <img src={user?.image_url} style={{ width: 100, height: 100, borderRadius: 25}} alt="Profile" />
@@ -87,8 +87,8 @@ function Navbar() {
 
       {!isLoggedIn && (
         <>
-          <Link to="/signup">Signup</Link>
-          <Link to="/login">Login</Link>
+          <Link className="navLink" to="/signup">Signup</Link>
+          <Link className="navLink" to="/login">Login</Link>
         </>
       )}
     </nav>
