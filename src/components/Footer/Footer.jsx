@@ -13,9 +13,14 @@ const Footer = () => {
       <div className="footerContainer">
         <div>
           <h3>Contact</h3>
-          <img width="30px" src={mailImg} alt="logo mail" />
-          <p>ecoupper@ecoupper.com</p>
-          <p>Pamplona Street, 47, Barcelona, 08088</p>
+          <div className="contactFooter">
+            <img width="20px" src={mailImg} alt="logo mail" />
+            <p>ecoupper@ecoupper.com</p>
+          </div>
+          <div className="contactFooter">
+            <img width="20px" src={mailImg} alt="logo mail" />
+            <p>Pamplona Street, 47, Barcelona, 08088</p>
+          </div>
         </div>
         <div>
           <h3>Legal</h3>
@@ -25,10 +30,12 @@ const Footer = () => {
         </div>
         <div className="socialFooter">
           <h3 >Social</h3>
-          <img width="30px" src={IGImg} alt="Instagram" />
-          <img width="30px" src={tiktokImg} alt="TikTok" />
-          <img width="30px" src={linkedinImg} alt="LinkdIn" />
-          <img width="30px" src={FBImg} alt="Facebook " />
+          <div className="socialLogos">
+            <img width="30px" src={IGImg} alt="Instagram" />
+            <img width="30px" src={tiktokImg} alt="TikTok" />
+            <img width="30px" src={linkedinImg} alt="LinkdIn" />
+            <img width="30px" src={FBImg} alt="Facebook " />
+          </div>
         </div>
       </div>
       <p>2023 EcoUpper. All rights reserved</p>
