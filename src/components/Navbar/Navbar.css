@@ -1,14 +1,15 @@
 nav {
-    background-color: #b0f2c2;
+    background-color: rgba(255, 255, 255, 0.868);
     /* background-color: #158a34; */
-    height: 70px;
+    border-bottom: 1px solid rgb(48, 183, 71);
+    height: 60px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    /* position: fixed; 
+    position: fixed; 
     top: 0;
-    width: 100%; */
+    width: 100%;
 }
 
 nav a {
@@ -23,23 +24,9 @@ nav a {
     display: none;
 }
 
-.navLink {
-    border: none;
-    background-color: transparent;
-    font: inherit;
-    color: rgb(23, 106, 37);
-}
-
-/* button {
-    background-color: #b3e6b2;
-    border: 1px solid #68c468;
-    box-shadow: 0px 4px 6px 0px rgb(54, 83, 57);
-    border-radius: 5px;
-} */
 
 @media screen and (min-width: 568px) {
-
-
+    
     .smallLogo {
         display: none;
     }
@@ -48,6 +35,45 @@ nav a {
         height: 45px;
         width: 200px;
     }
+    
+    nav a {
+        border-bottom: 2px solid transparent;
+        background-color: transparent;
+        font: inherit;
+        align-items: center;
+        color: rgb(23, 106, 37);
+        padding-bottom: 5px;
+        transition: 300ms;
+    }
 
+    nav a.active {
+        border-bottom: 2px solid rgb(23, 106, 37);
+    }
+
+    nav a:hover {
+        border-bottom: 2px solid rgb(23, 106, 37);
+        padding-bottom: 5px;
+    }
+    
+    .navDiv {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .navLinks {
+        width: 40%;
+    }
+
+    .navUser{
+        width: 20%;
+    }
+
+    #profileImg {
+        height: 40px;
+        width: 40px;
+        padding-bottom: 0 !important;
+        border-radius: 50%;
+    }
    
 }
