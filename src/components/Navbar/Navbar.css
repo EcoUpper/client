@@ -24,6 +24,18 @@ nav a {
     display: none;
 }
 
+#profileImg img{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}
+
+
+.navDiv {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
 
 @media screen and (min-width: 568px) {
     
@@ -35,8 +47,18 @@ nav a {
         height: 45px;
         width: 200px;
     }
+
+    .navLink.active {
+        border-bottom: 2px solid rgb(23, 106, 37);
+    }
+
+    .navLink:hover {
+        border-bottom: 2px solid rgb(23, 106, 37);
+        cursor: pointer;
+    }
     
-    nav a {
+    .navLink {
+        border: none;
         border-bottom: 2px solid transparent;
         background-color: transparent;
         font: inherit;
@@ -45,22 +67,7 @@ nav a {
         padding-bottom: 5px;
         transition: 300ms;
     }
-
-    nav a.active {
-        border-bottom: 2px solid rgb(23, 106, 37);
-    }
-
-    nav a:hover {
-        border-bottom: 2px solid rgb(23, 106, 37);
-        padding-bottom: 5px;
-    }
     
-    .navDiv {
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-    }
-
     .navLinks {
         width: 40%;
     }
@@ -69,11 +76,8 @@ nav a {
         width: 20%;
     }
 
-    #profileImg {
-        height: 40px;
-        width: 40px;
-        padding-bottom: 0 !important;
-        border-radius: 50%;
-    }
+ 
+    
+  
    
 }
