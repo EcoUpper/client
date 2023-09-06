@@ -34,6 +34,7 @@ function NewItem(props) {
             content: content,
             image_url: image,
             created_by: user,
+            likes: []
         }
 
         fetch(apiUrl, {
@@ -48,6 +49,7 @@ function NewItem(props) {
                 console.log(newItem)
                 setContent("")
                 setImage("")
+                props.setNewPost(!props.newPost)
                 
                 fetchPosts()
                 navigate("/posts")
