@@ -26,15 +26,15 @@
 }
 
 .available {
-    background-color: #e2feea;
-    color: #68c468;
+    background: rgb(104,196,104);
+    background: linear-gradient(0deg, rgba(104,196,104,1) 0%, rgba(255,255,255,1) 20%);
 }
 
 .reserved {
-    background-color: #feede2;
-    color: #ca6767;
+    background: rgb(202,138,103);
+    background: linear-gradient(0deg, rgba(202,138,103,1) 0%, rgba(255,255,255,1) 22%);
 }
 
-.gifted {
+/* .gifted {
     opacity: .6;
-}
+} */

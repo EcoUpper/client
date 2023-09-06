@@ -25,6 +25,14 @@ function ProfilePage() {
 
   const { userId } = useParams()
 
+  function statusCheck (status) {
+    if (status === "accepted") {
+         return "accepted" 
+    } else if (status === "rejected") {
+        return "rejected" 
+   } 
+}
+
   useEffect(() => {
     const userByIdUrl = process.env.REACT_APP_SERVER_URL + "/db/users/" + userId
 
@@ -169,7 +177,7 @@ function ProfilePage() {
           const date = dateTime.toLocaleDateString()
           const time = dateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
           return (
-            <div className="proposal-card">
+            <div className={`proposal-card ${statusCheck(proposal.status)}`}>
               <ProposalCard data={proposal} user={userParam} key={proposal._id} 
               item={proposal.item_id} link={proposal.item_id._id} date={date} time={time}/>
               
