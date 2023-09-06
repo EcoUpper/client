@@ -1,6 +1,7 @@
 import { useContext, useState, useRef, useEffect } from "react"
 import { AuthContext } from "../../context/auth.context"
 import { Link } from "react-router-dom"
+import "./Posts.css"
 
 export default function PostCard(props) {
 
@@ -11,7 +12,6 @@ export default function PostCard(props) {
         props.likes?.some((like) => like._id === user?._id)
     );
 
-    console.log("LIKES", likes);
     function makeLike() {
         const likeApi = process.env.REACT_APP_SERVER_URL + "/db/posts/" + props.data._id
 
@@ -31,10 +31,8 @@ export default function PostCard(props) {
                 return res.json()
             })
             .then((result) => {
-                console.log("ERRRRRRRRRRRIK", result.likes.slice(-1));
                 setUserHasLiked(true);
                 setLikes(likes => [...likes, ...result.likes.slice(-1)])
-                console.log("LIKES", likes);
 
             })
             .catch((err) => {
@@ -48,19 +46,24 @@ export default function PostCard(props) {
     }, [props])
 
     return (
-        <div className="post-card" key={props.key}>
-            {props.data.image_url ?
-                <img src={props.data.image_url} alt="" /> : null}
-            <p>{props.data.content}</p>
-            <Link to={`/profile/${props.data.created_by?._id}`}><p>{props.data.created_by?.username}</p></Link>
-            <p>{props.date} at {props.time}</p>
-            <p>  {likes?.length}{" "}
-                {userHasLiked ? (
-                    "❤️"
-                ) : (
-                    <button onClick={makeLike}>❤️</button>
-                )}
-            </p>
+        <div className="postsContainerCard" key={props.key}>
+            <div>
+                <Link to={`/profile/${props.data.created_by?._id}`}><p>@{props.data.created_by?.username}</p></Link>
+                <p>{props.date} at {props.time}</p>
+                <p>  {likes?.length}{" "}
+                    {userHasLiked ? (
+                        "❤️"
+                    ) : (
+                        <button onClick={makeLike}>❤️</button>
+                    )}
+                </p>
+            </div>
+            <div>
+                {props.data.image_url ?
+                    <img src={props.data.image_url} alt="" /> : null}
+                <p>{props.data.content}</p>
+            </div>
+
         </div>
     )
 }

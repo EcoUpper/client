@@ -1,9 +1,6 @@
-.news{
-    width: 100vw;
+.postsInnerContainer {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 20px;
 }
-
