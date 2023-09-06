@@ -14,9 +14,11 @@ function EventsPage() {
     const [allEvents, setAllEvents] = useState([])
     const [showRodal, setShowRodal] = useState(false)
     const [search, setSearch] = useState("")
-    // const [event, setEvent] = useState(jsonData);
-    // const [eventFound, setEventFound] = useState(jsonData)
     const apiUrl = process.env.REACT_APP_SERVER_URL + "/db/events"
+
+    function scrollToTop () {
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+      }
 
     function fetchEvents() {
         fetch(apiUrl)
@@ -85,6 +87,7 @@ function EventsPage() {
             </select>
             <input type="text" name="search" placeholder="Search" value={search} onChange={(e)=>setSearch(e.target.value)}/>
             <EventsList events={events} search={search} />
+            <button onClick={scrollToTop}>Back to top</button>
         </>
     )
 }
