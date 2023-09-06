@@ -6,14 +6,15 @@ import ProposalCard from "../../components/Proposal/ProposalCard";
 import EventCard from "../../components/Events/EventCard";
 import PostCard from "../../components/Posts/PostCard";
 import ReviewCard from "../../components/Reviews/Review";
+import UserCard from "../../components/Profile/UserCard";
 import { useParams } from "react-router";
 
 
 function ProfilePage() {
 
-  const {user} = useContext(AuthContext)
+  const { user } = useContext(AuthContext)
 
-  
+
   const [userParam, setUserParam] = useState(user)
   const [items, setItems] = useState([])
   const [allItems, setAllItems] = useState([])
@@ -21,10 +22,18 @@ function ProfilePage() {
   const [posts, setPosts] = useState([])
   const [reviews, setReviews] = useState([])
   const [proposals, setProposals] = useState([])
-  
-  const {userId} = useParams()
 
-  useEffect(()=>{
+  const { userId } = useParams()
+
+  function statusCheck (status) {
+    if (status === "accepted") {
+         return "accepted" 
+    } else if (status === "rejected") {
+        return "rejected" 
+   } 
+}
+
+  useEffect(() => {
     const userByIdUrl = process.env.REACT_APP_SERVER_URL + "/db/users/" + userId
 
     fetch(userByIdUrl)
@@ -33,7 +42,6 @@ function ProfilePage() {
       })
       .then((data) => {
         setUserParam(data)
-        console.log("user is", data)
       })
       .catch(err => console.log(err))
 
@@ -48,14 +56,11 @@ function ProfilePage() {
     const reviewUrl = process.env.REACT_APP_SERVER_URL + "/db/reviews/" + userParam._id
     const proposalUrl = process.env.REACT_APP_SERVER_URL + "/db/proposals/created/" + userParam._id
 
-    
-
     fetch(itemUrl)
       .then((response) => {
         return response.json()
       })
       .then((data) => {
-        console.log("owner items", data);
         setItems(data)
       })
       .catch(err => console.log(err))
@@ -66,7 +71,6 @@ function ProfilePage() {
         return response.json()
       })
       .then((data) => {
-        console.log("all items", data);
         setAllItems(data)
       })
       .catch(err => console.log(err))
@@ -77,8 +81,6 @@ function ProfilePage() {
         return response.json()
       })
       .then((data) => {
-        console.log("events", data);
-        console.log(userParam._id);
         setEvents(data)
       })
       .catch(err => console.log(err))
@@ -89,8 +91,6 @@ function ProfilePage() {
         return response.json()
       })
       .then((data) => {
-        console.log("posts", data);
-        console.log("param is", userParam._id);
         setPosts(data)
       })
       .catch(err => console.log(err))
@@ -101,8 +101,6 @@ function ProfilePage() {
         return response.json()
       })
       .then((data) => {
-        console.log("reviews", data);
-        console.log(userParam._id);
         setReviews(data)
       })
       .catch(err => console.log(err))
@@ -112,7 +110,6 @@ function ProfilePage() {
         return response.json()
       })
       .then((data) => {
-        console.log("props", data);
         setProposals(data)
       })
       .catch(err => console.log(err))
@@ -121,7 +118,6 @@ function ProfilePage() {
   function handleEventSubmit(e, eventId) {
     e.preventDefault()
     const deleteEventUrl = process.env.REACT_APP_SERVER_URL + "/db/events/delete/" + eventId
-    console.log(eventId)
 
     fetch(deleteEventUrl, {
       method: "DELETE"
@@ -166,49 +162,56 @@ function ProfilePage() {
 
   return (
     <div className="profile-page">
+      <div className="details-prop-container">
 
-      {user._id == userParam._id? 
-      <div className="profile-details">
-        <h3>{userParam.username}</h3>
-        <p><strong>Email:</strong> {userParam.email}</p>
-      </div>
+      <UserCard user={user} userParam={userParam}/>
+
+    {user._id == userParam._id? 
+    <div className="user-proposals">
+      <h2>Proposals you made</h2>
+      {
+        proposals.map((proposal) => {
+          const dateAndTime = proposal.date
+          const dateTime = new Date(dateAndTime)
+
+          const date = dateTime.toLocaleDateString()
+          const time = dateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+          return (
+            <div className={`proposal-card ${statusCheck(proposal.status)}`}>
+              <ProposalCard data={proposal} user={userParam} key={proposal._id} 
+              item={proposal.item_id} link={proposal.item_id._id} date={date} time={time}/>
+              
+              <button className="delete-btn" onClick={(e) => handleProposalSubmit(e, proposal._id)}>Delete</button>
+            </div>
+          )
+        })
+      }
+    </div>
       : null
       }
+    </div>
 
       <div className="user-items">
-        <h2>{userParam.username}'s Listing</h2>
-        {
-          items.map((item) => {
-            const dateAndTimePropEx = item.expiration_date
-            const dateTimeEx = new Date(dateAndTimePropEx)
+      {user._id == userParam._id ? <h2>My Items</h2> : <h2>{userParam.username}'s Items</h2>}
+        <div className="listing-container">
+          {items.length > 0 ?
+            items.map((item) => {
+              const dateAndTimePropEx = item.expiration_date
+              const dateTimeEx = new Date(dateAndTimePropEx)
 
-            const expirationDate = dateTimeEx.toLocaleDateString()
+              const expirationDate = dateTimeEx.toLocaleDateString()
 
-            return <ItemCard item={item} expirationDate={expirationDate} />
-          })
-        }
+              return <ItemCard item={item} expirationDate={expirationDate} />
+            })
+            :
+            <p>You do not have any listing at the moment</p>
+          }
+        </div>
       </div>
 
-      {user._id == userParam._id? 
-      <div className="user-proposals">
-        <h2>Proposals you made</h2>
-        {
-          proposals.map((proposal) => {
-            return (
-              <div>
-                <ProposalCard data={proposal} user={userParam} key={proposal._id} item={proposal.item_id} link={proposal.item_id._id} />
-                
-                <button onClick={(e) => handleProposalSubmit(e, proposal._id)}>Delete</button>
-              </div>
-            )
-          })
-        }
-      </div>
-        : null
-        }
 
       <div className="user-events">
-        {user._id == userParam._id? <h2>Events hosted by you </h2> : <h2>Events hosted by {userParam.username} </h2>}
+        {user._id == userParam._id ? <h2>Events hosted by me</h2> : <h2>Events hosted by {userParam.username} </h2>}
         {events?.length == 0 && <p>You haven't created any events yet.</p>}
         {events?.map((eventElement) => {
           const dateAndTime = eventElement.date
@@ -228,7 +231,7 @@ function ProfilePage() {
 
 
       <div className="user-posts">
-        {user._id == userParam._id? <h2>Posts made by you </h2> : <h2>Posts made by {userParam.username} </h2>}
+        {user._id == userParam._id ? <h2>My Posts</h2> : <h2>{userParam.username}'s Posts</h2>}
         {
           posts.map((post) => {
             const dateAndTime = post.createdAt
@@ -243,7 +246,7 @@ function ProfilePage() {
 
 
       <div className="user-reviews">
-        {user._id == userParam._id? <h2>All your reviews </h2> : <h2>{userParam.username}´s reviews </h2>}
+        {user._id == userParam._id ? <h2>Reviews</h2> : <h2>{userParam.username}'s Reviews </h2>}
         {
           reviews.map((review) => {
             return <ReviewCard data={review} key={review._id} />

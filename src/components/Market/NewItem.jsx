@@ -6,7 +6,7 @@ import uploadImage from "../../services/file-upload.service"
 
 function NewItem(props) {
 
-    const {fetchItems} = props
+    const { fetchItems, setShowRodal } = props
 
     const { user } = useContext(AuthContext)
     const [name, setName] = useState("")
@@ -20,18 +20,18 @@ function NewItem(props) {
     const navigate = useNavigate()
     const apiUrl = process.env.REACT_APP_SERVER_URL + "/db/items/create/new"
 
-    const handleFileUpload  = (e) => {
+    const handleFileUpload = (e) => {
         const formData = new FormData()
         formData.append("image_url", e.target.files[0])
-    
+
         uploadImage(formData)
-        .then((res)=>{
-          console.log("upload res", res);
-          setImage(res.image_url)
-        })
-        .catch(err => console.log(err))
-    
-      }
+            .then((res) => {
+                console.log("upload res", res);
+                setImage(res.image_url)
+            })
+            .catch(err => console.log(err))
+
+    }
 
     function handleSubmit(e) {
         e.preventDefault()
@@ -98,10 +98,10 @@ function NewItem(props) {
                     </div>
                     <div>
                         <label>Image</label>
-                        <input type="file" onChange={(e) => handleFileUpload (e)} />
+                        <input type="file" onChange={(e) => handleFileUpload(e)} />
                     </div>
                     <div>
-                    <label>Type</label>
+                        <label>Type</label>
                         <select
                             name="type"
                             onChange={(e) => setType(e.target.value)}
@@ -112,16 +112,16 @@ function NewItem(props) {
                             <option value="clothing">Clothing</option>
                         </select>
                     </div>
-                    {type === "food" && 
-                    <div>
-                        <label>Expiration Date</label>
-                        <input
-                            type="date"
-                            name="date"
-                            onChange={(e) => setExpirationDate(e.target.value)}
-                            value={expirationDate}
-                        />
-                    </div>
+                    {type === "food" &&
+                        <div>
+                            <label>Expiration Date</label>
+                            <input
+                                type="date"
+                                name="date"
+                                onChange={(e) => setExpirationDate(e.target.value)}
+                                value={expirationDate}
+                            />
+                        </div>
                     }
                     <div>
                         <label>Location</label>
@@ -132,7 +132,7 @@ function NewItem(props) {
                             value={location}
                         />
                     </div>
-                    <div>
+                    {/* <div>
                         <label>Status</label>
                         <select
                             name="status"
@@ -143,8 +143,8 @@ function NewItem(props) {
                             <option value="reserved">Reserved</option>
                             <option value="gifted">Gifted</option>
                         </select>
-                    </div>
-                    <button type="submit">Create item</button>
+                    </div> */}
+                    <button type="submit" onClick={() => setShowRodal(false)}>Create item</button>
                 </form>
             </div>
         </>

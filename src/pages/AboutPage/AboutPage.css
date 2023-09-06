@@ -1,5 +1,109 @@
-.team-member img {
-    width: 80px; 
+  .containerAbout{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    font-size: xx-large;
+  }
+
+  .title{
+    color: rgb(23, 106, 37);
+  }
+ 
+  .strongColor{
+    color: rgb(23, 106, 37);
+  }
+  
+
+  .introAbout{
+    background-color: #a6f0c4;
+    width: 60%;
+    border-top-left-radius: 250px;
+    border-bottom-left-radius: 250px;
+    text-align: justify;
+    padding-left: 200px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    box-shadow: 0px 2px 2px 2px rgb(184, 164, 164);
+    margin-bottom: 50px;
+    align-self: flex-end;
+  }
+  
+  .introAbout p{
+    text-align: justify;
+    font-size:x-large;
+    
+  }
+
+  .featsAbout{
+    background-color: #a6f0c4;
+    width: 60%;
+    border-top-right-radius: 250px;
+    border-bottom-right-radius: 250px;
+    text-align: justify;
+    padding-right: 200px;
+    padding-left: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    box-shadow: 0px 2px 2px 2px rgb(184, 164, 164);
+    margin-bottom: 50px;
+    font-size: x-large;
+
+  }
+
+
+  .joinAbout {
+    background-color: #a6f0c4;
+    width: 60%;
+    border-top-left-radius: 250px;
+    border-bottom-left-radius: 250px;
+    text-align: justify;
+    padding-left: 200px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    box-shadow: 0px 2px 2px 2px rgb(184, 164, 164);
+    margin-bottom: 50px;
+    align-self: flex-end;
+    font-size: x-large;
+    
+
+
+  }
+
+  .teamAbout{
+    background-color: #a6f0c4;
+    width: 60%;
+    border-top-right-radius: 250px;
+    border-bottom-right-radius: 250px;
+    text-align: center;
+    padding-right: 200px;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    box-shadow: 0px 2px 2px 2px rgb(184, 164, 164);
+    display: flex;
+    flex-direction: column;
+    font-size: medium;
+    
+  }
+
+  .membersContainer{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+  }
+
+  .membersContainer img{
+    border-radius: 100px;
+    box-shadow: 0px 2px 2px 2px rgb(184, 164, 164);
+  }
+  
+  .teamMember {
+    width: 100%; 
     height: auto; 
     border-radius: 50%;
-  }
+    color: rgb(23, 106, 37);
+  } 
+

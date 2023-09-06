@@ -10,12 +10,16 @@ import { AuthContext } from "../../context/auth.context"
 
 function MarketPage() {
 
-    const {isLoggedIn} = useContext(AuthContext)
+    const { isLoggedIn } = useContext(AuthContext)
 
     const [items, setItems] = useState([])
     const [allItems, setAllItems] = useState([])
     const [showRodal, setShowRodal] = useState(false)
     const apiUrl = process.env.REACT_APP_SERVER_URL + "/db/items"
+
+    function scrollToTop() {
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    }
 
     function fetchItems() {
         fetch(apiUrl)
@@ -49,7 +53,7 @@ function MarketPage() {
         fetchItems()
     }, [])
 
-    
+
     function filterItems(type) {
         console.log(type);
         if (type === "All") {
@@ -71,21 +75,25 @@ function MarketPage() {
     return (
 
         <>
-            {isLoggedIn? <button onClick={() => setShowRodal(true)}>Create Item</button> : null}
-            <Rodal visible={showRodal} animation="fade" width={600} height={440} onClose={() => setShowRodal(false)}>
-                <NewItem fetchItems={fetchItems} />
+            {isLoggedIn ? <button onClick={() => setShowRodal(true)}>Create Item</button> : null}
+            <Rodal visible={showRodal} animation="fade" width={600} height={440}>
+                <NewItem fetchItems={fetchItems} setShowRodal={setShowRodal} />
             </Rodal>
 
-            <select onChange={(e) => filterItems(e.target.value)} id="">
-                <option >All</option>
-                <option >Food</option>
-                <option >Clothing</option>
-                <option >Other</option>
-            </select>
-           
-            <ItemsList  items={items} />
-          
-        
+            <div>
+                <button onClick={(e) => filterItems(e.target.value)} value="All">All items</button>
+                <button onClick={(e) => filterItems(e.target.value)} value="Food">Food</button>
+                <button onClick={(e) => filterItems(e.target.value)} value="Clothing">Clothing</button>
+                <button onClick={(e) => filterItems(e.target.value)} value="Other">Other</button>
+            </div>
+
+            <div>
+            {items.length === 0 ? <p>There are currently no available items matching your search.</p> 
+            
+            : <ItemsList items={items} />}
+            </div>
+            <button onClick={scrollToTop}>Back to top</button>
+
         </>
     )
 }
