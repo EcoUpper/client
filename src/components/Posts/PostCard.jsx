@@ -1,6 +1,7 @@
 import { useContext, useState, useRef, useEffect } from "react"
 import { AuthContext } from "../../context/auth.context"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, Link } from "react-router-dom"
+import ProfilePage from "../../pages/ProfilePage/ProfilePage"
 
 export default function PostCard(props) {
 
@@ -47,7 +48,7 @@ export default function PostCard(props) {
             {props.data.image_url ?
             <img src={props.data.image_url} alt="" /> : null}
             <p>{props.data.content}</p>
-            <p>{props.data.created_by.username}</p>
+            <Link to={`/profile/${props.data.created_by._id}`}><p>{props.data.created_by.username}</p></Link>
             <p>{props.date} at {props.time}</p>
             <p>{likes?.length} {likes?.find(like => like == user?._id)? "❤️" : <button onClick={makeLike}>❤️</button>}</p>
         </div>
