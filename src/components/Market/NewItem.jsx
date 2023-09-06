@@ -14,7 +14,7 @@ function NewItem(props) {
     const [image, setImage] = useState("")
     const [type, setType] = useState("other")
     const [expirationDate, setExpirationDate] = useState("")
-    // const [status, setStatus] = useState("available")
+    const [status, setStatus] = useState("available")
     const [location, setLocation] = useState("")
 
     const navigate = useNavigate()
@@ -42,7 +42,7 @@ function NewItem(props) {
             image_url: image,
             type: type,
             expiration_date: expirationDate,
-            // status: status,
+            status: status,
             owner: user,
             location: location
         }
@@ -62,7 +62,7 @@ function NewItem(props) {
                 setImage("")
                 setType("other")
                 setExpirationDate("")
-                // setStatus("available")
+                setStatus("available")
                 setLocation("")
 
                 fetchItems()

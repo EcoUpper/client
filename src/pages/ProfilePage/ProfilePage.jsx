@@ -169,7 +169,7 @@ function ProfilePage() {
 
       {user._id == userParam._id? 
       <div className="profile-details">
-        <img src={userParam.image_url} alt="" />
+        <img src={userParam.image_url} alt={userParam.username} className="profile-img" />
         <h3>{userParam.username}</h3>
         <p><strong>Email:</strong> {userParam.email}</p>
       </div>
@@ -178,7 +178,8 @@ function ProfilePage() {
 
       <div className="user-items">
         <h2>{userParam.username}'s Listing</h2>
-        {
+        <div className="listing-container">
+        { items.length > 0?
           items.map((item) => {
             const dateAndTimePropEx = item.expiration_date
             const dateTimeEx = new Date(dateAndTimePropEx)
@@ -187,7 +188,10 @@ function ProfilePage() {
 
             return <ItemCard item={item} expirationDate={expirationDate} />
           })
+          :
+          <p>You do not have any listing at the moment</p>
         }
+        </div>
       </div>
 
       {user._id == userParam._id? 

@@ -23,6 +23,16 @@ function NewEvent(props) {
     const handleFileUpload = (e) => {
         const formData = new FormData()
         formData.append("image_url", e.target.files[0])
+    
+        uploadImage(formData)
+        .then((res)=>{
+          console.log("upload res", res);
+          setImage(res.image_url)
+          console.log("IMAGE", image);
+        })
+        .catch(err => console.log(err))
+    
+      }
 
         uploadImage(formData)
             .then((res) => {

@@ -7,9 +7,6 @@ import IsPrivate from "../../components/IsPrivate/IsPrivate"
 import { AuthContext } from "../../context/auth.context"
 
 
-
-
-
 function EventsPage() {
     const { isLoggedIn } = useContext(AuthContext)
 
