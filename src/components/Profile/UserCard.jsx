@@ -18,6 +18,8 @@ function UserCard (props) {
     const navigate = useNavigate()
     const userId = user._id
 
+    const authToken = localStorage.getItem("authToken")
+
     console.log(userId)
     function handleUserSubmit(e) {
         e.preventDefault()
@@ -25,6 +27,7 @@ function UserCard (props) {
         const deleteUserUrl = process.env.REACT_APP_SERVER_URL + "/db/users/" + userId
     
         fetch(deleteUserUrl, {
+          headers: {Authorization: `Bearer ${authToken}`},
           method: "DELETE"
         })
           .then((res) => {

@@ -12,6 +12,8 @@ export default function PostCard(props) {
         props.likes?.some((like) => like._id === user?._id)
     );
 
+    const authToken = localStorage.getItem("authToken")
+
     function makeLike() {
         const likeApi = process.env.REACT_APP_SERVER_URL + "/db/posts/" + props.data._id
 
@@ -24,7 +26,7 @@ export default function PostCard(props) {
 
         fetch(likeApi, {
             method: "PUT",
-            headers: { "Content-Type": "application/json" },
+            headers: { "Content-Type": "application/json", Authorization: `Bearer ${authToken}` },
             body: JSON.stringify(body)
         })
             .then((res) => {
