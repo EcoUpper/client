@@ -2,26 +2,26 @@
     width: 100vw;
     display: flex;
     flex-direction: column;
+    line-height: 30px;
+    color: rgb(23, 106, 37);
   }
 
   .title{
-    color: rgb(23, 106, 37);
     margin-bottom: 50px;
-  }
- 
-  .strongColor{
-    color: rgb(23, 106, 37);
+    text-align: right;
+    padding: 60px 20px 30px 40px;
   }
   
   .introAbout{
     background-color: #a6f0c4;
-    width: 60%;
-    border-top-left-radius: 250px;
-    border-bottom-left-radius: 250px;
-    padding: 20px 20px 20px 200px;
+    width: auto;
+    border-top-left-radius: 200px;
+    border-bottom-left-radius: 200px;
+    padding: 60px 20px 60px 40px;
     box-shadow: 0 0 10px 2px rgba(115, 129, 119, 0.733);
     margin-bottom: 50px;
     align-self: flex-end;
+    text-align: right;
   }
   
   .introAbout p {
@@ -29,39 +29,42 @@
     width: 100%;
   }
 
+  .introAbout h3 {
+    margin: 30px 0 5px 0;
+  }
+
   .featsAbout{
     background-color: #a6f0c4;
     width: auto;
-    border-top-right-radius: 250px;
-    border-bottom-right-radius: 250px;
-    padding: 20px;
+    border-top-right-radius: 200px;
+    border-bottom-right-radius: 200px;
+    padding: 60px 40px 60px 20px;
     box-shadow: 0 0 10px 2px rgba(115, 129, 119, 0.733);
     margin-bottom: 50px;
+    text-align: left;
   }
 
   .joinAbout {
     background-color: #a6f0c4;
-    width: 60%;
-    border-top-left-radius: 250px;
-    border-bottom-left-radius: 250px;
-    padding-left: 200px;
-    padding-right: 20px;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    width: auto;
+    border-top-left-radius: 200px;
+    border-bottom-left-radius: 200px;
+    padding: 60px 20px 60px 40px;
     box-shadow: 0 0 10px 2px rgba(115, 129, 119, 0.733);
     margin-bottom: 50px;
     align-self: flex-end;
+    text-align: right;
   }
 
   .teamAbout{
     background-color: #a6f0c4;
     width: auto;
-    border-top-right-radius: 250px;
-    border-bottom-right-radius: 250px;
-    padding: 20px 0;
-    text-align: center;
+    border-top-right-radius: 200px;
+    border-bottom-right-radius: 200px;
+    padding: 60px 40px 60px 20px;
     box-shadow: 0 0 10px 2px rgba(115, 129, 119, 0.733);
     display: flex;
+    align-items: center;
     flex-direction: column;
   }
 
@@ -95,17 +98,12 @@
   @media screen and (min-width: 768px) {
 
   .containerAbout{
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    font-size: xx-large;
+    font-size: x-large;
   }
 
   .introAbout{
     background-color: #a6f0c4;
     width: 60%;
-    border-top-left-radius: 250px;
-    border-bottom-left-radius: 250px;
     padding: 20px 20px 20px 200px;
     margin-bottom: 50px;
     align-self: flex-end;
@@ -117,8 +115,6 @@
 
   .featsAbout{
     width: 60%;
-    border-top-right-radius: 250px;
-    border-bottom-right-radius: 250px;
     padding-right: 200px;
     padding-left: 20px;
     padding-top: 20px;
@@ -129,8 +125,6 @@
 
   .joinAbout {
     width: 60%;
-    border-top-left-radius: 250px;
-    border-bottom-left-radius: 250px;
     padding-left: 200px;
     padding-right: 20px;
     padding-top: 20px;
@@ -142,8 +136,6 @@
 
   .teamAbout{
     width: 60%;
-    border-top-right-radius: 250px;
-    border-bottom-right-radius: 250px;
     text-align: center;
     padding-right: 200px;
     padding-top: 20px;

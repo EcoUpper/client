@@ -17,10 +17,7 @@ const Footer = () => {
             <img width="20px" src={mailImg} alt="logo mail" />
             <p>ecoupper@ecoupper.com</p>
           </div>
-          <div className="contactFooter">
-            <img width="20px" src={mailImg} alt="logo mail" />
             <p>Pamplona Street, 47, Barcelona, 08088</p>
-          </div>
         </div>
         <div>
           <h3>Legal</h3>
