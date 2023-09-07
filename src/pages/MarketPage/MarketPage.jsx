@@ -98,7 +98,7 @@ function MarketPage() {
             <button className={active === "4"? "active" : undefined} onClick={(e) => {filterItems(e.target.value); handleBtnClick(e)}} value="Other" id={"4"}>
               Other
             </button>
-            <input type="text" name="search" placeholder="Search" value={search} onChange={(e)=>setSearch(e.target.value)}/>
+            <input className="marketSearchInput" type="text" name="search" placeholder="Search" value={search} onChange={(e)=>setSearch(e.target.value)}/>
 
           </div>
           <div className="create-btn">

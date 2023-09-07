@@ -38,11 +38,12 @@
 }
 
 .event-card a{
-    color: rgb(29, 216, 79);
+    color: rgb(19, 146, 40);
 }
 
 .event-card a:hover {
-    color: rgb(19, 146, 40);
+    color: rgb(7, 79, 19);
+    font-weight: bolder;
 }
 
 .event-info {
@@ -61,11 +62,12 @@
 }
 
 .rodal-cont a {
-    color: rgb(29, 216, 79);
+    color: rgb(19, 146, 40);
 }
 
 .rodal-cont a:hover {
-    color: rgb(19, 146, 40);
+    color: rgb(7, 79, 19);
+    font-weight: bolder;
 }
 
 .rodal-main {

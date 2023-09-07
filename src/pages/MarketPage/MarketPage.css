@@ -40,6 +40,15 @@
     justify-content: end;
 }
 
+.marketSearchInput {
+    border: 1px solid rgba(1, 45, 8, 0.342);
+}
+
+.marketSearchInput:hover {
+    border-color:rgb(1, 45, 8);
+    cursor: pointer;
+}
+
 .items-list{
     display: flex;
     flex-direction: row;
