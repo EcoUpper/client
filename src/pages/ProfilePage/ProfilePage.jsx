@@ -14,7 +14,6 @@ function ProfilePage() {
 
   const { user } = useContext(AuthContext)
 
-
   const [userParam, setUserParam] = useState(user)
   const [items, setItems] = useState([])
   const [allItems, setAllItems] = useState([])
@@ -113,6 +112,7 @@ function ProfilePage() {
       })
       .catch(err => console.log(err))
 
+
     fetch(proposalUrl)
       .then((response) => {
         return response.json()
@@ -126,7 +126,6 @@ function ProfilePage() {
   function handleEventSubmit(e, eventId) {
     e.preventDefault()
     const deleteEventUrl = process.env.REACT_APP_SERVER_URL + "/db/events/delete/" + eventId
-
 
     fetch(deleteEventUrl, {
       headers: {Authorization: `Bearer ${authToken}`},
@@ -144,7 +143,6 @@ function ProfilePage() {
     })
 
     setEvents(removedEventsArray)
-
   }
 
   function handleProposalSubmit(e, propId) {
@@ -222,7 +220,6 @@ function ProfilePage() {
         </div>
       </div>
 
-
       <div className="user-events section">
         {user._id == userParam._id ? <h2>My Events</h2> : <h2>Events hosted by {userParam.username} </h2>}
         {events?.length == 0 && <p>You haven't created any events yet.</p>}
@@ -242,7 +239,6 @@ function ProfilePage() {
         })}
       </div>
 
-
       <div className="user-posts section">
         {user._id == userParam._id ? <h2>My Posts</h2> : <h2>{userParam.username}'s Posts</h2>}
         {
@@ -256,7 +252,6 @@ function ProfilePage() {
           })
         }
       </div>
-
       <button onClick={scrollToTop}>Back to top</button>
 
     </div>

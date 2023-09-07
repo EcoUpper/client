@@ -1,10 +1,10 @@
-.proposal-info{
+/* .proposal-info{
     display: flex;
     flex-direction: row;
     font-size: smaller;
     gap: 10px;
     align-items: center;
-}
+} */
 
 .proposal-info {
         background-color: white;
@@ -12,7 +12,7 @@
         flex-direction: row;
         gap:10px;
         margin: 10px;
-        padding: 10px;
+        padding: 10px 10px 5px 10px;
         border-radius: 10px;
         box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.219);
         align-items: center;

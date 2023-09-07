@@ -8,6 +8,7 @@
     background-color: white;
     width: 80%;
     border-radius: 10px;
+    padding: 15px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
@@ -28,7 +29,12 @@
 }
 
 .item-detail-cont a {
-    color: rgb(29, 216, 79);
+    color: rgb(19, 146, 40);
+}
+
+.item-detail-cont a:hover {
+    color: rgb(7, 79, 19);
+    font-weight: bolder;
 }
 
 .item-detail-cont button {
