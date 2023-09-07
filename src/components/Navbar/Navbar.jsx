@@ -8,7 +8,7 @@ import MobileNavBar from "./MobileNavBar"
 
 function Navbar() {
 
-  const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
+  const { isLoggedIn, user } = useContext(AuthContext);
   const [items, setItems] = useState("")
   const [hasNotif, setHasNotif] = useState(false)
   const [event, setEvent] = useState(false)
@@ -86,7 +86,6 @@ function Navbar() {
                 <Link id="profileImg" to={`/profile/${user?._id}`} onClick={settingEvent}>
                   <img src={user?.image_url} alt="Profile picture" />
                 </Link>
-                <button className="navLink" onClick={logOutUser}>Logout</button>
                 {hasNotif ? <img src={notifImage} alt="" height="30px" /> : null}
                 <span>{user && user?.name}</span>
               </>

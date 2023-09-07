@@ -12,7 +12,7 @@ import { useParams } from "react-router";
 
 function ProfilePage() {
 
-  const { user } = useContext(AuthContext)
+  const { user, logOutUser } = useContext(AuthContext)
 
   const [userParam, setUserParam] = useState(user)
   const [items, setItems] = useState([])
@@ -171,6 +171,7 @@ function ProfilePage() {
 
   return (
     <div className="profile-page">
+      <button className="navLink" onClick={logOutUser}>Logout</button>
       <div className="details-prop-container">
 
         <UserCard user={user} userParam={userParam} />
