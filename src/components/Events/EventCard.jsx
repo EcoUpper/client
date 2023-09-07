@@ -10,7 +10,6 @@ export default function EventCard(props) {
 
   const itemLocation = "https://maps.google.com/?q=" + props.data.location;
 
-  console.log(props);
   const openRodal = (event) => {
     setSelectedEvent(event);
     setShowRodal(true);
