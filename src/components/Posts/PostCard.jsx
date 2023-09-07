@@ -50,13 +50,17 @@ export default function PostCard(props) {
             <div className="postInfoDetails">
                 <Link  to={`/profile/${props.data.created_by?._id}`} target="_blank"><p>@{props.data.created_by?.username}</p></Link>
                 <p className="postDate">{props.date} at {props.time}</p>
+                {props.likes?
                 <p>  {likes?.length}{" "}
                     {userHasLiked ? (
                         "❤️"
                     ) : (
-                        <button onClick={makeLike}>❤️</button>
+                      <button onClick={makeLike}>❤️</button>
                     )}
                 </p>
+                :
+                <p>{props.data.likes?.length}{" "}❤️</p>
+                }
             </div>
             <div className="postContent">
                 {props.data.image_url ?

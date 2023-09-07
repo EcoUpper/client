@@ -245,7 +245,7 @@ function ProfilePage() {
 
             const date = dateTime.toLocaleDateString()
             const time = dateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-            return <PostCard data={post} key={post._id} date={date} time={time} />
+            return <PostCard data={post} key={post._id} date={date} time={time}/>
           })
         }
       </div>
