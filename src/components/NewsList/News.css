@@ -1,5 +1,5 @@
 .containerCard {
-    height: 300px;
+    height: auto;
     width: 80vw;
     border: 1px solid rgba(225, 235, 228, 0.733);
     border-radius: 10px;
@@ -13,7 +13,7 @@
     text-decoration: none;
     transition: 300ms;
     color: rgb(1, 45, 8);
-    background-color: rgba(244, 249, 244, 0.943);
+    background-color: rgba(255, 255, 255, 0.957);
 }
 
 .newsInnerContainer {
@@ -62,8 +62,7 @@
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
-
-      
+        background-color: rgba(244, 249, 244, 0.943);
     }
 
     .containerCard:hover {
