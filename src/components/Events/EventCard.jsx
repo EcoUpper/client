@@ -24,7 +24,6 @@ export default function EventCard(props) {
     <div className="event-list">
       <div className="event-card" onClick={() => openRodal(props.data)}>
         <img
-          style={{ height: "300px" }}
           src={props.data.image_url}
           alt="Event image"
         />
@@ -39,7 +38,6 @@ export default function EventCard(props) {
               {props.data.location}
             </a>
           </p>
-          <p>{props.data.content}</p>
         </div>
       </div>
       <Rodal

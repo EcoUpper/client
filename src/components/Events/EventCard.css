@@ -17,6 +17,11 @@
     cursor: pointer;
 }
 
+.event-card img {
+    height: 300px;
+    max-width: 400px;
+}
+
 .event-card:hover {
     background-color: rgba(201, 219, 199, 0.9);
     box-shadow: 0 0 20px 2px rgba(194, 199, 196, 0.906);
@@ -72,3 +77,29 @@
     margin: 1rem;
 }
 
+@media (max-width: 768px) {
+    
+    .event-card {
+        background-color: white;
+        width: 200px;
+        height: 300px;
+        border-radius: 10px;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: start;
+        margin: .5rem;
+        cursor: pointer;
+        font-size: small;
+    }
+
+    .event-card img {
+        height: 300px;
+        max-width: 200px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        border-bottom-left-radius: 0
+    }
+   
+}

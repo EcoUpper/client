@@ -77,6 +77,7 @@ function MarketPage() {
 
   return (
     <div className="market-page">
+      <h1>Welcome to Market</h1>
       <div className="market-section">
         <div  className="filter-cont">
           <div className="filters">

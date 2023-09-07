@@ -77,8 +77,8 @@ function NewItem(props) {
                     </div>
                     <div className="innerNewPostForm">
                         <label>Image</label>
-                        <input className="postInput" type="file" onChange={(e) => handleFileUpload(e)} />
-                    </div>
+                        <input className="file-input" type="file" onChange={(e) => handleFileUpload(e)} />
+                  </div>
                     <button type="submit">Post</button>
                 </form>
             </div>
@@ -86,4 +86,4 @@ function NewItem(props) {
     )
 }
 
-export default NewItem
+export default NewItem  
