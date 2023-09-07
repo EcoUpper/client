@@ -10,15 +10,21 @@
     margin-bottom: 2rem;
 }
 
-.event-filter{
+.event-filter {
     display: flex;
     flex-direction: row;
     gap:10px;
     width: 50%;
 }
 
-.event-search{
+.event-search {
     width: 80%;
+    border: 1px solid rgba(1, 45, 8, 0.342);
+}
+
+.event-search:hover {
+    border-color:rgb(1, 45, 8);
+    cursor: pointer;
 }
 
 .event-filter select{

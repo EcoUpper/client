@@ -9,11 +9,17 @@ form {
     flex-direction: column;
     align-items: center;
     gap: .5rem;
-    width: 40%;
+    width: 60%;
+}
+
+.login-page form label {
+    font-weight: bolder;
 }
 
 form input  {
     width: 100%;
+    text-align: center;
+    font-size: 16px;
 }
 
 form button {
@@ -23,14 +29,30 @@ form button {
     color: white;
     background-color:rgb(16,124,44);
     margin: .8rem;
-    width: 5rem
+    width: 5rem;
+    letter-spacing: 1px;
 }
 
-form button:hover {
-    cursor: pointer;
-    background-color: rgb(16, 98, 27);
-    color:rgb(240, 255, 242);
-    border: none;
-    border-radius: 17px;
-    padding: 10px;
+@media screen and (min-width: 768px) {
+
+        form {
+            width: 40%;
+        }
+        
+        form input  {
+            width: 60%;
+        }
+        
+        form button:hover {
+            cursor: pointer;
+            background-color: rgb(16, 98, 27);
+            color:rgb(240, 255, 242);
+            border: none;
+            border-radius: 17px;
+            padding: 10px;
+        } 
+
+        .login-page a:hover {
+            font-weight: bolder;
+        }
 }
