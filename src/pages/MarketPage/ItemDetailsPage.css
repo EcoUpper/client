@@ -72,3 +72,25 @@
     border-radius: 17px;
     padding: 10px;
 }
+
+@media (max-width: 768px) {
+    
+    .item-info-cont {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .item-info-cont > img {
+        width: 85%;
+    }
+
+    .item-info {
+        width: 85%;
+        text-align: center;
+        margin-top: 1.5rem;
+    }
+
+
+}
