@@ -6,7 +6,7 @@ import uploadImage from "../../services/file-upload.service"
 
 function ModifyItem (props) {
 
-    const {fetchItemInfo} = props
+    const {fetchItemInfo, setShowRodal} = props
     const {item} = props
     const { itemId } = useParams();
 
@@ -135,7 +135,7 @@ function ModifyItem (props) {
                             <option value="gifted">Gifted</option>
                         </select>
                     </div>
-                    <button type="submit" onClick={props.setShowRodal}>Modify item</button>
+                    <button type="submit" onClick={() => setShowRodal(false)}>Modify item</button>
                 </form>
             </div>
         </>

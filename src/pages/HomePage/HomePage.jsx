@@ -13,7 +13,7 @@ function HomePage() {
   return (
 
     <>
-      <div className="newsContainer">
+      <div className="news-container">
         <h1>Welcome to EcoUpper</h1>
         <h2>Thank you for caring about the environment!</h2>
         <h5>You can read the most recent climate news here to stay up to date</h5>
