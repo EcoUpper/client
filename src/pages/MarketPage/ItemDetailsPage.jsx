@@ -174,6 +174,7 @@ function ItemDetailsPage() {
                   item={itemInfo}
                   key={itemInfo._id}
                   fetchItemInfo={fetchItemInfo}
+                  setShowRodal={setShowRodal}
                 />
               </Rodal>
               <button className="delete-btn" onClick={(e) => handleItemSubmit(e, itemInfo._id)}>

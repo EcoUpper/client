@@ -17,6 +17,11 @@
     cursor: pointer;
 }
 
+.event-card img {
+    height: 300px;
+    max-width: 400px;
+}
+
 .event-card:hover {
     background-color: rgba(201, 219, 199, 0.9);
     box-shadow: 0 0 20px 2px rgba(194, 199, 196, 0.906);
@@ -33,11 +38,12 @@
 }
 
 .event-card a{
-    color: rgb(29, 216, 79);
+    color: rgb(19, 146, 40);
 }
 
 .event-card a:hover {
-    color: rgb(19, 146, 40);
+    color: rgb(7, 79, 19);
+    font-weight: bolder;
 }
 
 .event-info {
@@ -56,11 +62,12 @@
 }
 
 .rodal-cont a {
-    color: rgb(29, 216, 79);
+    color: rgb(19, 146, 40);
 }
 
 .rodal-cont a:hover {
-    color: rgb(19, 146, 40);
+    color: rgb(7, 79, 19);
+    font-weight: bolder;
 }
 
 .rodal-main {
@@ -72,3 +79,29 @@
     margin: 1rem;
 }
 
+@media (max-width: 768px) {
+    
+    .event-card {
+        background-color: white;
+        width: 250px;
+        height: 300px;
+        border-radius: 10px;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: start;
+        margin: .5rem;
+        cursor: pointer;
+        font-size: small;
+    }
+
+    .event-card img {
+        height: 300px;
+        max-width: 100%;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        border-bottom-left-radius: 0
+    }
+   
+}

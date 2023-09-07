@@ -21,9 +21,6 @@ function NewsList() {
   return (
     <>
     <div className="newsPage">
-        <div>
-          <h3>News EDIT TITLE</h3>
-        </div>
         <div className="newsInnerContainer">
           {
             news.map((news, index) => {

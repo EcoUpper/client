@@ -2,7 +2,7 @@ import Rodal from "rodal"
 import "rodal/lib/rodal.css"
 import { useContext, useState } from "react"
 import { AuthContext } from "../../context/auth.context"
-import smallLogo from "../../images/cutlogo.jpg"
+import smallLogo from "../../images/short_logo_light.png"
 import { Link, NavLink } from "react-router-dom"
 
 function MobileNavBar(props) {

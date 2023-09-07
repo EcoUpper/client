@@ -57,13 +57,13 @@ function UserCard (props) {
 
 
             <button onClick={() => setShowModifyRodal(true)}>Modify your info</button>
-            <Rodal visible={showModifyRodal} animation="fade" width={400} height={230}>
+            <Rodal visible={showModifyRodal} animation="fade" width={400} height={230} onClose={() => setShowModifyRodal(false)}>
                 <ModifyUser setShowModifyRodal={setShowModifyRodal} setUsername={setUsername} setImage={setImage} username={username} image={image}/>
             </Rodal>
 
 
             <button className="delete-btn" onClick={() => setShowDeleteRodal(true)}>Delete profile</button>
-            <Rodal visible={showDeleteRodal} animation="fade" width={400} height={230}>
+            <Rodal visible={showDeleteRodal} animation="fade" width={400} height={230} onClose={() => setShowDeleteRodal(false)}>
                 <p>If you delete your user, all your data will also be deleted and you won't have access to premium features.</p>
                 <p>Are you sure you want to delete your user profile?</p>
                 <button onClick={(e) => {handleUserSubmit(e, user._id)}}>Delete my user</button>

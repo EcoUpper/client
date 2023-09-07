@@ -27,7 +27,6 @@ function NewItem(props) {
     const itemSchema = yup.object().shape({
         name: yup.string().required(),
         description: yup.string().required(),
-        image: yup.string().required(),
         location: yup.string().required(),
       })
 
@@ -36,7 +35,6 @@ function NewItem(props) {
         let dataObject = {
             name: name,
             description: description,
-            image: image,
             location: location
         }
     

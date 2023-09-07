@@ -1,87 +1,146 @@
   .containerAbout{
-    width: 100%;
+    width: 100vw;
     display: flex;
     flex-direction: column;
-    font-size: xx-large;
+    line-height: 30px;
+    color: rgb(23, 106, 37);
   }
 
   .title{
-    color: rgb(23, 106, 37);
-  }
- 
-  .strongColor{
-    color: rgb(23, 106, 37);
+    margin-bottom: 50px;
+    text-align: right;
+    padding: 60px 20px 30px 40px;
   }
   
+  .introAbout{
+    background-color: #a6f0c4;
+    width: auto;
+    border-top-left-radius: 200px;
+    border-bottom-left-radius: 200px;
+    padding: 60px 20px 60px 40px;
+    box-shadow: 0 0 10px 2px rgba(115, 129, 119, 0.733);
+    margin-bottom: 50px;
+    align-self: flex-end;
+    text-align: right;
+  }
+  
+  .introAbout p {
+    margin: 30px 0;
+    width: 100%;
+  }
+
+  .introAbout h3 {
+    margin: 30px 0 5px 0;
+  }
+
+  .featsAbout{
+    background-color: #a6f0c4;
+    width: auto;
+    border-top-right-radius: 200px;
+    border-bottom-right-radius: 200px;
+    padding: 60px 40px 60px 20px;
+    box-shadow: 0 0 10px 2px rgba(115, 129, 119, 0.733);
+    margin-bottom: 50px;
+    text-align: left;
+  }
+
+  .joinAbout {
+    background-color: #a6f0c4;
+    width: auto;
+    border-top-left-radius: 200px;
+    border-bottom-left-radius: 200px;
+    padding: 60px 20px 60px 40px;
+    box-shadow: 0 0 10px 2px rgba(115, 129, 119, 0.733);
+    margin-bottom: 50px;
+    align-self: flex-end;
+    text-align: right;
+  }
+
+  .teamAbout{
+    background-color: #a6f0c4;
+    width: auto;
+    border-top-right-radius: 200px;
+    border-bottom-right-radius: 200px;
+    padding: 60px 40px 60px 20px;
+    box-shadow: 0 0 10px 2px rgba(115, 129, 119, 0.733);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .membersContainer{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    justify-content: space-around;
+  }
+
+  .membersContainer img{
+    border-radius: 100px;
+    height: 120px;
+    width: 100px;
+    box-shadow: 0 0 10px 2px rgba(115, 129, 119, 0.733);
+  }
+  
+  .teamMember {
+    width: 100vw; 
+    height: auto; 
+    color: rgb(23, 106, 37);
+  } 
+
+  .teamMember h3, p {
+    padding: 0;
+    margin-top: 0;
+  }
+
+
+
+  @media screen and (min-width: 768px) {
+
+  .containerAbout{
+    font-size: x-large;
+  }
 
   .introAbout{
     background-color: #a6f0c4;
     width: 60%;
-    border-top-left-radius: 250px;
-    border-bottom-left-radius: 250px;
-    text-align: justify;
-    padding-left: 200px;
-    padding-right: 20px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    box-shadow: 0px 2px 2px 2px rgb(184, 164, 164);
+    padding: 20px 20px 20px 200px;
     margin-bottom: 50px;
     align-self: flex-end;
   }
   
   .introAbout p{
-    text-align: justify;
     font-size:x-large;
-    
   }
 
   .featsAbout{
-    background-color: #a6f0c4;
     width: 60%;
-    border-top-right-radius: 250px;
-    border-bottom-right-radius: 250px;
-    text-align: justify;
     padding-right: 200px;
     padding-left: 20px;
     padding-top: 20px;
     padding-bottom: 20px;
-    box-shadow: 0px 2px 2px 2px rgb(184, 164, 164);
     margin-bottom: 50px;
     font-size: x-large;
-
   }
 
-
   .joinAbout {
-    background-color: #a6f0c4;
     width: 60%;
-    border-top-left-radius: 250px;
-    border-bottom-left-radius: 250px;
-    text-align: justify;
     padding-left: 200px;
     padding-right: 20px;
     padding-top: 20px;
     padding-bottom: 20px;
-    box-shadow: 0px 2px 2px 2px rgb(184, 164, 164);
     margin-bottom: 50px;
     align-self: flex-end;
     font-size: x-large;
-    
-
-
   }
 
   .teamAbout{
-    background-color: #a6f0c4;
     width: 60%;
-    border-top-right-radius: 250px;
-    border-bottom-right-radius: 250px;
     text-align: center;
     padding-right: 200px;
     padding-top: 20px;
     padding-left: 20px;
     padding-bottom: 20px;
-    box-shadow: 0px 2px 2px 2px rgb(184, 164, 164);
     display: flex;
     flex-direction: column;
     font-size: medium;
@@ -95,15 +154,9 @@
     justify-content: space-around;
   }
 
-  .membersContainer img{
-    border-radius: 100px;
-    box-shadow: 0px 2px 2px 2px rgb(184, 164, 164);
-  }
-  
   .teamMember {
-    width: 100%; 
+    width: 100vw; 
     height: auto; 
-    border-radius: 50%;
-    color: rgb(23, 106, 37);
   } 
 
+}

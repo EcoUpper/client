@@ -6,7 +6,7 @@ import uploadImage from "../../services/file-upload.service"
 
 function ModifyItem (props) {
 
-    const {fetchItemInfo} = props
+    const {fetchItemInfo, setShowRodal} = props
     const {item} = props
     const { itemId } = useParams();
 
@@ -20,6 +20,8 @@ function ModifyItem (props) {
     const [location, setLocation] = useState(item.location)
 
     const navigate = useNavigate()
+
+    const authToken = localStorage.getItem("authToken")
     
 
     function handleFileUpload (e) {
@@ -53,6 +55,7 @@ function ModifyItem (props) {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
+                Authorization: `Bearer ${authToken}`
             },
             body: JSON.stringify(body),
         })
@@ -132,7 +135,7 @@ function ModifyItem (props) {
                             <option value="gifted">Gifted</option>
                         </select>
                     </div>
-                    <button type="submit">Modify item</button>
+                    <button type="submit" onClick={() => setShowRodal(false)}>Modify item</button>
                 </form>
             </div>
         </>

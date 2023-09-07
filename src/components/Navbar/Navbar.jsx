@@ -3,7 +3,7 @@ import { Link, NavLink } from "react-router-dom"
 import { useContext, useEffect, useState } from "react"
 import { AuthContext } from "../../context/auth.context"
 import notifImage from "../../images/notif.png"
-import bigLogo from "../../images/test-logo.png"
+import bigLogo from "../../images/long_logo_light.png"
 import MobileNavBar from "./MobileNavBar"
 
 function Navbar() {

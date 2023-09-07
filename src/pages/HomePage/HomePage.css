@@ -7,3 +7,25 @@
     gap: 20px;
 }
 
+h1 > img {
+    width: 12rem;
+}
+
+.news-container button{
+    border: none;
+    border-radius: 17px;
+    padding: 10px;
+    color: white;
+    background-color:rgb(16,124,44);
+    margin: .8rem;
+}
+
+.news-container button:hover{
+    cursor: pointer;
+    background-color: rgb(16, 98, 27);
+    color:rgb(240, 255, 242);
+    border: none;
+    border-radius: 17px;
+    padding: 10px;
+}
+
