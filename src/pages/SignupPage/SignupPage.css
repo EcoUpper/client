@@ -28,3 +28,15 @@ input::file-selector-button {
     background-color: rgb(211, 211, 211);
   }
   
+  .file-input {
+    font-size: 14px;
+    width: 200px;
+}
+
+@media screen and (min-width: 768px) {
+
+  .signup-page a:hover {
+    font-weight: bolder;
+  }
+
+}

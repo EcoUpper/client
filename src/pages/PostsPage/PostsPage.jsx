@@ -10,6 +10,12 @@ function PostsPage() {
     const [newPost, setNewPost] = useState(false)
     const apiUrl = process.env.REACT_APP_SERVER_URL + "/db/posts"
 
+
+    function scrollToTop() {
+        window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+      }
+
+      
     function fetchPosts() {
         fetch(apiUrl)
             .then((res) => {
@@ -63,6 +69,9 @@ function PostsPage() {
                         )
                     })}
                 </div>
+            </div>
+            <div>
+                <button className="back-top-btn" onClick={scrollToTop}>Back to top</button>
             </div>
         </>
     )
