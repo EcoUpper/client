@@ -48,8 +48,8 @@ export default function PostCard(props) {
     return (
         <div className="postsContainerCard" key={props.key}>
             <div className="postInfoDetails">
-                <Link to={`/profile/${props.data.created_by?._id}`} target="_blank"><p>@{props.data.created_by?.username}</p></Link>
-                <p>{props.date} at {props.time}</p>
+                <Link  to={`/profile/${props.data.created_by?._id}`} target="_blank"><p>@{props.data.created_by?.username}</p></Link>
+                <p className="postDate">{props.date} at {props.time}</p>
                 <p>  {likes?.length}{" "}
                     {userHasLiked ? (
                         "❤️"
@@ -58,9 +58,9 @@ export default function PostCard(props) {
                     )}
                 </p>
             </div>
-            <div>
+            <div className="postContent">
                 {props.data.image_url ?
-                    <img className="postImg" src={props.data.image_url} alt="" /> : null}
+                    <img src={props.data.image_url} alt="" /> : null}
                 <p>{props.data.content}</p>
             </div>
 

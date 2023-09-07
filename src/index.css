@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
+  font-family: 'Raleway', sans-serif;
 }
 
 #root {
@@ -10,7 +10,7 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   padding-top: 100px;
-  min-height: 92.15vh
+  min-height: 92.15vh;
 }
 
 .content {

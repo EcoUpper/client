@@ -36,6 +36,10 @@
     color: rgb(29, 216, 79);
 }
 
+.event-card a:hover {
+    color: rgb(19, 146, 40);
+}
+
 .event-info {
     overflow: hidden;
     height: 280px;
@@ -53,6 +57,10 @@
 
 .rodal-cont a {
     color: rgb(29, 216, 79);
+}
+
+.rodal-cont a:hover {
+    color: rgb(19, 146, 40);
 }
 
 .rodal-main {

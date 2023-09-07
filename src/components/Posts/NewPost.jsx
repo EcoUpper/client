@@ -5,7 +5,7 @@ import uploadImage from "../../services/file-upload.service"
 
 function NewItem(props) {
 
-    const {fetchPosts} = props
+    const { fetchPosts } = props
 
     const { user } = useContext(AuthContext)
     const [content, setContent] = useState("")
@@ -13,18 +13,18 @@ function NewItem(props) {
 
     const navigate = useNavigate()
     const apiUrl = process.env.REACT_APP_SERVER_URL + "/db/posts/create/new"
-    const handleFileUpload  = (e) => {
+    const handleFileUpload = (e) => {
         const formData = new FormData()
         formData.append("image_url", e.target.files[0])
-    
+
         uploadImage(formData)
-        .then((res)=>{
-          console.log("upload res", res);
-          setImage(res.image_url)
-        })
-        .catch(err => console.log(err))
-    
-      }
+            .then((res) => {
+                console.log("upload res", res);
+                setImage(res.image_url)
+            })
+            .catch(err => console.log(err))
+
+    }
 
 
     function handleSubmit(e) {
@@ -50,7 +50,7 @@ function NewItem(props) {
                 setContent("")
                 setImage("")
                 props.setNewPost(!props.newPost)
-                
+
                 fetchPosts()
                 navigate("/posts")
             })
@@ -62,11 +62,12 @@ function NewItem(props) {
 
     return (
         <>
-            <div>
-                <form onSubmit={handleSubmit} >
-                    <div>
+            <div >
+                <form className="newPostForm" onSubmit={handleSubmit} >
+                    <div className="innerNewPostForm">
                         <label>Post</label>
                         <textarea
+                            className="postInput"
                             type="text"
                             name="content"
                             placeholder="Share your thoughts!"
@@ -74,9 +75,9 @@ function NewItem(props) {
                             value={content}
                         />
                     </div>
-                    <div>
+                    <div className="innerNewPostForm">
                         <label>Image</label>
-                        <input type="file" onChange={(e) => handleFileUpload (e)} />
+                        <input className="postInput" type="file" onChange={(e) => handleFileUpload(e)} />
                     </div>
                     <button type="submit">Post</button>
                 </form>
