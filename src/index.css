@@ -4,6 +4,10 @@ body {
   font-family: 'Raleway', sans-serif;
 }
 
+h1 {
+  margin-top: .2rem;
+}
+
 #root {
   background-image: url("./images/background2.jpg");
   background-size: cover;

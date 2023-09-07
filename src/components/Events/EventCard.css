@@ -81,7 +81,7 @@
     
     .event-card {
         background-color: white;
-        width: 200px;
+        width: 250px;
         height: 300px;
         border-radius: 10px;
         box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
@@ -96,7 +96,7 @@
 
     .event-card img {
         height: 300px;
-        max-width: 200px;
+        max-width: 100%;
         border-top-left-radius: 10px;
         border-top-right-radius: 10px;
         border-bottom-left-radius: 0

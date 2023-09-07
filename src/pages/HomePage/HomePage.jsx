@@ -1,6 +1,7 @@
 import "./HomePage.css"
 import "./../../components/NewsList/News.css"
 import NewsList from "./../../components/NewsList/NewsList"
+import logo from "../../images/long_logo_dark.png"
 
 
 function HomePage() {
@@ -12,8 +13,10 @@ function HomePage() {
   return (
 
     <>
-      {/* <div className="treesBackground"></div> */}
       <div className="newsContainer">
+        <h1>Welcome to EcoUpper</h1>
+        <h2>Thank you for caring about the environment!</h2>
+        <h5>You can read the most recent climate news here to stay up to date</h5>
         <NewsList />
         <button onClick={scrollToTop}>Back to top</button>
       </div>
