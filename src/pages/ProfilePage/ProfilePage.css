@@ -45,10 +45,6 @@
     margin: 1rem;;
 }
 
-.delete-btn {
-    height: 20px;
-}
-
 .accepted {
     background: rgb(104,196,104);
     background: linear-gradient(0deg, rgba(104,196,104,1) 0%, rgba(255,255,255,1) 20%);

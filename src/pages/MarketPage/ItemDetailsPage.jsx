@@ -176,7 +176,7 @@ function ItemDetailsPage() {
                   fetchItemInfo={fetchItemInfo}
                 />
               </Rodal>
-              <button onClick={(e) => handleItemSubmit(e, itemInfo._id)}>
+              <button className="delete-btn" onClick={(e) => handleItemSubmit(e, itemInfo._id)}>
                 Delete
               </button>
               <h3>Proposals on the item</h3>
@@ -208,7 +208,7 @@ function ItemDetailsPage() {
                         >
                           Accept
                         </button>
-                        <button
+                        <button className="delete-btn"
                           onClick={(e) =>
                             handleProposalChange(e, prop._id, "Rejected")
                           }
