@@ -20,6 +20,8 @@ function NewItem(props) {
     const [location, setLocation] = useState("")
 
     const navigate = useNavigate()
+
+    const authToken = localStorage.getItem("authToken")
     const apiUrl = process.env.REACT_APP_SERVER_URL + "/db/items/create/new"
 
     const itemSchema = yup.object().shape({
@@ -76,7 +78,7 @@ function NewItem(props) {
 
         fetch(apiUrl, {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: { "Content-Type": "application/json", Authorization: `Bearer ${authToken}` },
             body: JSON.stringify(body)
         })
             .then((res) => {

@@ -22,6 +22,8 @@ function NewEvent (props) {
     const navigate = useNavigate()
     const apiUrl = process.env.REACT_APP_SERVER_URL + "/db/events/create/new"
 
+    const authToken = localStorage.getItem("authToken")
+
     const eventSchema = yup.object().shape({
         title: yup.string().required(),
         content: yup.string().required(),
@@ -80,7 +82,7 @@ function NewEvent (props) {
 
         fetch(apiUrl, {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: { "Content-Type": "application/json",  Authorization: `Bearer ${authToken}`},
             body: JSON.stringify(body)
         })
         .then((res) => {

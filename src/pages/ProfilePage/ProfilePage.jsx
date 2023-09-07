@@ -25,6 +25,8 @@ function ProfilePage() {
 
   const { userId } = useParams()
 
+  const authToken = localStorage.getItem("authToken")
+
   function statusCheck (status) {
     if (status === "accepted") {
          return "accepted" 
@@ -80,7 +82,9 @@ function ProfilePage() {
       .catch(err => console.log(err))
 
 
-    fetch(eventUrl)
+    fetch(eventUrl, {
+      headers: {Authorization: `Bearer ${authToken}`},
+    })
       .then((response) => {
         return response.json()
       })
@@ -123,7 +127,9 @@ function ProfilePage() {
     e.preventDefault()
     const deleteEventUrl = process.env.REACT_APP_SERVER_URL + "/db/events/delete/" + eventId
 
+
     fetch(deleteEventUrl, {
+      headers: {Authorization: `Bearer ${authToken}`},
       method: "DELETE"
     })
       .then((res) => {
@@ -147,6 +153,7 @@ function ProfilePage() {
     const deleteProposalUrl = process.env.REACT_APP_SERVER_URL + "/db/proposals/" + propId
 
     fetch(deleteProposalUrl, {
+      headers: {Authorization: `Bearer ${authToken}`},
       method: "DELETE"
     })
       .then((res) => {

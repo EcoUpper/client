@@ -9,6 +9,7 @@ import Rodal from "rodal";
 import "rodal/lib/rodal.css";
 import "./ItemDetailsPage.css";
 
+
 function ItemDetailsPage() {
   const { itemId } = useParams();
   const { user } = useContext(AuthContext);
@@ -21,6 +22,7 @@ function ItemDetailsPage() {
   const dateTimeEx = new Date(dateAndTimePropEx);
   const expirationDate = dateTimeEx.toLocaleDateString();
 
+  const authToken = localStorage.getItem("authToken")
   const apiUrl = process.env.REACT_APP_SERVER_URL + "/db/items/" + itemId;
   const proposalUrl =
     process.env.REACT_APP_SERVER_URL + "/db/proposals/" + itemId;
@@ -84,6 +86,7 @@ function ItemDetailsPage() {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${authToken}`
       },
       body: JSON.stringify({ status: newStatus }),
     })
@@ -112,6 +115,7 @@ function ItemDetailsPage() {
 
     fetch(deleteItemUrl, {
       method: "DELETE",
+      headers: {Authorization: `Bearer ${authToken}`},
     })
       .then((res) => {
         res.json();
