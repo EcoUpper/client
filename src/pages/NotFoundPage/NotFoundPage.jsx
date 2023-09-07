@@ -6,10 +6,12 @@ function NotFoundPage() {
   return (
     <div className="container">
       <h1>Page Not Found</h1>
-      <p>This page doesn't seem to exist</p>
-      <Link to="/">Go to Homepage</Link>
+      <p>Ups! This page doesn't seem to exist</p>
+      <button>
+        <Link to="/">Take me to Homepage</Link>
+      </button>
       <div className="img">
-      <img src={sadImg} alt="sad face" />
+        <img className="image" src={sadImg} alt="sad face" />
       </div>
     </div>
   );
