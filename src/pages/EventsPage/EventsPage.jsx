@@ -103,7 +103,7 @@ function EventsPage() {
             height={500}
             onClose={() => setShowRodal(false)}
           >
-            <NewEvent fetchEvents={fetchEvents} setShowRodal={setShowRodal} />
+            <NewEvent fetchEvents={fetchEvents} setShowRodal={setShowRodal}/>
           </Rodal>
         </div>
       </div>

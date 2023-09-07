@@ -17,8 +17,6 @@ function MarketPage() {
 
   const apiUrl = process.env.REACT_APP_SERVER_URL + "/db/items";
 
-  
-
   function scrollToTop() {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }
@@ -112,6 +110,7 @@ function MarketPage() {
               animation="fade"
               width={600}
               height={440}
+              onClose={() => setShowRodal(false)}
             >
               <NewItem fetchItems={fetchItems} setShowRodal={setShowRodal} />
             </Rodal>

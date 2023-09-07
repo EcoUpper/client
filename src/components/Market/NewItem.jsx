@@ -2,6 +2,7 @@ import { useState, useContext } from "react"
 import { useNavigate } from "react-router-dom"
 import { AuthContext } from "../../context/auth.context"
 import uploadImage from "../../services/file-upload.service"
+import * as yup from 'yup'
 import "./NewItem.css"
 
 
@@ -20,6 +21,31 @@ function NewItem(props) {
 
     const navigate = useNavigate()
     const apiUrl = process.env.REACT_APP_SERVER_URL + "/db/items/create/new"
+
+    const itemSchema = yup.object().shape({
+        name: yup.string().required(),
+        description: yup.string().required(),
+        image: yup.string().required(),
+        location: yup.string().required(),
+      })
+
+    async function validateForm() {
+    
+        let dataObject = {
+            name: name,
+            description: description,
+            image: image,
+            location: location
+        }
+    
+    
+        try {
+            await itemSchema.validate(dataObject);
+          } catch (err) {
+             alert(err.errors)
+            }
+        setShowRodal(false)
+      }
 
     const handleFileUpload = (e) => {
         const formData = new FormData()
@@ -135,7 +161,7 @@ function NewItem(props) {
                         />
                     </div>
 
-                    <button type="submit" onClick={() => setShowRodal(false)}>Create item</button>
+                    <button type="submit" onClick={() => validateForm()}>Create item</button>
                 </form>
             </div>
         </>
