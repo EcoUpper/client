@@ -1,5 +1,5 @@
 .postsContainerCard {
-    height: 150px;
+    height: 170px;
     width: 80vw;
     border: 1px solid rgba(225, 235, 228, 0.733);
     border-radius: 10px;
@@ -33,7 +33,7 @@
     justify-content: center;
 }
 
-.postsContainerCard img {
+.postImg {
     max-width: 80%;
     border-radius: 10px;
 }
@@ -51,12 +51,12 @@
 @media screen and (min-width: 568px) {
 
      .postsContainerCard {
-        height: 110px;
+        height: auto;
         width: 800px;
         padding: 10px 20px;
         margin: 20px 0;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         align-items: center;
         justify-content: space-between; 
     }
@@ -88,4 +88,26 @@
         justify-content: center;
         align-items: center;
     }
-} 
+
+    .postInfoDetails {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 80px;
+        width: 100%;
+    }
+
+    .postInfoDetails button {
+        border: none;
+        background-color: transparent;
+        padding-bottom: 10px;
+    }   
+    
+    .postInfoDetails button:hover {
+        font-size: 1.1em;
+        padding-bottom: 10px;
+        cursor: pointer;
+    }
+
+    
+}
