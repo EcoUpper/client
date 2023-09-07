@@ -6,7 +6,7 @@ a {
 
 .cardContainer{
     width: 200px;
-    height: 280px;
+    height: 300px;
     border: 1px solid rgb(211, 192, 192);
     border-radius: 10px;
     box-shadow: 0 0 20px 2px rgba(194, 199, 196, 0.906);

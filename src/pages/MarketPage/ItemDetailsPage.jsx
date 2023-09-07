@@ -146,7 +146,7 @@ function ItemDetailsPage() {
             <p><strong>Status:</strong> {itemInfo.status}</p>
             <p><strong>Description:</strong> {itemInfo.description}</p>
             <p><strong>Category:</strong> {itemInfo.type}</p>
-            {itemInfo.type === "food" && <p>{expirationDate}</p>}
+            {itemInfo.type === "food" && <p><strong>Expires on: </strong>{expirationDate}</p>}
             <p>
             <strong>Pick up at:</strong>{" "}
               <a target="_blank" href={itemLocation}>

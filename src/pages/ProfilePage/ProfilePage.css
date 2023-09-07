@@ -141,7 +141,8 @@
         align-items: center;
     }
    
-    #logoutBtn:hover {
-        background-color: rgb(243, 243, 243);
-    }
+}
+
+#logoutBtn:hover {
+    background-color: rgb(16, 98, 27);
 }
