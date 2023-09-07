@@ -17,6 +17,8 @@ function MarketPage() {
 
   const apiUrl = process.env.REACT_APP_SERVER_URL + "/db/items";
 
+  
+
   function scrollToTop() {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }

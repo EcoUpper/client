@@ -41,7 +41,7 @@ function LoginPage() {
   };
 
   return (
-    <div className="LoginPage">
+    <div className="login-page">
       <h1>Login</h1>
 
       <form onSubmit={handleLoginSubmit}>

@@ -132,18 +132,7 @@ function NewItem(props) {
                             value={location}
                         />
                     </div>
-                    {/* <div>
-                        <label>Status</label>
-                        <select
-                            name="status"
-                            onChange={(e) => setStatus(e.target.value)}
-                            value={status}
-                        >
-                            <option value="available">Available</option>
-                            <option value="reserved">Reserved</option>
-                            <option value="gifted">Gifted</option>
-                        </select>
-                    </div> */}
+
                     <button type="submit" onClick={() => setShowRodal(false)}>Create item</button>
                 </form>
             </div>
