@@ -1,70 +1,64 @@
-# Getting Started with Create React App
+# Main funcionality of the project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The aim of this project is to build a full stack web application with CRUD funcionality working with the MERN stack.
 
-## Available Scripts
+To use these technologies, we created and brought to life an application to promote a more sustainable lifestyle and encourage people to reuse and recycle. EcoUpper is also a platform where users can be informed and share their awareness about sustainability and climate change while creating a new community.
 
-In the project directory, you can run:
+# Draw funcionality
 
-### `npm start`
+The wireframe can be found here: https://www.figma.com/file/Sr6dQwIW0fucuThFdpP97P/EcoUpper-Project?type=design&node-id=0-1&mode=design&t=4VWL2dxa6wnC4dgB-0
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Table example
+| Page | Description | Components |
+| ---- | ---         | ---------- | 
+| App.jsx | Is where the pages and routes are imported| Navbar.jsx, Footer.jsx |
+| HomePage.jsx | It displays the news from the API, the different pages linked in the Navbar and the Footer with the _About us_ page also linked| NewsCard.jsx, NewsList.jsx |
+| MarketPage.jsx | It displays the items list created by the users and allow the user to filter by type of product and key words | NewItem.jsx, ItemsList.jsx, ItemCard.jsx | 
+| ItemDetailsPage.jsx | It displays all the item's details and let the user create a proposal to reserve it | ModifyItem.jsx, NewProposal.jsx, ProposalCard.jsx | 
+| EventsPage.jsx | It displays all the events listed by date and allow the user to filter them by month and key words | NewEvents.jsx, EventList.jsx, EventCard.jsx | 
+| EventDetailsPage.jsx | It displays all the information needed to attend the event | 
+| PostPage.jsx | It displays all the posts shared by the users in order from the newest to the oldest and also displays the form to create a new one| NewPost.jsx, PostCard.jsx | 
+| SignupPage.jsx | This page allows submitting user data, such as username, email, password and picture| 
+| LoginPage.jsx | This page allows users to enter their login credentials |  
+| ProfilePage.jsx | It displays all the user data: user details and allows to edit them or detele them. Also displays all the data uploaded by the user as items, created events, propostals and posts| UserCard.jsx, ModifyUser.jsx, ProposalCard.jsx, ItemCard.jsx, EventCard.jsx, PostCard.jsx | 
+| AboutPage.jsx | It displays the main purpose of EcoUpper and team information | 
+| NotFoundPage.jsx | It displays a button to redirect the user to the Homepage | 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<!-- ## Components table example
+| Components | Components Description |
+| ---------- | ---------------------  |
+| NewsCard.jsx | DESCRIPTION |
+| NewsList.jsx | DESCRIPTION |
+| NewItem.jsx | DESCRIPTION |
+| ItemsList.jsx | DESCRIPTION |
+| ItemCard.jsx | DESCRIPTION |
+| ModifyItem.jsx | DESCRIPTION |
+| NewEvents.jsx | DESCRIPTION |
+| EventList.jsx | DESCRIPTION |
+| EventCard.jsx | DESCRIPTION |
+| NewPost.jsx | DESCRIPTION |
+| PostCard.jsx | DESCRIPTION |
+| UserCard.jsx | DESCRIPTION |
+| ModifyUser.jsx | DESCRIPTION |
+| NewProposal.jsx | DESCRIPTION |
+|ProposalCard.jsx | DESCRIPTION |
+| Navbar.jsx | DESCRIPTION |
+| Footer.jsx | DESCRIPTION |
+| Loading.jsx | DESCRIPTION |
+| IsAnon.jsx | DESCRIPTION |
+| IsPrivate.jsx | DESCRIPTION | -->
 
-### `npm test`
+## How the platform works
+The differents pages are created thinking in the user experience, giving the web the same format.
+The stucture in all of them, allows the user to  understand the platform quickly and navigate trough it softly, as the mecanism works in all of the pages the same way: the user gets the upload data updated by date and the option to create new thanks to a simple forms which are dispalyed in a pop up. 
+There is also a filtering system to help the user find their needs and in the user profile their will find all the interactions made on the page organized.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# 
 
-### `npm run build`
+The project is presented by four full-stack developer students from Ironhack: Edna, Erik, JuanDa, and Óscar. This project was built from scratch.We used React as the foundational backend framework and Mongoose for modeling and database communication. The project incorporates five models that are equipped with validation and user feedback for invalid submissions.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+We also created our own db to get the news from two differents newspapaers. (completar)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Furthermore, this website encompasses sign-up, log-in, and log-out functionality, featuring encrypted passwords and/or social logins. We have successfully implemented all CRUD (Create, Read, Update, Delete) actions for models.The project also employs a responsive design to optimize user experience.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Access to the website: (put link here)
