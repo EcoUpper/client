@@ -49,8 +49,8 @@ function NewProposal(props) {
 
     return (
         <>
-            <div>
-                <form onSubmit={handleSubmit} >
+            <div className="newProposalForm">
+                <form className="innerNewProposalForm" onSubmit={handleSubmit} >
                     <div>
                         <label>Date</label>
                         <input
@@ -61,7 +61,7 @@ function NewProposal(props) {
                         />
                     </div>
                     <div>
-                        <label>Starting time</label>
+                        <label>Pickup time</label>
                         <input
                             type="time"
                             name="time"

@@ -57,3 +57,8 @@
 .back-to-top{
     margin-top: 2rem;
 }
+
+#filterEvent {
+    height: 40px;
+}
+

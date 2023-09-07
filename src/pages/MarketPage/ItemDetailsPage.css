@@ -79,6 +79,12 @@
     padding: 10px;
 }
 
+.newProposalForm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 @media (max-width: 768px) {
     
     .item-info-cont {
@@ -97,6 +103,7 @@
         text-align: center;
         margin-top: 1.5rem;
     }
+
 
 
 }

@@ -13,8 +13,8 @@ function Footer () {
     <footer className="footer">
       <div className="footerContainer">
         <div className="contactFooter">
-          <Link to="/About"><h3>About us</h3></Link>
-          <p>Learn more about the team and the concept behind EcoUpper.</p>
+          <h3>About us</h3>
+          <Link to="/About"><p>Learn more about the team and the concept behind EcoUpper.</p></Link>
         </div>
         <div>
           <h3>Contact</h3>
