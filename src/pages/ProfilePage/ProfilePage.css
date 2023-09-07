@@ -109,6 +109,10 @@
     padding: 10px;
 }
 
+#logoutBtn {
+    background-color: rgb(156, 165, 157);
+}
+
 @media (max-width: 768px) {
     
     .details-prop-container {
@@ -116,7 +120,7 @@
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
-        background-color:  rgb(243, 243, 243);;
+        background-color:  rgb(243, 243, 243);
         padding-bottom: 20px;
         margin-top: 20px;
         border-radius: 10px;
@@ -137,4 +141,7 @@
         align-items: center;
     }
    
+    #logoutBtn:hover {
+        background-color: rgb(243, 243, 243);
+    }
 }

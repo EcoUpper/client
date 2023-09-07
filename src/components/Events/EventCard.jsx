@@ -8,7 +8,7 @@ export default function EventCard(props) {
   const [showRodal, setShowRodal] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState(null);
 
-  const itemLocation = "https://maps.google.com/?q=" + props.data.location;
+  const itemLocation = "https://maps.google.com/?q=" + props.data.location
 
   const openRodal = (event) => {
     setSelectedEvent(event);

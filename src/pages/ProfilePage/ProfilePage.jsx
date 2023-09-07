@@ -170,8 +170,10 @@ function ProfilePage() {
 
 
   return (
+
+    <>
     <div className="profile-page">
-      <button className="navLink" onClick={logOutUser}>Logout</button>
+      <button id="logoutBtn" onClick={logOutUser}>Logout</button>
       <div className="details-prop-container">
 
         <UserCard user={user} userParam={userParam} />
@@ -256,6 +258,7 @@ function ProfilePage() {
       <button onClick={scrollToTop}>Back to top</button>
 
     </div>
+    </>
   );
 }
 
