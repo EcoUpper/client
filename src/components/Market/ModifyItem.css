@@ -15,27 +15,6 @@
     justify-content: center;
 }
 
-/* .formContainer button {
-    width: 30%;
-    margin-left: 35%;
-    border: none;
-    border-radius: 17px;
-    padding: 10px;
-    color: rgb(16, 98, 27);
-    background-color:rgb(240, 255, 242)
-}
-
-.formContainer button:hover {
-    width: 30%;
-    margin-left: 35%;
-    cursor: pointer;
-    background-color: rgb(16, 98, 27);
-    color:rgb(240, 255, 242);
-    border: none;
-    border-radius: 17px;
-    padding: 10px;
-} */
-
 .innerForm {
     display: flex;
     flex-direction: row;
@@ -43,13 +22,11 @@
 }
 
 .innerForm input, select, textarea {
-    width: 60%;
     text-align: center;
     border: none;
 }
 
 .innerForm input:hover, select:hover, textarea:hover {
-    background-color: rgb(240, 255, 242);
     font-weight: bolder;
     cursor: pointer;
 }

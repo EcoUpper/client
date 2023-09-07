@@ -2,6 +2,8 @@ import { useState, useContext } from "react"
 import { useNavigate } from "react-router-dom"
 import { AuthContext } from "../../context/auth.context"
 import uploadImage from "../../services/file-upload.service"
+import * as yup from 'yup'
+import "./NewItem.css"
 
 
 function NewItem(props) {
@@ -18,7 +20,34 @@ function NewItem(props) {
     const [location, setLocation] = useState("")
 
     const navigate = useNavigate()
+
+    const authToken = localStorage.getItem("authToken")
     const apiUrl = process.env.REACT_APP_SERVER_URL + "/db/items/create/new"
+
+    const itemSchema = yup.object().shape({
+        name: yup.string().required(),
+        description: yup.string().required(),
+        image: yup.string().required(),
+        location: yup.string().required(),
+      })
+
+    async function validateForm() {
+    
+        let dataObject = {
+            name: name,
+            description: description,
+            image: image,
+            location: location
+        }
+    
+    
+        try {
+            await itemSchema.validate(dataObject);
+          } catch (err) {
+             alert(err.errors)
+            }
+        setShowRodal(false)
+      }
 
     const handleFileUpload = (e) => {
         const formData = new FormData()
@@ -49,7 +78,7 @@ function NewItem(props) {
 
         fetch(apiUrl, {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: { "Content-Type": "application/json", Authorization: `Bearer ${authToken}` },
             body: JSON.stringify(body)
         })
             .then((res) => {
@@ -76,8 +105,9 @@ function NewItem(props) {
 
     return (
         <>
-            <div>
+            <div className="form-container">
                 <form onSubmit={handleSubmit} >
+                    <h3>Create an event</h3>
                     <div>
                         <label>Name</label>
                         <input
@@ -98,9 +128,9 @@ function NewItem(props) {
                     </div>
                     <div>
                         <label>Image</label>
-                        <input type="file" onChange={(e) => handleFileUpload(e)} />
+                        <input class="file-input" type="file" onChange={(e) => handleFileUpload(e)} />
                     </div>
-                    <div>
+                    <div className="type-select">
                         <label>Type</label>
                         <select
                             name="type"
@@ -133,7 +163,7 @@ function NewItem(props) {
                         />
                     </div>
 
-                    <button type="submit" onClick={() => setShowRodal(false)}>Create item</button>
+                    <button type="submit" onClick={() => validateForm()}>Create item</button>
                 </form>
             </div>
         </>

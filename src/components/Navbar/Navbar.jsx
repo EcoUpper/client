@@ -1,9 +1,10 @@
-import "./Navbar.css";
-import { Link, NavLink } from "react-router-dom";
-import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../context/auth.context";
+import "./Navbar.css"
+import { Link, NavLink } from "react-router-dom"
+import { useContext, useEffect, useState } from "react"
+import { AuthContext } from "../../context/auth.context"
 import notifImage from "../../images/notif.png"
-import logo from "../../images/test-logo.png"
+import bigLogo from "../../images/test-logo.png"
+import MobileNavBar from "./MobileNavBar"
 
 function Navbar() {
 
@@ -11,6 +12,8 @@ function Navbar() {
   const [items, setItems] = useState("")
   const [hasNotif, setHasNotif] = useState(false)
   const [event, setEvent] = useState(false)
+  const [windowWidth, setWindowWidth]= useState(window.innerWidth)
+
 
   function settingEvent() {
     setEvent(!event)
@@ -51,39 +54,54 @@ function Navbar() {
 
   }, [event])
 
+
+  useEffect(() => {
+    function handleResize () {
+      setWindowWidth(window.innerWidth);
+    };
+  
+    window.addEventListener('resize', handleResize);
+  }, [windowWidth]);
+
   return (
-    <nav>
-      <div className="navDiv navLinks">
-        <Link to="/" onClick={settingEvent}>
-          <img className="bigLogo" src={logo} alt="Home" />
-          {/* <img className="smallLogo" src={logo} alt="Home" /> */}
-        </Link>
-        <NavLink className={({isActive, isPending}) => isPending ? "pending navLink" : isActive ? "active navLink" : "navLink"} to="/market" onClick={settingEvent}>Market</NavLink>
-        <NavLink className={({isActive, isPending}) => isPending ? "pending navLink" : isActive ? "active navLink" : "navLink"} to="/events" onClick={settingEvent}>Events</NavLink>
-        <NavLink className={({isActive, isPending}) => isPending ? "pending navLink" : isActive ? "active navLink" : "navLink"} to="/posts" onClick={settingEvent}>Posts</NavLink>
-      </div>
 
-      <div className="navDiv navUser">
-        {isLoggedIn && (
-          <>
+    <>
 
-            <Link id="profileImg" to={`/profile/${user?._id}`} onClick={settingEvent}>
-              <img  src={user?.image_url} alt="Profile picture" />
+      {windowWidth <= 768 ? <MobileNavBar settingEvent={settingEvent} hasNotif={hasNotif} notifImage={notifImage}/>
+        :
+        <nav>
+
+          <div className="navDiv navLinks">
+            <Link to="/" onClick={settingEvent}>
+              <img className="bigLogo" src={bigLogo} alt="Home" />
             </Link>
-            <button className="navLink" onClick={logOutUser}>Logout</button>
-            {hasNotif ? <img src={notifImage} alt="" height="30px" /> : null}
-            <span>{user && user?.name}</span>
-          </>
-        )}
+              <NavLink className={({ isActive, isPending }) => isPending ? "pending navLink" : isActive ? "active navLink" : "navLink"} to="/market" onClick={settingEvent}>Market</NavLink>
+              <NavLink className={({ isActive, isPending }) => isPending ? "pending navLink" : isActive ? "active navLink" : "navLink"} to="/events" onClick={settingEvent}>Events</NavLink>
+              <NavLink className={({ isActive, isPending }) => isPending ? "pending navLink" : isActive ? "active navLink" : "navLink"} to="/posts" onClick={settingEvent}>Posts</NavLink>
+          </div>
 
-        {!isLoggedIn && (
-          <>
-            <NavLink className={({isActive, isPending}) => isPending ? "pending navLink" : isActive ? "active navLink" : "navLink"} to="/signup">Signup</NavLink>
-            <NavLink className={({isActive, isPending}) => isPending ? "pending navLink" : isActive ? "active navLink" : "navLink"} to="/login">Login</NavLink>
-          </>
-        )}
-      </div>
-    </nav>
+          <div className="navDiv navUser">
+            {isLoggedIn && (
+              <>
+                <Link id="profileImg" to={`/profile/${user?._id}`} onClick={settingEvent}>
+                  <img src={user?.image_url} alt="Profile picture" />
+                </Link>
+                <button className="navLink" onClick={logOutUser}>Logout</button>
+                {hasNotif ? <img src={notifImage} alt="" height="30px" /> : null}
+                <span>{user && user?.name}</span>
+              </>
+            )}
+
+            {!isLoggedIn && (
+              <>
+                <NavLink className={({ isActive, isPending }) => isPending ? "pending navLink" : isActive ? "active navLink" : "navLink"} to="/signup">Signup</NavLink>
+                <NavLink className={({ isActive, isPending }) => isPending ? "pending navLink" : isActive ? "active navLink" : "navLink"} to="/login">Login</NavLink>
+              </>
+            )}
+          </div>
+        </nav>
+      }
+    </>
   );
 }
 

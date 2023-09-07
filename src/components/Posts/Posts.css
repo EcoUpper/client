@@ -1,19 +1,14 @@
 .postsContainerCard {
-    height: 170px;
+    height: auto;
     width: 80vw;
     border: 1px solid rgba(225, 235, 228, 0.733);
     border-radius: 10px;
     box-shadow: 0 0 10px 2px rgba(225, 235, 228, 0.733);
     padding: 20px 20px 0 20px;
     margin: 20px 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    text-decoration: none;
     transition: 300ms;
     color: rgb(1, 45, 8);
-    background-color: rgba(244, 249, 244, 0.943);
+    background-color: rgba(255, 255, 255, 0.957);
 }
 
 .postsInnerContainer {
@@ -23,63 +18,99 @@
     align-items: center;
 }
 
-.postsTextCard {
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-    gap: 20px;
-    height: 100%;
-    justify-content: center;
+.postContent {
+    font-weight: bold;
+    height: auto;
 }
 
-.postImg {
+.postContent img {
     max-width: 80%;
     border-radius: 10px;
 }
 
-.postsContainerCard:visited {
-    color: rgb(104, 146, 111);
+.postPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
 
-.postsContainerCard h3 {
-    margin: 0;
+.newPostForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-weight: bolder;
+}
+
+.innerNewPostForm {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.innerNewPostForm input {
+    width: 60%;
+    background-color: white;
+}
+
+.postInput {
+    border: 1px solid rgba(1, 45, 8, 0.342);
+    border-radius: 14px;
+    margin-left: 10px;
+    width: 100%;
+}
+
+.postInput:hover {
+    border-color:rgb(1, 45, 8);
+    cursor: pointer;
+}
+
+.postInfoDetails button { /*likes button */
+    border: none;
+    background-color: transparent;
+    padding-bottom: 10px;
+}
+
+.postDate {
+    color: grey;
+    font-weight: lighter;
+}
+
+.postInfoDetails a {
+    font-size: 1.2em;
+    font-weight: bolder;
+    color: rgb(29, 216, 79);
 }
 
 
 
 @media screen and (min-width: 568px) {
 
-     .postsContainerCard {
-        height: auto;
+    .postsContainerCard {
         width: 800px;
         padding: 10px 20px;
         margin: 20px 0;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: space-between; 
+        justify-content: space-between;
+        background-color: rgba(255, 255, 255, 0.683);
     }
 
+    .newPostForm {
+        width: 600px;
+    }
+    
     .postsContainerCard:hover {
-        background-color: rgba(255, 255, 255, 0.683);
+        background-color: rgba(255, 255, 255, 0.957);
         box-shadow: 0 0 20px 2px rgba(194, 199, 196, 0.906);
     }
 
-    .postsContainerCard img {
-        max-width: 250px;
-    }
-
-    .postsTextCard {
-        gap: 40px;
-    }
-
-    .postsContainer {
-        margin: 20px;
-    }
-
-    .postsPage {
-        margin: 10px;
+    .postContent img {
+        max-width: 70%;
     }
 
     .postsInnerContainer {
@@ -93,21 +124,17 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        height: 80px;
+        height: 65px;
         width: 100%;
     }
 
-    .postInfoDetails button {
-        border: none;
-        background-color: transparent;
-        padding-bottom: 10px;
-    }   
-    
     .postInfoDetails button:hover {
         font-size: 1.1em;
         padding-bottom: 10px;
         cursor: pointer;
     }
 
-    
+    .postInfoDetails a:hover {
+        color: rgb(19, 146, 40);
+    }
 }

@@ -2,7 +2,6 @@ import { useState, useEffect, useContext } from "react"
 import PostCard from "../../components/Posts/PostCard"
 import NewPost from "../../components/Posts/NewPost"
 import { AuthContext } from "../../context/auth.context"
-import "./PostsPage.css"
 
 function PostsPage() {
 

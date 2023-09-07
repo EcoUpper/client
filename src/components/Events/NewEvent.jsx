@@ -2,6 +2,8 @@ import { useState, useContext } from "react"
 import { useNavigate } from "react-router-dom"
 import { AuthContext } from "../../context/auth.context"
 import uploadImage from "../../services/file-upload.service"
+import * as yup from 'yup'
+import "./NewEvent.css"
 
 function NewEvent (props) {
     
@@ -19,6 +21,38 @@ function NewEvent (props) {
 
     const navigate = useNavigate()
     const apiUrl = process.env.REACT_APP_SERVER_URL + "/db/events/create/new"
+
+    const authToken = localStorage.getItem("authToken")
+
+    const eventSchema = yup.object().shape({
+        title: yup.string().required(),
+        content: yup.string().required(),
+        image: yup.string(),
+        date: yup.string().required(),
+        time: yup.string(),
+        location: yup.string().required(),
+      })
+
+    async function validateForm() {
+        // creating a form data object
+    
+        let dataObject = {
+            title: title,
+            content: content,
+            image: image,
+            date: date,
+            time: time,
+            location: location,
+        }
+    
+    
+        try {
+            await eventSchema.validate(dataObject);
+          } catch (err) {
+             alert(err.errors)
+            }
+        setShowRodal(false)
+      }
 
     const handleFileUpload  = (e) => {
         const formData = new FormData()
@@ -48,7 +82,7 @@ function NewEvent (props) {
 
         fetch(apiUrl, {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: { "Content-Type": "application/json",  Authorization: `Bearer ${authToken}`},
             body: JSON.stringify(body)
         })
         .then((res) => {
@@ -75,8 +109,9 @@ function NewEvent (props) {
 
     return (
        <>
-       <div>
-                <form onSubmit={handleSubmit} >
+       <div className="form-container">
+                <form onSubmit={handleSubmit}>
+                <h3>Create a new event</h3>
                     <div>
                         <label>Title</label>
                         <input
@@ -98,7 +133,7 @@ function NewEvent (props) {
                     </div>
                     <div>
                         <label>Image</label>
-                        <input type="file" onChange={(e) => handleFileUpload (e)} />
+                        <input className="file-input" type="file" onChange={(e) => handleFileUpload (e)} />
 
                     </div>
                     <div>
@@ -128,7 +163,7 @@ function NewEvent (props) {
                             value={location}
                         />
                     </div>
-                    <button type="submit" onClick={() => setShowRodal(false)}>Create</button>
+                    <button type="submit" onClick={() => {validateForm()}}>Create</button>
                 </form>
         </div>
        </> 

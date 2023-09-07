@@ -17,9 +17,14 @@
     width: 50%;
 }
 
+.event-search{
+    width: 80%;
+}
+
 .event-filter select{
     border: solid 1px rgb(16, 98, 27);
     border-radius: 10px;
+    width: 20%;
 }
 
 .event-cont button {
