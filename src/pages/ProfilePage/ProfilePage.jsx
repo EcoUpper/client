@@ -111,8 +111,9 @@ function ProfilePage() {
       .catch(err => console.log(err))
   }, [userParam])
 
-  function handleEventSubmit(e, eventId) {
+    function handleEventSubmit(e, eventId) {
     e.preventDefault()
+    
     const deleteEventUrl = process.env.REACT_APP_SERVER_URL + "/db/events/delete/" + eventId
 
     fetch(deleteEventUrl, {
@@ -161,7 +162,9 @@ function ProfilePage() {
 
     <>
     <div className="profile-page">
-      <button id="logoutBtn" onClick={logOutUser}>Logout</button>
+      {user._id == userParam._id ?<h1>Profile page</h1>:<h1>{userParam.username}'s profile</h1>}
+      <button className="navLink" onClick={logOutUser}>Logout</button>
+      {user._id == userParam._id ?
       <div className="details-prop-container">
 
         <UserCard user={user} userParam={userParam} />
@@ -187,9 +190,9 @@ function ProfilePage() {
               })
             }
           </div>
-          : null
-        }
+          : null}        
       </div>
+      :null}
 
       <div className="user-items section">
         {user._id == userParam._id ? <h2>My Items</h2> : <h2>{userParam.username}'s Items</h2>}

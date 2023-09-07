@@ -1,6 +1,6 @@
 .postsContainerCard {
     height: auto;
-    width: 80vw;
+    width: 80%;
     border: 1px solid rgba(225, 235, 228, 0.733);
     border-radius: 10px;
     box-shadow: 0 0 10px 2px rgba(225, 235, 228, 0.733);
@@ -21,6 +21,7 @@
 .postContent {
     font-weight: bold;
     height: auto;
+    max-width: 100%;
 }
 
 .postContent img {
@@ -142,4 +143,5 @@
     .postInfoDetails a:hover {
         color: rgb(7, 79, 19);
     }
+
 }

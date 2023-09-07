@@ -43,9 +43,8 @@ function UserCard (props) {
       }
 
     return (
+        user._id == userParam._id ?
         <>
-
-        {user._id == userParam._id ?
         <div>
           <div className="profile-details">
             <h2>My Details</h2>
@@ -72,9 +71,9 @@ function UserCard (props) {
 
           </div>
         </div>
-          : null
-        }
         </>
+        : null
+
     )
 }
 

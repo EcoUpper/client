@@ -63,6 +63,7 @@ function EventsPage() {
 
   return (
     <div className="event-cont">
+      <h1>Upcoming events</h1>
       <div className="event-filter-cont">
         <div className="event-filter">
           <select id="filterEvent" onChange={(e) => filterEvents(e.target.value)}>

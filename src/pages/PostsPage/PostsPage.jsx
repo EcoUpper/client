@@ -55,6 +55,7 @@ function PostsPage() {
     return (
         <>
             <div className="postPage">
+                <h1>What's in your mind?</h1>
                 {user ? <NewPost fetchPosts={fetchPosts} newPost={newPost} setNewPost={setNewPost} /> : null}
 
                 <div className="postsInnerContainer">

@@ -6,6 +6,7 @@
 .event-filter-cont{
     display: flex;
     flex-direction: row;
+    align-items: center;
     justify-content: space-around;
     margin-bottom: 2rem;
 }
@@ -34,6 +35,7 @@
     border: solid 1px rgb(16, 98, 27);
     border-radius: 17px;
     width: 20%;
+    height: 2.3rem;
 }
 
 .event-cont button {
@@ -58,7 +60,30 @@
     margin-top: 2rem;
 }
 
-#filterEvent {
-    height: 40px;
-}
 
+
+@media (max-width: 768px) {
+    
+    .event-filter-cont{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        margin-bottom: 2rem;
+    }
+
+    .event-filter {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        gap:10px;
+        width: 80%;
+    }
+
+    .event-filter select{
+        border: solid 1px rgb(16, 98, 27);
+        border-radius: 17px;
+        width: 40%;
+    }
+   
+}

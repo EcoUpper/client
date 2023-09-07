@@ -43,8 +43,8 @@ export default function EventCard(props) {
         visible={showRodal}
         onClose={closeRodal}
         animation="fade"
-        width={600}
-        height={550}
+        width={350}
+        height={600}
       >
         {selectedEvent && (
           <div className="rodal-main">
@@ -70,7 +70,6 @@ export default function EventCard(props) {
               {props.data.location}
             </a>
                 </p>
-                <p></p>
               </div>
             </div>
                 <p className="description">{selectedEvent.content}</p>
