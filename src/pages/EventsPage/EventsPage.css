@@ -20,6 +20,14 @@
 .event-search {
     width: 80%;
     border: 1px solid rgba(1, 45, 8, 0.342);
+    border-radius: 17px;
+    padding-left: 10px;
+    font-size: 16px;
+}
+
+.filterEvent {
+    font-size: 16px;
+    padding: 5px 0;
 }
 
 .event-search:hover {
@@ -29,7 +37,7 @@
 
 .event-filter select{
     border: solid 1px rgb(16, 98, 27);
-    border-radius: 10px;
+    border-radius: 17px;
     width: 20%;
 }
 

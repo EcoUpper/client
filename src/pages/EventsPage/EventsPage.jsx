@@ -65,7 +65,7 @@ function EventsPage() {
     <div className="event-cont">
       <div className="event-filter-cont">
         <div className="event-filter">
-          <select onChange={(e) => filterEvents(e.target.value)} id="">
+          <select className="filterEvent" onChange={(e) => filterEvents(e.target.value)} id="">
             <option>All</option>
             <option value="1">January</option>
             <option value="2">February</option>

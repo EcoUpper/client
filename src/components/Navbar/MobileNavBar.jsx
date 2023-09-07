@@ -30,7 +30,7 @@ function MobileNavBar(props) {
                     onClose={closeNavBar}
                     animation="slideLeft"
                     width={150}
-                    height={290}
+                    height={400}
                 >
                     <NavLink className={({ isActive, isPending }) => isPending ? "pending navLink" : isActive ? "active navLink" : "navLink"} to="/" onClick={() => { settingEvent(); closeNavBar() }}>News</NavLink>
                     <NavLink className={({ isActive, isPending }) => isPending ? "pending navLink" : isActive ? "active navLink" : "navLink"} to="/market" onClick={() => { settingEvent(); closeNavBar() }}>Market</NavLink>
