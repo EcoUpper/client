@@ -3,7 +3,6 @@ import EventsList from "./../../components/Events/EventsList";
 import NewEvent from "./../../components/Events/NewEvent";
 import Rodal from "rodal";
 import "rodal/lib/rodal.css";
-import IsPrivate from "../../components/IsPrivate/IsPrivate";
 import { AuthContext } from "../../context/auth.context";
 import "./EventsPage.css"
 
