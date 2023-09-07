@@ -22,7 +22,6 @@
 }
 
 .innerForm input, select, textarea {
-    width: 60%;
     text-align: center;
     border: none;
 }

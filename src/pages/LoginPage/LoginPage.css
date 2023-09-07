@@ -9,10 +9,10 @@ form {
     flex-direction: column;
     align-items: center;
     gap: .5rem;
-    width: 50%;
+    width: 40%;
 }
 
-form input {
+form input  {
     width: 100%;
 }
 

@@ -51,7 +51,7 @@ function SignupPage() {
   };
 
   return (
-    <div className="SignupPage">
+    <div className="signup-page">
       <h1>Sign Up</h1>
 
       <form onSubmit={handleSignupSubmit} enctype="multipart/form-data">
@@ -69,7 +69,7 @@ function SignupPage() {
           onChange={handlePassword}
         />
 
-        <input type="file" onChange={(e) => handleFileUpload (e)} />
+        <input className="file-input" type="file" onChange={(e) => handleFileUpload (e)} />
 
         <button type="submit">Sign Up</button>
       </form>

@@ -2,6 +2,7 @@ import { useState, useContext } from "react"
 import { useNavigate } from "react-router-dom"
 import { AuthContext } from "../../context/auth.context"
 import uploadImage from "../../services/file-upload.service"
+import "./NewItem.css"
 
 
 function NewItem(props) {
@@ -76,8 +77,9 @@ function NewItem(props) {
 
     return (
         <>
-            <div>
+            <div className="form-container">
                 <form onSubmit={handleSubmit} >
+                    <h3>Create an event</h3>
                     <div>
                         <label>Name</label>
                         <input
@@ -98,9 +100,9 @@ function NewItem(props) {
                     </div>
                     <div>
                         <label>Image</label>
-                        <input type="file" onChange={(e) => handleFileUpload(e)} />
+                        <input class="file-input" type="file" onChange={(e) => handleFileUpload(e)} />
                     </div>
-                    <div>
+                    <div className="type-select">
                         <label>Type</label>
                         <select
                             name="type"

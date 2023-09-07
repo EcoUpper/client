@@ -228,7 +228,7 @@ function ProfilePage() {
           return (
             <div>
               <EventCard data={eventElement} date={date} time={time} />
-              <button onClick={(e) => handleEventSubmit(e, eventElement._id)}>Delete</button>
+              <button className="delete-btn" onClick={(e) => handleEventSubmit(e, eventElement._id)}>Delete</button>
 
             </div>
           )

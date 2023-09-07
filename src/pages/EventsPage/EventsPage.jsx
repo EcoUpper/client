@@ -83,6 +83,7 @@ function EventsPage() {
           </select>
 
           <input
+            className="event-search"
             type="text"
             name="search"
             placeholder="Search"
@@ -99,7 +100,7 @@ function EventsPage() {
             visible={showRodal}
             animation="fade"
             width={600}
-            height={440}
+            height={500}
             onClose={() => setShowRodal(false)}
           >
             <NewEvent fetchEvents={fetchEvents} setShowRodal={setShowRodal} />
