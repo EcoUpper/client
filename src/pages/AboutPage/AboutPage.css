@@ -1,78 +1,146 @@
   .containerAbout{
-    width: 100%;
+    width: 100vw;
     display: flex;
     flex-direction: column;
-    font-size: xx-large;
   }
 
   .title{
     color: rgb(23, 106, 37);
+    margin-bottom: 50px;
   }
  
   .strongColor{
     color: rgb(23, 106, 37);
   }
   
-
   .introAbout{
     background-color: #a6f0c4;
     width: 60%;
     border-top-left-radius: 250px;
     border-bottom-left-radius: 250px;
-    text-align: justify;
-    padding-left: 200px;
-    padding-right: 20px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    box-shadow: 0px 2px 2px 2px rgb(184, 164, 164);
+    padding: 20px 20px 20px 200px;
+    box-shadow: 0 0 10px 2px rgba(115, 129, 119, 0.733);
     margin-bottom: 50px;
     align-self: flex-end;
   }
   
-  .introAbout p{
-    text-align: justify;
-    font-size:x-large;
-    
+  .introAbout p {
+    margin: 30px 0;
+    width: 100%;
   }
 
   .featsAbout{
     background-color: #a6f0c4;
-    width: 60%;
+    width: auto;
     border-top-right-radius: 250px;
     border-bottom-right-radius: 250px;
-    text-align: justify;
-    padding-right: 200px;
-    padding-left: 20px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    box-shadow: 0px 2px 2px 2px rgb(184, 164, 164);
+    padding: 20px;
+    box-shadow: 0 0 10px 2px rgba(115, 129, 119, 0.733);
     margin-bottom: 50px;
-    font-size: x-large;
-
   }
-
 
   .joinAbout {
     background-color: #a6f0c4;
     width: 60%;
     border-top-left-radius: 250px;
     border-bottom-left-radius: 250px;
-    text-align: justify;
     padding-left: 200px;
     padding-right: 20px;
     padding-top: 20px;
     padding-bottom: 20px;
-    box-shadow: 0px 2px 2px 2px rgb(184, 164, 164);
+    box-shadow: 0 0 10px 2px rgba(115, 129, 119, 0.733);
     margin-bottom: 50px;
     align-self: flex-end;
-    font-size: x-large;
-    
-
-
   }
 
   .teamAbout{
     background-color: #a6f0c4;
+    width: auto;
+    border-top-right-radius: 250px;
+    border-bottom-right-radius: 250px;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 0 10px 2px rgba(115, 129, 119, 0.733);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .membersContainer{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    justify-content: space-around;
+  }
+
+  .membersContainer img{
+    border-radius: 100px;
+    height: 120px;
+    width: 100px;
+    box-shadow: 0 0 10px 2px rgba(115, 129, 119, 0.733);
+  }
+  
+  .teamMember {
+    width: 100vw; 
+    height: auto; 
+    color: rgb(23, 106, 37);
+  } 
+
+  .teamMember h3, p {
+    padding: 0;
+    margin-top: 0;
+  }
+
+
+
+  @media screen and (min-width: 768px) {
+
+  .containerAbout{
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    font-size: xx-large;
+  }
+
+  .introAbout{
+    background-color: #a6f0c4;
+    width: 60%;
+    border-top-left-radius: 250px;
+    border-bottom-left-radius: 250px;
+    padding: 20px 20px 20px 200px;
+    margin-bottom: 50px;
+    align-self: flex-end;
+  }
+  
+  .introAbout p{
+    font-size:x-large;
+  }
+
+  .featsAbout{
+    width: 60%;
+    border-top-right-radius: 250px;
+    border-bottom-right-radius: 250px;
+    padding-right: 200px;
+    padding-left: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 50px;
+    font-size: x-large;
+  }
+
+  .joinAbout {
+    width: 60%;
+    border-top-left-radius: 250px;
+    border-bottom-left-radius: 250px;
+    padding-left: 200px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 50px;
+    align-self: flex-end;
+    font-size: x-large;
+  }
+
+  .teamAbout{
     width: 60%;
     border-top-right-radius: 250px;
     border-bottom-right-radius: 250px;
@@ -81,7 +149,6 @@
     padding-top: 20px;
     padding-left: 20px;
     padding-bottom: 20px;
-    box-shadow: 0px 2px 2px 2px rgb(184, 164, 164);
     display: flex;
     flex-direction: column;
     font-size: medium;
@@ -95,15 +162,9 @@
     justify-content: space-around;
   }
 
-  .membersContainer img{
-    border-radius: 100px;
-    box-shadow: 0px 2px 2px 2px rgb(184, 164, 164);
-  }
-  
   .teamMember {
-    width: 100%; 
+    width: 100vw; 
     height: auto; 
-    border-radius: 50%;
-    color: rgb(23, 106, 37);
   } 
 
+}

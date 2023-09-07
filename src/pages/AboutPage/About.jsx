@@ -1,10 +1,8 @@
-import "./AboutPage.css";
+import "./AboutPage.css"
 import EdnaImg from "./../../images/Edna.png"
 import ErikImg from "./../../images/Erik.png"
 import JDImg from "./../../images/JD.png"
 import OscarImg from "./../../images/Oscar.png"
-
-
 
 function About() {
   return (
@@ -13,7 +11,7 @@ function About() {
 
       <div className="introAbout">
         <p>
-          Welcome to EcoUpper, the social media app dedicated to
+          Welcome to EcoUpper, the social media platform dedicated to
           sustainability, community building, and making our planet a better
           place. We believe that small, collective actions can create a big
           impact, and our platform is designed to empower individuals and
@@ -21,8 +19,6 @@ function About() {
       
           <h3><strong className="strongColor">Our Vision</strong></h3>
           
-          At EcoUpper, we envision a world where people from all
-          walks of life unite to take action on environmental and social issues.
           Our mission is to provide a digital space where you can connect with
           like-minded individuals, share ideas, exchange items, and organize
           events that contribute to a more sustainable lifestyle.<br/>
@@ -63,10 +59,9 @@ function About() {
 
       <div className="joinAbout">
         <p>
-          <h3><strong className="strongColor">Join Us in Making a Difference</strong></h3>
+          <h3><strong className="strongColor">Make a Difference</strong></h3>
           
-          EcoUpper is more than just an app; it's a movement. Together, we can take small steps every day that
-          add up to a brighter future for our planet. Join us in creating a
+          EcoUpper is more than just an app - it's a movement. Join us in creating a
           global network of eco-conscious individuals and communities who are
           dedicated to making sustainability a way of life.<br/>
           <br/>
@@ -81,24 +76,24 @@ function About() {
           <h1> <strong className="strongColor">EcoUppers</strong></h1>
         <div className="membersContainer">
           <div className="teamMember">
-            <img width= "200px" src={EdnaImg} alt="Edna" />
+            <img src={EdnaImg} alt="Edna" />
             <h3>Edna Vidal</h3>
-            <p>Position: CEO</p>
+            <p><strong>CEO</strong></p>
           </div>
           <div className="teamMember">
-            <img width= "200px" src={ErikImg}alt="" />
+            <img src={ErikImg}alt="" />
             <h3>Erik Arvid</h3>
-            <p>Position: CTO</p>
+            <p><strong>CTO</strong></p>
           </div>
           <div className="teamMember">
-            <img width= "200px" src={JDImg} alt="" />
+            <img src={JDImg} alt="" />
             <h3>Juan David Valencia</h3>
-            <p>Position: Design</p>
+            <p><strong>Design</strong></p>
           </div>
           <div className="teamMember">
-            <img width= "200px"  src={OscarImg}alt="" />
+            <img src={OscarImg}alt="" />
             <h3>Óscar Mesejo</h3>
-            <p>Position: Design</p>
+            <p><strong>Design</strong></p>
           </div>
         </div>
 

@@ -31,15 +31,15 @@ const Footer = () => {
         <div className="socialFooter">
           <h3 >Social</h3>
           <div className="socialLogos">
-            <img width="30px" src={IGImg} alt="Instagram" />
-            <img width="30px" src={tiktokImg} alt="TikTok" />
-            <img width="30px" src={linkedinImg} alt="LinkdIn" />
-            <img width="30px" src={FBImg} alt="Facebook " />
+            <img src={IGImg} alt="Instagram" />
+            <img src={tiktokImg} alt="TikTok" />
+            <img src={linkedinImg} alt="LinkdIn" />
+            <img src={FBImg} alt="Facebook " />
           </div>
         </div>
       </div>
+      <Link to="/About"><h3>About us</h3></Link>
       <p>2023 EcoUpper. All rights reserved</p>
-      <Link to="/About">About Us</Link>
     </footer>
   );
 };
