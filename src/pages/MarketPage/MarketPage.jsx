@@ -109,8 +109,8 @@ function MarketPage() {
             <Rodal
               visible={showRodal}
               animation="fade"
-              width={600}
-              height={440}
+              width={350}
+              height={500}
               onClose={() => setShowRodal(false)}
             >
               <NewItem fetchItems={fetchItems} setShowRodal={setShowRodal} />

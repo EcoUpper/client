@@ -86,7 +86,7 @@ function Navbar() {
                 <Link id="profileImg" to={`/profile/${user?._id}`} onClick={settingEvent}>
                   <img src={user?.image_url} alt="Profile picture" />
                 </Link>
-                {hasNotif ? <img src={notifImage} alt="" height="30px" /> : null}
+                {hasNotif ? "❗" : null}
                 <span>{user && user?.name}</span>
               </>
             )}
