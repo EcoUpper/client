@@ -75,8 +75,9 @@ function NewEvent (props) {
 
     return (
        <>
-       <div>
+       <div className="form-container">
                 <form onSubmit={handleSubmit} >
+                    <h3>Create a new event</h3>
                     <div>
                         <label>Title</label>
                         <input
@@ -98,7 +99,7 @@ function NewEvent (props) {
                     </div>
                     <div>
                         <label>Image</label>
-                        <input type="file" onChange={(e) => handleFileUpload (e)} />
+                        <input className="file-input" type="file" onChange={(e) => handleFileUpload (e)} />
 
                     </div>
                     <div>
