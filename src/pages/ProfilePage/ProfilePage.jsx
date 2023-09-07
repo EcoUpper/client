@@ -19,7 +19,6 @@ function ProfilePage() {
   const [allItems, setAllItems] = useState([])
   const [events, setEvents] = useState([])
   const [posts, setPosts] = useState([])
-  const [reviews, setReviews] = useState([])
   const [proposals, setProposals] = useState([])
 
   const { userId } = useParams()
@@ -101,17 +100,6 @@ function ProfilePage() {
         setPosts(data)
       })
       .catch(err => console.log(err))
-
-
-    fetch(reviewUrl)
-      .then((response) => {
-        return response.json()
-      })
-      .then((data) => {
-        setReviews(data)
-      })
-      .catch(err => console.log(err))
-
 
     fetch(proposalUrl)
       .then((response) => {
