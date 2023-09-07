@@ -1,7 +1,6 @@
 nav {
     background-color: rgba(255, 255, 255, 0.868);
-    /* background-color: #158a34; */
-    border-bottom: 1px solid rgb(48, 183, 71);
+    border-bottom: 1px solid rgba(1, 45, 8, 0.342);
     height: 60px;
     display: flex;
     flex-direction: row;
@@ -30,12 +29,27 @@ nav a {
     border-radius: 50%;
 }
 
-
 .navDiv {
     display: flex;
     align-items: center;
     justify-content: space-around;
 }
+
+#dropdownNavBar {
+    position: absolute;
+    margin: 10px 0;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.868);
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.rodal-fade-enter {
+    animation: rodal-fade-enter both ease-in;
+}
+
 
 @media screen and (min-width: 568px) {
     
@@ -75,9 +89,5 @@ nav a {
     .navUser{
         width: 20%;
     }
-
- 
-    
-  
    
 }
