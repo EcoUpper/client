@@ -2,6 +2,7 @@ import { useState, useContext, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { AuthContext } from "../../context/auth.context"
 import uploadImage from "../../services/file-upload.service"
+import "./ModifyUser.css"
 
 function ModifyUser(props) {
 
@@ -93,10 +94,11 @@ function ModifyUser(props) {
                         <label>Image</label>
                         <input className="imgInput" type="file" onChange={(e) => handleFileUpload(e)} />
                     </div>
-
-                    <button type="submit">Modify item</button>
+                    <div>
+                    <button id="modif-btn" type="submit">Modify item</button>
+                    <button onClick={(e) => setShowModifyRodal(false)}>Cancel</button>
+                    </div>
                 </form>
-                <button onClick={(e) => setShowModifyRodal(false)}>Cancel</button>
             </div>
         </>
     )

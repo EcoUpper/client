@@ -1,0 +1,12 @@
+.modifyForm{
+    display: flex;
+    flex-direction: column;
+}
+
+#modif-btn {
+    width: auto ;
+}
+
+.imgInput {
+    height: 3rem;
+}
