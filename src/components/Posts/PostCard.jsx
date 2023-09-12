@@ -57,7 +57,7 @@ export default function PostCard(props) {
                     {userHasLiked ? (
                         "❤️"
                     ) : (
-                      <button onClick={makeLike}>❤️</button>
+                      user? <button onClick={makeLike}>❤️</button> : "❤️"
                     )}
                 </p>
                 :
