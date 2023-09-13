@@ -50,7 +50,7 @@ export default function EventCard(props) {
           <div className="rodal-main">
             <div className="rodal-cont">
               <img
-                style={{ height: "300px" }}
+                style={{ height: "300px", width: "100%" }}
                 src={selectedEvent.image_url}
                 alt="Event image"
               />
