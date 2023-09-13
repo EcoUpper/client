@@ -5,9 +5,10 @@ import Rodal from "rodal";
 import "rodal/lib/rodal.css";
 import "./MarketPage.css";
 import { AuthContext } from "../../context/auth.context";
+import Loading from "../../components/Loading/Loading";
 
 function MarketPage() {
-  const { isLoggedIn } = useContext(AuthContext);
+  const { isLoggedIn} = useContext(AuthContext);
 
   const [items, setItems] = useState([]);
   const [allItems, setAllItems] = useState([]);
@@ -121,7 +122,7 @@ function MarketPage() {
 
         <div className="items-list">
           {items.length === 0 ? (
-            <p>There are currently no available items matching your search.</p>
+            <Loading/>
           ) : (
             <ItemsList items={items} search={search} />
           )}

@@ -5,6 +5,8 @@ import Rodal from "rodal";
 import "rodal/lib/rodal.css";
 import { AuthContext } from "../../context/auth.context";
 import "./EventsPage.css"
+import Loading from "../../components/Loading/Loading";
+
 
 function EventsPage() {
   const { isLoggedIn } = useContext(AuthContext);
@@ -107,8 +109,8 @@ function EventsPage() {
           </Rodal>
         </div>
       </div>
-
-      <EventsList events={events} search={search} />
+      {events.length === 0? <Loading/> : <EventsList events={events} search={search} />}
+      
       <div>
         <button className="back-to-top" onClick={scrollToTop}>Back to top</button>
       </div>

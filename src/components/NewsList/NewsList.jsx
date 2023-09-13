@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import NewsCard from "./NewsCard";
+import Loading from "../../components/Loading/Loading"
+
 
 function NewsList() {
   const [news, setNews] = useState([]);
@@ -18,6 +20,7 @@ function NewsList() {
   }, []);
 
   return (
+    news.length===0? <Loading/> :
     <>
     <div className="newsPage">
         <div className="newsInnerContainer">
