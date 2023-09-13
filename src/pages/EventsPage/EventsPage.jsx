@@ -97,11 +97,13 @@ function EventsPage() {
           <Rodal
             visible={showRodal}
             animation="fade"
-            width={350}
-            height={550}
+            width={500}
+            height={500}
             onClose={() => setShowRodal(false)}
           >
-            <NewEvent fetchEvents={fetchEvents} setShowRodal={setShowRodal}/>
+            <div style={{ maxHeight: '600px', overflowY: 'auto' }}>
+              <NewEvent fetchEvents={fetchEvents} setShowRodal={setShowRodal} />
+            </div>
           </Rodal>
         </div>
       </div>

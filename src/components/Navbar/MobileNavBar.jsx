@@ -45,7 +45,7 @@ function MobileNavBar(props) {
                                 <img src={user?.image_url} alt="Profile picture" />
                             </Link>
                             <button className="navLink" onClick={() => { logOutUser(); settingEvent(); closeNavBar() }}>Logout</button>
-                            {hasNotif ? <img src={notifImage} alt="" height="30px" /> : null}
+                            {hasNotif ? <img src={notifImage} alt="" width="20px" /> : null}
                             <span>{user && user?.name}</span>
                         </>
                     )}
