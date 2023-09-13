@@ -62,7 +62,6 @@ function MarketPage() {
       return setItems(allItems);
     }
     const newArray = allItems.filter((item) => {
-      console.log(item);
       return item.type === type.toLowerCase();
     });
 
