@@ -9,21 +9,24 @@
 
 .formContainer {
     height: 85%;
-    width: 85%;
+    width: 70%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
 .innerForm {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    width: 100%;
 }
 
 .innerForm input, select, textarea {
     text-align: center;
     border: none;
+    width: 50%;
 }
 
 .innerForm input:hover, select:hover, textarea:hover {
