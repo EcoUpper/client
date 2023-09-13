@@ -3,5 +3,7 @@
 }
 
 .subheading {
-  line-height: 25px;
+  line-height: 30px;
+  max-width: 70%;
+  align-items: center;
 }
