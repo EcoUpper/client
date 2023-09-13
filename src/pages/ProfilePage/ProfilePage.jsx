@@ -5,7 +5,6 @@ import ItemCard from "../../components/Market/ItemCard";
 import ProposalCard from "../../components/Proposal/ProposalCard";
 import EventCard from "../../components/Events/EventCard";
 import PostCard from "../../components/Posts/PostCard";
-import ReviewCard from "../../components/Reviews/Review";
 import UserCard from "../../components/Profile/UserCard";
 import { useParams } from "react-router";
 

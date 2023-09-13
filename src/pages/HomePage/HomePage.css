@@ -11,6 +11,10 @@ h1 > img {
     width: 12rem;
 }
 
+.news-container {
+    color: rgb(1, 45, 8);
+}
+
 .news-container button{
     border: none;
     border-radius: 17px;

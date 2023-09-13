@@ -78,6 +78,7 @@ function MarketPage() {
   return (
     <div className="market-page">
       <h1>Welcome to Market</h1>
+      <h4 className="subheading">Welcome to our vibrant market community where sharing is caring! <br></br>Share items you no longer need or delicious food that's about to go to waste with fellow community members. <br /> Join us in reducing waste and fostering a spirit of generosity while discovering hidden treasures in your neighborhood.</h4>
       <div className="market-section">
         <div  className="filter-cont">
           <div className="filters">
