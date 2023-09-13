@@ -13,10 +13,11 @@ a {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: start;
+    justify-content: space-between;
     margin: 25px;
 }
-.cardContainer h4, h3, h5 {
+
+.cardContainer h3, h5 {
     margin: .5rem;
 }
 
@@ -32,13 +33,11 @@ a {
 }
 
 .available {
-    background: rgb(104,196,104);
-    background: linear-gradient(0deg, rgba(104,196,104,1) 0%, rgba(255,255,255,1) 20%);
+    background: linear-gradient(0deg, rgba(104,196,104,0.75) 0%, rgba(255,255,255,1) 30%);
 }
 
 .reserved {
-    background: rgb(202,138,103);
-    background: linear-gradient(0deg, rgba(202,138,103,1) 0%, rgba(255,255,255,1) 22%);
+    background: linear-gradient(0deg, rgba(202,138,103,0.75) 0%, rgba(255,255,255,1) 30%);
 }
 
 .gifted {
