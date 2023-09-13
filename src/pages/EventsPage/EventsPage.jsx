@@ -64,10 +64,10 @@ function EventsPage() {
   return (
     <div className="event-cont">
       <h1>Upcoming events</h1>
-      <h4 className="subheading">Are you organising an eco-conscious event and want to tell us all about it? <br />Are you wanting to take some action and don't know where to start? <br /> Whatever the weather, step into our lively events hub - the place to connect, inspire, and make a positive impact. <br /> Be a part of something meaningful and start sharing your sustainable events now!</h4>
+      <h4 className="subheading">Are you organising an eco-conscious event and want to tell us all about it? <br />Are you wanting to take some action and don't know where to start? <br /> Whatever the weather, step into our lively events hub - the place to connect, inspire, and make a positive impact.</h4>
       <div className="event-filter-cont">
         <div className="event-filter">
-          <select id="filterEvent" onChange={(e) => filterEvents(e.target.value)}>
+          <select onChange={(e) => filterEvents(e.target.value)}>
             <option>All</option>
             <option value="1">January</option>
             <option value="2">February</option>
