@@ -2,8 +2,8 @@ import "./Navbar.css"
 import { Link, NavLink } from "react-router-dom"
 import { useContext, useEffect, useState } from "react"
 import { AuthContext } from "../../context/auth.context"
-import notifImage from "../../images/notif.png"
 import bigLogo from "../../images/long_logo_light.png"
+import notif from "../../images/excl.png"
 import MobileNavBar from "./MobileNavBar"
 
 function Navbar() {
@@ -67,7 +67,7 @@ function Navbar() {
 
     <>
 
-      {windowWidth <= 768 ? <MobileNavBar settingEvent={settingEvent} hasNotif={hasNotif} notifImage={notifImage}/>
+      {windowWidth <= 768 ? <MobileNavBar settingEvent={settingEvent} hasNotif={hasNotif} notifImage={notif}/>
         :
         <nav>
 
@@ -86,7 +86,7 @@ function Navbar() {
                 <Link id="profileImg" to={`/profile/${user?._id}`} onClick={settingEvent}>
                   <img src={user?.image_url} alt="Profile picture" />
                 </Link>
-                {hasNotif ? "❗" : null}
+                {hasNotif ? <img className="notif" src={notif} width="20px"/> :  null}
                 <span>{user && user?.name}</span>
               </>
             )}

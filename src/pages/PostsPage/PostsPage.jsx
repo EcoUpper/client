@@ -37,7 +37,6 @@ function PostsPage() {
                     }
                 });
                 setPosts(sortedPosts);
-                console.log("NEW FETCH");
             })
             .catch((err) => {
                 console.log(err);
@@ -67,7 +66,7 @@ function PostsPage() {
                         const date = dateTime.toLocaleDateString()
                         const time = dateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
                         return (
-                            <PostCard data={post} date={date} time={time} likes={post.likes} />
+                            <PostCard data={post} date={date} time={time} likes={post.likes}/>
                         )
                     })}
                 </div>

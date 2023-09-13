@@ -58,7 +58,6 @@ function MarketPage() {
   }, []);
 
   function filterItems(type) {
-    console.log(type);
     if (type === "All") {
       return setItems(allItems);
     }
@@ -66,7 +65,6 @@ function MarketPage() {
       console.log(item);
       return item.type === type.toLowerCase();
     });
-    console.log(newArray);
 
     setItems(newArray);
   }

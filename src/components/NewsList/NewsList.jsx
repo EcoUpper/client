@@ -12,7 +12,6 @@ function NewsList() {
         return response.json();
       })
       .then((data) => {
-        console.log(data);
         setNews(data);
       })
       .catch((err) => console.log(err));

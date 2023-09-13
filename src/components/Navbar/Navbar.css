@@ -33,6 +33,11 @@ nav button {
     height: 25px;
 }
 
+#notif-img {
+    width: 20px;
+    height: 20px;
+}
+
 #profileImg img{
     height: 40px;
     width: 40px;
@@ -101,6 +106,11 @@ nav button {
 
     .navUser{
         width: 10%;
+    }
+
+    #notif-img {
+        width: 20px;
+        height: 20px;
     }
    
 }

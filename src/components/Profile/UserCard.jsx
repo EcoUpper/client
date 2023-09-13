@@ -20,7 +20,7 @@ function UserCard (props) {
 
     const authToken = localStorage.getItem("authToken")
 
-    console.log(userId)
+
     function handleUserSubmit(e) {
         e.preventDefault()
       

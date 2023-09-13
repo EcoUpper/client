@@ -17,7 +17,7 @@ function ItemsList(props) {
                 .map((item) => {
 
                     return (
-                        <ItemCard item={item}/>
+                        <ItemCard item={item} key={item._id}/>
                     )
                 })}
         </>

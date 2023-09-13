@@ -21,7 +21,6 @@ function ModifyUser(props) {
                 return response.json()
             })
             .then((data) => {
-                console.log("HERE", data)
                 setUsername(data.username)
                 setImage(data.image_url)
             })
@@ -46,7 +45,6 @@ function ModifyUser(props) {
 
     function handleUserChange(e) {
         e.preventDefault();
-        console.log(userId)
         const modifyUserUrl = process.env.REACT_APP_SERVER_URL + "/db/users/" + userId;
 
         const body = {

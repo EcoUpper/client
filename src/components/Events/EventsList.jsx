@@ -21,7 +21,7 @@ function EventsList(props) {
                     const date = dateTime.toLocaleDateString()
                     const time = dateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
                     return (
-                        <EventCard data={event} date={date} time={time}/>
+                        <EventCard data={event} date={date} time={time} key={event._id}/>
                     )
                 })}
             </div>

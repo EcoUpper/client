@@ -25,7 +25,6 @@ function SignupPage() {
 
     uploadImage(formData)
     .then((res)=>{
-      console.log("upload res", res);
       setImageSelected(res.image_url)
     })
     .catch(err => console.log(err))
@@ -37,7 +36,6 @@ function SignupPage() {
     e.preventDefault();
     const requestBody = { username, email, password, image_url: imageSelected};
 
-    console.log("request body", requestBody);
     // Or using a service
     authService
       .signup(requestBody)

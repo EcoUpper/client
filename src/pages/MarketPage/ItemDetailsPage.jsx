@@ -40,7 +40,6 @@ function ItemDetailsPage() {
       })
       .then((data) => {
         setItemInfo(data);
-        console.log("item", data);
       })
       .catch((err) => {
         console.log(err);
@@ -68,7 +67,6 @@ function ItemDetailsPage() {
           }
         });
         setItemProposals(sortedProposals);
-        console.log("HERE", sortedProposals);
       })
       .catch((err) => {
         console.log(err);
@@ -76,7 +74,6 @@ function ItemDetailsPage() {
   }
 
   function handleProposalChange(e, propId, newStatus) {
-    console.log("PROPID", propId);
     e.preventDefault();
 
     const modifyProposalUrl =
@@ -241,7 +238,6 @@ function ItemDetailsPage() {
                 <NewProposal fetchProposals={fetchProposals} />
                 <div className="proposal-container">
                 {itemProposals.map((prop) => {
-                  console.log("PARROP", prop);
                   const dateAndTimeProp = prop.date;
                   const dateTime = new Date(dateAndTimeProp);
                   const date = dateTime.toLocaleDateString();

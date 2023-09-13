@@ -53,7 +53,6 @@ function NewItem(props) {
 
         uploadImage(formData)
             .then((res) => {
-                console.log("upload res", res);
                 setImage(res.image_url)
             })
             .catch(err => console.log(err))
@@ -83,7 +82,6 @@ function NewItem(props) {
                 res.json()
             })
             .then((newItem) => {
-                console.log(newItem)
                 setName("")
                 setDescription("")
                 setImage("")
@@ -126,7 +124,7 @@ function NewItem(props) {
                     </div>
                     <div>
                         <label>Image</label>
-                        <input class="file-input" type="file" onChange={(e) => handleFileUpload(e)} />
+                        <input className="file-input" type="file" onChange={(e) => handleFileUpload(e)} />
                     </div>
                     <div className="type-select">
                         <label>Type</label>

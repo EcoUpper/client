@@ -19,7 +19,6 @@ function NewItem(props) {
 
         uploadImage(formData)
             .then((res) => {
-                console.log("upload res", res);
                 setImage(res.image_url)
             })
             .catch(err => console.log(err))
@@ -46,7 +45,6 @@ function NewItem(props) {
                 res.json()
             })
             .then((newItem) => {
-                console.log(newItem)
                 setContent("")
                 setImage("")
                 props.setNewPost(!props.newPost)

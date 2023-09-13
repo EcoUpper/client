@@ -24,7 +24,6 @@ function EventDetailsPage() {
             })
             .then((data) => {
                 setEventInfo(data);
-                console.log(data);
 
             })
             .catch((err) => {

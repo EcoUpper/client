@@ -47,16 +47,13 @@ function EventsPage() {
   }, []);
 
   function filterEvents(date) {
-    console.log("DATE HERE", date);
     if (date === "All") {
       return setEvents(allEvents);
     }
     const newArray = allEvents.filter((event) => {
       const eventDate = new Date(event.date);
-      console.log(event);
       return date == eventDate.getMonth() + 1;
     });
-    console.log(newArray);
 
     setEvents(newArray);
   }

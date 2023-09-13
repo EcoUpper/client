@@ -34,7 +34,6 @@ function NewProposal(props) {
                 res.json()
             })
             .then((newProposal) => {
-                console.log(newProposal)
                 setDate("")
                 setTime("")
                 

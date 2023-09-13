@@ -48,7 +48,7 @@ export default function PostCard(props) {
     }, [props])
 
     return (
-        <div className="postsContainerCard" key={props.key}>
+        <div className="postsContainerCard">
             <div className="postInfoDetails">
                 <Link  to={`/profile/${props.data.created_by?._id}`} target="_blank"><p>@{props.data.created_by?.username}</p></Link>
                 <p className="postDate">{props.date} at {props.time}</p>

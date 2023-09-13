@@ -62,8 +62,6 @@ function ModifyItem (props) {
             .then((res) => res.json())
 
             .then((updatedItem) => {
-                console.log(updatedItem)
-
                 fetchItemInfo()
                 navigate(`/market/${itemId}`)
             })
