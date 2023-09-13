@@ -56,6 +56,7 @@ function PostsPage() {
         <>
             <div className="postPage">
                 <h1>What's in your mind?</h1>
+                <h4 className="subheading">Share your thoughts and join this dynamic conversation where your voice matters.</h4>
                 {user ? <NewPost fetchPosts={fetchPosts} newPost={newPost} setNewPost={setNewPost} /> : null}
 
                 <div className="postsInnerContainer">
