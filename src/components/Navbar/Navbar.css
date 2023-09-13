@@ -22,10 +22,15 @@ nav button {
 
 .smallLogo {
     height: 40px;
+    padding-left: 10px;
 }
 
 .bigLogo {
     display: none;
+}
+
+.dropdownLogo {
+    height: 25px;
 }
 
 #profileImg img{
@@ -37,7 +42,8 @@ nav button {
 
 #dropdownNavBar {
     position: absolute;
-    margin: 0;
+    margin-right: 0;
+    margin-top: 0;
     padding: 15px;
     background-color: rgba(255, 255, 255, 0.868);
     border-radius: 3px;

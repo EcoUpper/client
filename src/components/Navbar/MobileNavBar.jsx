@@ -3,6 +3,7 @@ import "rodal/lib/rodal.css"
 import { useContext, useState } from "react"
 import { AuthContext } from "../../context/auth.context"
 import smallLogo from "../../images/short_logo_light.png"
+import dropdownLogo from "../../images/dropdown.png"
 import { Link, NavLink } from "react-router-dom"
 
 function MobileNavBar(props) {
@@ -23,12 +24,13 @@ function MobileNavBar(props) {
 
         <>
             <nav>
-                <button onClick={() => { settingEvent(); openNavBar() }}><img className="smallLogo" src={smallLogo} alt="Home" /></button>
+            <img className="smallLogo" src={smallLogo} alt="Home" />
+                <button onClick={() => { settingEvent(); openNavBar() }}><img className="dropdownLogo" src={dropdownLogo} alt="Home" /></button>
                 <Rodal
                     id="dropdownNavBar"
                     visible={showRodal}
                     onClose={closeNavBar}
-                    animation="slideLeft"
+                    animation="slideRight"
                     width={150}
                     height={400}
                 >
