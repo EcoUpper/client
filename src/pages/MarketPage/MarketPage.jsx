@@ -21,7 +21,7 @@ function MarketPage() {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }
 
-  function handleBtnClick (e) {
+  function handleBtnClick(e) {
     setActive(e.target.id)
   }
 
@@ -80,26 +80,26 @@ function MarketPage() {
       <h1>EcoUpper Market</h1>
       <h4 className="subheading">Welcome to our vibrant market community where sharing is caring! <br></br>Share items you no longer need or delicious food that's about to go to waste with fellow community members. <br /> Join us in reducing waste and fostering a spirit of generosity while discovering hidden treasures in your neighborhood.</h4>
       <div className="market-section">
-        <div  className="filter-cont">
+        <div className="filter-cont">
           <div className="filters">
-            <button className={active === "1"? "active" : undefined} onClick={(e) => {filterItems(e.target.value); handleBtnClick(e)}} value="All" id={"1"}>
+            <button className={active === "1" ? "active" : undefined} onClick={(e) => { filterItems(e.target.value); handleBtnClick(e) }} value="All" id={"1"}>
               All items
             </button>
-            <button className={active === "2"? "active" : undefined} onClick={(e) => {filterItems(e.target.value); handleBtnClick(e)}} value="Food" id={"2"}>
+            <button className={active === "2" ? "active" : undefined} onClick={(e) => { filterItems(e.target.value); handleBtnClick(e) }} value="Food" id={"2"}>
               Food
             </button>
             <button
-            className={active === "3"? "active" : undefined}
-            onClick={(e) => {filterItems(e.target.value); handleBtnClick(e)}}
+              className={active === "3" ? "active" : undefined}
+              onClick={(e) => { filterItems(e.target.value); handleBtnClick(e) }}
               value="Clothing"
               id={"3"}
             >
               Clothing
             </button>
-            <button className={active === "4"? "active" : undefined} onClick={(e) => {filterItems(e.target.value); handleBtnClick(e)}} value="Other" id={"4"}>
+            <button className={active === "4" ? "active" : undefined} onClick={(e) => { filterItems(e.target.value); handleBtnClick(e) }} value="Other" id={"4"}>
               Other
             </button>
-            <input className="marketSearchInput" type="text" name="search" placeholder="Search" value={search} onChange={(e)=>setSearch(e.target.value)}/>
+            <input className="marketSearchInput" type="text" name="search" placeholder="Search" value={search} onChange={(e) => setSearch(e.target.value)} />
 
           </div>
           <div className="create-btn">
@@ -110,14 +110,16 @@ function MarketPage() {
             <Rodal
               visible={showRodal}
               animation="fade"
-              width={350}
+              width={500}
               height={500}
               onClose={() => setShowRodal(false)}
             >
-              <NewItem fetchItems={fetchItems} setShowRodal={setShowRodal} />
+              <div style={{ maxHeight: '600px', overflowY: 'auto' }}>
+                <NewItem fetchItems={fetchItems} setShowRodal={setShowRodal} />
+              </div>
             </Rodal>
           </div>
-            
+
         </div>
 
         <div className="items-list">
@@ -128,7 +130,7 @@ function MarketPage() {
           )}
         </div>
         <div>
-        <button className="back-top-btn" onClick={scrollToTop}>Back to top</button>
+          <button className="back-top-btn" onClick={scrollToTop}>Back to top</button>
         </div>
       </div>
     </div>
