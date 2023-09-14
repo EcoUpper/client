@@ -43,14 +43,15 @@ export default function EventCard(props) {
         visible={showRodal}
         onClose={closeRodal}
         animation="fade"
-        width={350}
-        height={600}
+        width={500}
+        height={500}
       >
+        <div style={{ maxHeight: '500px', overflowY: 'auto' }}>
         {selectedEvent && (
           <div className="rodal-main">
             <div className="rodal-cont">
               <img
-                style={{ height: "300px", width: "100%" }}
+                style={{ height: "300px", width: "90%" }}
                 src={selectedEvent.image_url}
                 alt="Event image"
               />
@@ -74,7 +75,7 @@ export default function EventCard(props) {
             </div>
                 <p className="description">{selectedEvent.content}</p>
           </div>
-        )}
+        )}</div>
       </Rodal>
     </div>
   );
