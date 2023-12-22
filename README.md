@@ -1,5 +1,7 @@
 # Main funcionality of the project
 
+Site in production: https://delicate-figolla-5b38ff.netlify.app/
+
 The aim of this project is to build a full stack web application with CRUD funcionality working with the MERN stack.
 
 To use these technologies, we created and brought to life an application to promote a more sustainable lifestyle and encourage people to reuse and recycle. EcoUpper is also a platform where users can be informed and share their awareness about sustainability and climate change while creating a new community.
